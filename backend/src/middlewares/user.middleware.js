@@ -1,19 +1,17 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
+    try {
+        const cookies = req.cookies;
 
-    if (!token) {
-      return respond(res, false, 401, 'No token provided', {});
+        if (!cookies.jwtToken) {
+            return respond(res, false, 401, "No token provided", {});
+        }
+
+        const decoded = jwt.verify(cookies.jwtToken, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return respond(res, false, 401, "Invalid token", {});
     }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.user = decoded; 
-    next();
-
-  } catch (error) {
-    return respond(res, false, 401, 'Invalid token', {});
-  }
 };
