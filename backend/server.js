@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const connectDB = require("./src/lib/db");
 const authRouter = require("./src/routes/auth.router");
@@ -9,6 +10,7 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
