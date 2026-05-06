@@ -103,6 +103,15 @@ const login = async (req, res) => {
     }
 };
 
+/**
+ *
+ * Controller function to handle forgot password request.
+ * Sends a mail to the user to their mail Id to reset password with a token
+ *
+ * Input=> { email } => req.body
+ * Output=> responds with a message that user will get a reset link in their registered mail
+ *
+ */
 const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
@@ -130,6 +139,16 @@ const forgotPassword = async (req, res) => {
     }
 };
 
+/**
+ * Controller function to handle reset password request
+ * Changes the password to a new password sent by the user
+ *
+ * Input=> { password } => req.body ("password" is the new password to be changed to),
+ *  => { token } => req.params (acquired automatically in frontend after user clicks the reset link in their mail)
+ *
+ * Output=> responds with a success message of password changed successfully.
+ *
+ */
 const resetPassword = async (req, res) => {
     try {
         const { password } = req.body;
@@ -150,6 +169,16 @@ const resetPassword = async (req, res) => {
     }
 };
 
+/**
+ *
+ * Controller to handle changing of password by the user when logged in
+ * changes the password to a new one sent by the frontend
+ * After changing password to a new one, it deletes the cookie that is on the frontend.
+ *
+ * Input=> { password } => req.body ("password" is the new password to be changed to)
+ * Output=> responds with a success message that password changed successfully! and tells to login again with new credentials!
+ *
+ */
 const changePassword = async (req, res) => {
     try {
         const password = req.body.password;
