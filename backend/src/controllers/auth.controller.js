@@ -2,6 +2,8 @@ const respond = require("../lib/responseFormat");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const sendEmail = require("../services/email.service");
 
 const saltRounds = 10;
 
@@ -101,4 +103,77 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { register, login };
+const forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return respond(res, false, 400, "User doesn't exist!", {});
+        }
+        user.resetPasswordToken = crypto
+            .createHash("sha256")
+            .update(crypto.randomBytes(32).toString("hex"))
+            .digest("hex");
+        user.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
+        await user.save();
+        sendEmail(email, user.resetPasswordToken);
+        return respond(
+            res,
+            true,
+            200,
+            "If your email is registered, you will receive a reset link shortly.",
+            {},
+        );
+    } catch (error) {
+        console.log("\n\n😱 Error during login:", error);
+        return respond(res, false, 500, "Login failed", {});
+    }
+};
+
+const resetPassword = async (req, res) => {
+    try {
+        const { password } = req.body;
+        const user = await User.findOne({
+            resetPasswordToken: req.params.token,
+            resetPasswordExpires: { $gt: Date.now() },
+        });
+        if (!user)
+            return respond(res, false, 400, "Invalid or expired Token!", {});
+        user.password = await hashPassword(password);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+        await user.save();
+        return respond(res, true, 200, "Password updated succesfully!");
+    } catch (error) {
+        console.log("\n\n😱 Error during login:", error);
+        return respond(res, false, 500, "Login failed", {});
+    }
+};
+
+const changePassword = async (req, res) => {
+    try {
+        const password = req.body.password;
+        if (!password) return respond(res, false, 400, "Password is required!");
+        const user = await User.findById(req.user.id);
+        user.password = await hashPassword(password);
+        await user.save();
+        res.clearCookie("jwtToken");
+        return respond(
+            res,
+            true,
+            200,
+            "Password changed successfully! Please login again!",
+        );
+    } catch (error) {
+        console.log("\n\n😱 Error during login:", error);
+        return respond(res, false, 500, "Login failed", {});
+    }
+};
+
+module.exports = {
+    register,
+    login,
+    forgotPassword,
+    resetPassword,
+    changePassword,
+};
