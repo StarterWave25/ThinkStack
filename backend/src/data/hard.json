@@ -1,0 +1,162 @@
+[
+    {
+        "title": "The 100 Prisoners and the Hidden Numbered Boxes",
+        "description": "100 prisoners numbered 1 to 100 must find their own number in a room containing 100 boxes, each holding a random prisoner's number. Each prisoner can open up to 50 boxes. They cannot communicate after starting. If even one prisoner fails to find their number, all are executed. What strategy gives them a >30% chance of survival?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The pointer-chasing strategy. Prisoner #N goes to box #N. They look at the number inside, say #K. They then go to box #K, and continue this chain. By doing this, they are following random cycles within the permutation of 100 numbers. As long as the longest cycle in the room is not greater than 50 boxes (which happens about 31.1% of the time), every single prisoner will find their number and they will all survive.",
+        "isActive": true
+    },
+    {
+        "title": "The Sum and Product Mathematicians' Impossible Puzzle",
+        "description": "Two integers X and Y are chosen such that 2 <= X < Y <= 99. Mathematician P is given their product. Mathematician S is given their sum. They have this conversation: \nP: 'I don't know the numbers.' \nS: 'I knew you didn't know them.' \nP: 'Now I know the numbers.' \nS: 'Now I know them too.' \nWhat are the numbers?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "X = 4, Y = 13. P doesn't know means the product has more than one set of factors. S knows P doesn't know, meaning S's sum cannot be expressed as the sum of two primes (Goldbach's conjecture). By mapping out all possible sums that fit this criteria, and tracking how P and S eliminate options based on each other's statements, only the pair (4, 13) leaves a unique, solvable path.",
+        "isActive": true
+    },
+    {
+        "title": "Cheryl's Birthday Sequential Information Deduction",
+        "description": "Cheryl gives Albert and Bernard 10 possible dates for her birthday: May 15, May 16, May 19, June 17, June 18, July 14, July 16, August 14, August 15, August 17. Cheryl tells Albert only the month, and Bernard only the day. \nAlbert: 'I don't know the date, but I know Bernard doesn't know.' \nBernard: 'At first I didn't know, but now I do.' \nAlbert: 'Then I also know.' \nWhen is her birthday?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "July 16. If Bernard knew immediately, he'd have a unique day (18 or 19). Albert knows Bernard doesn't know, so Albert's month cannot be May or June (which contain 18 and 19). The month must be July or August. Bernard now knows the month is July or August. Since Bernard now knows the exact date, his day cannot be 14 (which appears in both July and August). The remaining dates are July 16, August 15, August 17. Albert now knows the date, which means his month must only have one remaining option. That month is July.",
+        "isActive": true
+    },
+    {
+        "title": "The Infinite Grid Escape Constraint",
+        "description": "A man is lost on an infinite 2D grid. He takes a random walk, choosing North, South, East, or West with equal probability at each intersection. What is the probability that he will eventually return to his exact starting point if he walks infinitely? What if the grid was 3D?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "In a 2D grid, the probability of returning to the origin is exactly 1 (100%). However, in a 3D grid (like a bird flying randomly), the probability of returning to the starting point drops to approximately 0.34 (34%). This is known as P\u00f3lya's Random Walk Theorem.",
+        "isActive": true
+    },
+    {
+        "title": "The 13 Coins and the Balance Scale Comprehensive Deduction",
+        "description": "You have 13 coins. 12 are identical in weight, but 1 is counterfeit (either heavier or lighter). You have a balance scale. Using exactly 3 weighings, how can you find the counterfeit coin and determine whether it is heavy or light?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Divide coins into 3 groups: A(4), B(4), C(5). Weigh A vs B. If they balance, the fake is in C (use the 2 remaining weighings to find 1 fake among 5 against known good coins). If A vs B does not balance, take note of which side is heavy. For the second weighing, mix the coins: put 3 from A and 1 from B on the left, and 1 from A and 3 known good coins on the right. Track the scale's tipping direction to isolate the fake based on intersections of possibilities.",
+        "isActive": true
+    },
+    {
+        "title": "The Chameleons' Island Color Conversion Synchronization",
+        "description": "On an island, there are 13 red, 15 green, and 17 blue chameleons. Whenever two chameleons of different colors meet, they both change into the third color. Is it possible for all chameleons to eventually become the same color?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "No, it is mathematically impossible. Look at the differences between the populations modulo 3. (13, 15, 17) -> differences are 2, 2, and 4. When a red and green meet, they become blue (-1 red, -1 green, +2 blue). The difference between any two colors modulo 3 never changes (it is an invariant). Since the differences start at 2 (not 0), you can never reach a state where two populations are exactly 0 (which would have a difference of 0).",
+        "isActive": true
+    },
+    {
+        "title": "The Coin Matrix Parity Flipping Trick for Two Prisoners",
+        "description": "A warden places 64 coins on a chessboard, randomizing heads/tails. He hides a key under one square and shows Prisoner 1 where it is. Prisoner 1 must flip exactly one coin on the board. Then, Prisoner 2 is brought in, looks at the board, and must point to the square with the key. What mathematical strategy allows them to win?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Use binary XOR parity (Hamming codes). Number the squares 0 to 63 in binary. Calculate the cumulative XOR sum of the positions of all coins showing Heads. Let's call this sum 'S'. Let the target square with the key be 'K'. Prisoner 1 must flip the coin at position 'X' such that S XOR X = K (which means X = S XOR K). When Prisoner 2 walks in, they simply calculate the XOR sum of all Heads, and that exact number will be the location of the key.",
+        "isActive": true
+    },
+    {
+        "title": "The Hat Color Guessing with Infinite Alternating Colors",
+        "description": "An infinite number of prisoners are lined up facing one direction. Each is wearing a black or white hat. They can see all infinitely many hats in front of them, but not their own or the ones behind. They must simultaneously shout their hat color. What strategy guarantees only a finite number of prisoners guess wrong?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "This relies on the Axiom of Choice. The prisoners define an equivalence relation where two sequences of hats are 'equivalent' if they differ in only a finite number of places. They agree beforehand on one representative sequence from every possible equivalence class. When in line, a prisoner sees the sequence ahead, identifies its equivalence class, and guesses based on the agreed representative sequence. Because the representative sequence differs from the actual sequence by only a finite number of hats, only a finite number of prisoners will be wrong.",
+        "isActive": true
+    },
+    {
+        "title": "The Angel, Devil, and Mortal Circular Questioning",
+        "description": "You meet three beings: an Angel (always tells truth), a Devil (always lies), and a Mortal (answers randomly). They look identical. You can ask exactly three yes/no questions to determine who is who. Each question must be directed to one specific being. How do you find out?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Similar to the 'Hardest Logic Puzzle Ever'. Question 1 is directed to Being A to find someone who is NOT the Mortal. 'If I asked you if B is the Mortal, would you say yes?' Based on the answer, you can confidently identify either B or C as a non-Random being (either Angel or Devil). Question 2 is asked to that identified non-Random being to determine if they are the Angel or Devil. Question 3 is asked to the same being to identify the remaining two.",
+        "isActive": true
+    },
+    {
+        "title": "The Ants Walking on a Stick Collision Simulation",
+        "description": "100 ants are placed on a 1-meter stick. They walk at 1 cm per second. When two ants collide, they instantly reverse direction. Ants fall off when they reach the ends of the stick. What is the maximum possible time before all ants have fallen off the stick?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "100 seconds. The trick is to realize that when two identical ants collide and reverse, mathematically it is exactly the same as if they had simply passed through each other without interacting. Therefore, the longest time it takes is simply the time it takes for one ant starting at the very edge to walk all the way to the other edge, which is 100 cm at 1 cm/s = 100 seconds.",
+        "isActive": true
+    },
+    {
+        "title": "The Omniscient Oracle State Deduction",
+        "description": "You have a machine with three states: A, B, and C. It accepts 1 or 0 as input. It always outputs 1 or 0. You have its state diagram showing how inputs transition the states and generate outputs, but you don't know what state it is currently in. How do you design an input sequence that definitively tells you the current state?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "This requires finding a 'Distinguishing Sequence' or 'Homing Sequence' in automata theory. By feeding a specific sequence of inputs, the sequence of outputs will be uniquely different depending on the initial state. The exact sequence depends on the specific state transition diagram, utilizing decision trees to narrow down the possible initial states until only one remains.",
+        "isActive": true
+    },
+    {
+        "title": "The Broken Balance Scale with 100 Weighted Coins",
+        "description": "You have 100 coins of distinctly different weights. You need to find the heaviest and the lightest coin using a balance scale. What is the minimum number of weighings required to guarantee finding both?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "148 weighings. First, divide the 100 coins into 50 pairs. Weigh each pair (50 weighings). The 50 winners go into a 'heavy' pile, and the 50 losers go into a 'light' pile. Now, find the heaviest coin by doing a tournament among the 50 heavy coins (49 weighings). Find the lightest coin by doing a tournament among the 50 light coins (49 weighings). Total = 50 + 49 + 49 = 148.",
+        "isActive": true
+    },
+    {
+        "title": "The Pirate's Moving Landmark Treasure Geometry",
+        "description": "A pirate buried treasure on an island with a gallows, an oak tree, and a pine tree. He walked from the gallows to the oak, turned 90 degrees right, walked the exact same distance, and placed a peg. He went back to the gallows, walked to the pine, turned 90 degrees left, walked the same distance, and placed a second peg. The treasure is exactly halfway between the pegs. Years later, the gallows is gone. How does he find the treasure?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The location of the treasure is completely independent of where the gallows was. Using complex numbers or geometry, you can prove that regardless of where the starting point (gallows) is, the midpoint between the two pegs will always form an exact isosceles right triangle with the two trees. He just needs to draw a line between the oak and pine, find the midpoint, turn 90 degrees, and walk half the distance of the tree-line.",
+        "isActive": true
+    },
+    {
+        "title": "The Conway Peg Solitaire Restriction Matrix",
+        "description": "On an infinite checkerboard, there is a horizontal line. Below the line, you can place as many pegs as you want. You jump pegs over each other (removing the jumped peg) like in Solitaire, trying to move a peg as high above the horizontal line as possible. What is the highest row you can reach?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Row 4 is the maximum possible. Row 5 is mathematically impossible to reach. John Conway proved this using a resource weighting system where each peg is assigned a value based on the golden ratio. He showed that the total 'value' required to get a piece to the 5th row exceeds the maximum possible total value of an infinite number of pieces placed below the line.",
+        "isActive": true
+    },
+    {
+        "title": "The Multi-State Lightbulb Array Toggle Algorithm",
+        "description": "You have a 5x5 grid of lightbulbs. Pressing a bulb toggles its state and the state of all horizontally and vertically adjacent bulbs. Starting with all bulbs off, you want to turn a specific pattern of bulbs on. Is it always possible?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Not all patterns are possible. The game can be modeled as a system of linear equations over GF(2) (modulo-2 arithmetic). The 5x5 matrix has a null space of dimension 2. This means that out of the 2^25 possible configurations, only 2^23 are reachable. A pattern is solvable if and only if it is orthogonal to the vectors in the left null space of the adjacency matrix.",
+        "isActive": true
+    },
+    {
+        "title": "The Token Passing Protocol in a Circular Prison",
+        "description": "100 prisoners sit in a circle. They are given indistinguishable black or white tokens. They can only pass tokens to their immediate neighbors simultaneously in synchronized rounds. They must figure out the total number of black tokens in the room. What protocol guarantees they find out?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Prisoners can encode the count into the timing and movement of tokens. For example, a token moving clockwise can represent a '1', and counter-clockwise a '0'. Since the circle size is known (100), they can use a phase-based protocol where a specific token acts as an aggregator, accumulating the sum as it makes a full revolution around the circle, resolving collisions deterministically.",
+        "isActive": true
+    },
+    {
+        "title": "The Hydra Decapitation Minimal Step Optimization",
+        "description": "Hercules fights a Hydra. The Hydra is a tree graph. Hercules chops off a leaf node. The Hydra instantly regenerates by copying the entire subtree that was rooted at the chopped node's parent, multiplying it by the current turn number. Despite the Hydra growing exponentially massive, does Hercules always eventually kill it?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Yes. This is Kirby and Paris's Hydra Game. Even though the Hydra grows terrifyingly large, it will always eventually die in a finite number of steps, no matter what strategy Hercules uses. The proof relies on assigning ordinal numbers to the branches. With each chop, the overall ordinal value strictly decreases, and since ordinals are well-ordered, it must eventually hit 0.",
+        "isActive": true
+    },
+    {
+        "title": "The Three Utilities Graph Bipartite Crossing",
+        "description": "There are 3 houses and 3 utility stations (Gas, Water, Electricity) on a flat piece of paper. You must draw lines to connect every house to every utility without any lines crossing. Is it possible?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "No, it is topologically impossible on a 2D plane. This problem represents the complete bipartite graph K3,3. According to Kuratowski's Theorem, a graph is planar (can be drawn without crossing lines) only if it does not contain a subgraph homeomorphic to K5 or K3,3. You would need a 3D space or a torus (donut shape) to solve it without intersections.",
+        "isActive": true
+    },
+    {
+        "title": "The Sequential Liar Paradox with Four Guards",
+        "description": "Four guards stand in a line. \nGuard 1 says: 'Guard 2 is lying.' \nGuard 2 says: 'Guard 3 is lying.' \nGuard 3 says: 'Guard 4 is lying.' \nGuard 4 says: 'We are all lying.' \nWho is telling the truth?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Guard 3 is telling the truth. Assume Guard 4 is true; then his statement 'all are lying' is false (paradox). Thus, Guard 4 is lying. Since Guard 4 is lying, Guard 3's statement 'Guard 4 is lying' is true. Since Guard 3 is true, Guard 2's statement 'Guard 3 is lying' is false. Since Guard 2 is false, Guard 1's statement 'Guard 2 is lying' is true. So, Guards 1 and 3 are telling the truth, and 2 and 4 are lying.",
+        "isActive": true
+    },
+    {
+        "title": "The Modified Two Envelopes Infinite Expectation Paradox",
+        "description": "You are given two envelopes, one contains twice as much money as the other. You open Envelope A and find $100. You are offered to switch to Envelope B. The expected value calculation suggests switching is always beneficial: (0.5 * $50) + (0.5 * $200) = $125 > $100. But before opening, the envelopes are symmetrical. Where is the flaw in the mathematics?",
+        "difficulty": "Hard",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The flaw is an assumption of a uniform probability distribution over all positive real numbers, which is mathematically impossible (it would integrate to infinity, not 1). Without knowing the prior distribution of the amounts placed in the envelopes, you cannot validly calculate an expected value. If a proper, finite probability distribution is defined, the paradox resolves and the expected value of switching becomes neutral.",
+        "isActive": true
+    }
+]

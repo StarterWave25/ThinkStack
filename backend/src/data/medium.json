@@ -1,0 +1,162 @@
+[
+    {
+        "title": "The Four-Person Bridge and Torch Night Crossing",
+        "description": "Four people need to cross a rickety bridge at night. They have only one torch. The bridge can hold a maximum of two people at a time. Any party that crosses, either one or two people, must have the torch with them. The four people take 1, 2, 5, and 10 minutes respectively to cross the bridge. When two people cross together, they must move at the pace of the slower person. What is the minimum time required for all four to cross?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "17 minutes. 1 and 2 cross together (2 mins). 1 returns with the torch (1 min). 5 and 10 cross together (10 mins). 2 returns with the torch (2 mins). 1 and 2 cross together (2 mins). Total time: 2 + 1 + 10 + 2 + 2 = 17 minutes.",
+        "isActive": true
+    },
+    {
+        "title": "The 12 Marbles and the Unknown Weight Fake",
+        "description": "You have 12 seemingly identical marbles. 11 are the exact same weight, but 1 is a fake and has a different weight (it could be heavier or lighter, you do not know). You have a balance scale. What is the minimum number of weighings needed to find the fake marble and determine if it is heavier or lighter?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "3 weighings. Weigh 4 against 4. If they balance, the fake is in the remaining 4 (weigh 3 of the remaining against 3 known good ones to narrow it down). If they don't balance, take note of which side went down. In the next weighing, swap some marbles between the pans and replace some with known good ones to isolate the fake and its relative weight.",
+        "isActive": true
+    },
+    {
+        "title": "The 100 Prisoners and the Single Light Switch",
+        "description": "100 prisoners are in solitary confinement. There is a central room with one light switch (initially off). The warden will pick prisoners at random to enter the room, one at a time. They can toggle the switch or leave it. They cannot communicate. What strategy can they agree on beforehand to guarantee that eventually one prisoner can confidently state, 'All 100 prisoners have visited the room'?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Appoint one prisoner as the 'Counter'. The other 99 prisoners follow this rule: If the light is OFF and you have NEVER turned it ON before, turn it ON. Otherwise, do nothing. The Counter follows this rule: If the light is ON, turn it OFF and add 1 to your mental tally. When the Counter's tally reaches 99, they can announce everyone has visited.",
+        "isActive": true
+    },
+    {
+        "title": "The Binary Tasters and the 1000 Poisoned Barrels",
+        "description": "You have 1000 barrels of wine, but exactly 1 barrel is poisoned. The poison takes exactly 24 hours to kill anyone who drinks it. You have 10 tasters and exactly 24 hours to find the poisoned barrel. How do you do it?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Use binary numbers. Number the barrels 1 to 1000. Convert these numbers to 10-bit binary. Assign each of the 10 tasters to a specific bit position (1st bit, 2nd bit... 10th bit). A taster drinks from a barrel if and only if that barrel's binary number has a '1' in their assigned bit position. After 24 hours, look at who died. The dead tasters represent the '1's in the binary number of the poisoned barrel.",
+        "isActive": true
+    },
+    {
+        "title": "The 25 Horses Top Three Selection Minimal Races",
+        "description": "You have 25 horses and a track that can race up to 5 horses at a time. You do not have a stopwatch. You want to find the top 3 fastest horses among the 25. What is the minimum number of races required?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "7 races. Divide into 5 groups of 5 and race them all (5 races). Take the winners of these 5 races and race them against each other (Race 6). The winner of Race 6 is the absolute fastest. Now, you only need to determine 2nd and 3rd place. Take the 2nd and 3rd place horses from the group of the absolute winner, the 1st and 2nd place horses from the group of the second-fastest horse in Race 6, and the 1st place horse from the group of the third-fastest horse in Race 6. Race these 5 horses (Race 7) to find the 2nd and 3rd fastest overall.",
+        "isActive": true
+    },
+    {
+        "title": "The Pirate Captain's Gold Coin Distribution Strategy",
+        "description": "5 extremely rational, greedy pirates (A, B, C, D, E in order of rank, A is highest) are dividing 100 gold coins. The highest-ranking pirate proposes a distribution. All pirates vote (including the proposer). If 50% or more vote YES, the proposal is accepted. If it fails, the proposer is thrown overboard and the next highest pirate proposes. What proposal should A make to maximize his gold and stay alive?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "A should propose: 98 for A, 0 for B, 1 for C, 0 for D, 1 for E. Work backwards. If it's just D and E, D proposes 100 for D, 0 for E (and wins 1 to 1). So E gets 0 if it goes to D. If C, D, E remain, C proposes 99 for C, 0 for D, 1 for E (E votes yes because 1 > 0). If B, C, D, E remain, B proposes 99 for B, 1 for D, 0 for C, 0 for E. To win, A must buy the votes of the people who get 0 under B's plan, which are C and E. So A gives 1 to C and 1 to E.",
+        "isActive": true
+    },
+    {
+        "title": "The Jealous Husbands and Wives River Crossing",
+        "description": "Three jealous husbands and their wives need to cross a river using a boat that holds only two people. The rule is: no woman can ever be in the presence of another man unless her own husband is also present. How can all six people cross the river safely?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "11 trips total. Let couples be H1-W1, H2-W2, H3-W3. \n1. W1 and W2 cross. \n2. W1 returns. \n3. W1 and W3 cross. \n4. W1 returns. \n5. H2 and H3 cross. \n6. H2 and W2 return. \n7. H1 and H2 cross. \n8. W3 returns. \n9. W1 and W2 cross. \n10. W2 returns. \n11. W2 and W3 cross.",
+        "isActive": true
+    },
+    {
+        "title": "The 100 Open and Closed Locker Toggles",
+        "description": "There are 100 closed lockers in a hallway. Person 1 walks by and opens every locker. Person 2 walks by and closes every 2nd locker (2, 4, 6...). Person 3 changes the state of every 3rd locker. This continues until Person 100 changes the state of the 100th locker. After all 100 people have walked by, which lockers are open?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The perfect squares (1, 4, 9, 16, 25, 36, 49, 64, 81, 100). A locker is toggled once for every factor of its number. Most numbers have an even number of factors (in pairs). Perfect squares have an odd number of factors because one factor is multiplied by itself. An odd number of toggles leaves the locker open.",
+        "isActive": true
+    },
+    {
+        "title": "The Three Gods of True, False, and Random",
+        "description": "Three gods A, B, and C are called, in no particular order, True, False, and Random. True always speaks truly, False always speaks falsely, but whether Random speaks truly or falsely is completely random. You must determine the identities of A, B, and C by asking three yes-no questions; each question must be put to exactly one god. The gods understand English, but will answer in their own language, in which the words for yes and no are 'da' and 'ja', in some order. You do not know which word means which.",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The key is to use complex embedded questions. A single question formatted like: 'If I asked you Q, would you say ja?' will always yield a reliable 'ja' for true and 'da' for false, effectively nullifying the da/ja language barrier. First, direct a question to God A to find a God that is definitely NOT Random. Second, ask that identified non-Random God if they are True. Third, ask that same God to identify the remaining two.",
+        "isActive": true
+    },
+    {
+        "title": "The Lineup of Red and Blue Hat Prisoners",
+        "description": "100 prisoners are lined up facing forward. A warden puts a red or blue hat on each person. They can see the hats of everyone in front of them, but not their own or the people behind them. Starting from the back, each must guess their own hat color out loud. If they are right, they live. What strategy guarantees 99 prisoners live?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "The prisoner at the very back (who sees 99 hats) agrees to count the number of RED hats they see. If the number is EVEN, they say 'Red'. If the number is ODD, they say 'Blue'. This might kill the first prisoner, but gives the parity of red hats to the rest of the line. The 99th prisoner looks at the red hats in front. If the parity changed, their hat must be red. If it didn't, their hat is blue. This chain reaction saves the remaining 99.",
+        "isActive": true
+    },
+    {
+        "title": "The Camel's Optimal Banana Transport Strategy",
+        "description": "You have 3000 bananas and a camel. The market is 1000 miles away. The camel can carry a maximum of 1000 bananas at a time, but eats 1 banana for every mile it walks. What is the maximum number of bananas you can deliver to the market?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "533 bananas. The camel must make multiple trips to set up checkpoints. \nTrip 1 (0 to 200 miles): Carry 1000, drop 600, return (uses 400). Repeat twice more. At mile 200, you have 2000 bananas.\nTrip 2 (200 to 533 miles): Carry 1000, drop 334, return (uses 666). Repeat once. At mile 533, you have 1001 bananas. \nFinal leg (533 to 1000): The camel takes 1000 bananas, walks the remaining 467 miles, eating 467 bananas. 1000 - 467 = 533 bananas remaining.",
+        "isActive": true
+    },
+    {
+        "title": "The Number Guessing Game with a Single Lie",
+        "description": "I am thinking of a number between 1 and 16. You can ask yes/no questions to figure it out. However, I am allowed to lie to you exactly ONCE during the game (but I don't have to). What is the minimum number of questions needed to guarantee you find the number?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "7 questions. This is equivalent to Ulam's game or error-correcting codes (Hamming codes). 4 questions are needed to find a number out of 16 without lies. To correct for 1 error (lie), you need additional parity check questions. By carefully structuring the sets of numbers in each question, 7 questions are mathematically sufficient to pinpoint both the lie (if any) and the correct number.",
+        "isActive": true
+    },
+    {
+        "title": "The Monty Hall Variable Door Probability",
+        "description": "You are on a game show. There are 3 doors. Behind one is a car; behind the others, goats. You pick Door 1. The host, who knows what's behind the doors, opens Door 3, which has a goat. He then asks: 'Do you want to switch your choice to Door 2?' Mathematically, is it to your advantage to switch?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Yes, you should always switch. When you first pick, you have a 1/3 chance of being right and a 2/3 chance of being wrong. When the host opens an empty door, the 2/3 probability collapses entirely onto the remaining unopened door. Switching gives you a 66.6% chance of winning, while staying keeps you at 33.3%.",
+        "isActive": true
+    },
+    {
+        "title": "The Water Bucket Puzzle with Three Irregular Jugs",
+        "description": "You have an 8-liter jug completely filled with water. You also have an empty 5-liter jug and an empty 3-liter jug. There are no markings on the jugs. How can you divide the water so that two of the jugs contain exactly 4 liters each?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "1. Pour 8 to 5 (Leaves: 3, 5, 0). \n2. Pour 5 to 3 (Leaves: 3, 2, 3). \n3. Pour 3 back to 8 (Leaves: 6, 2, 0). \n4. Pour 5 to 3 (Leaves: 6, 0, 2). \n5. Pour 8 to 5 (Leaves: 1, 5, 2). \n6. Pour 5 to 3 to fill it (Leaves: 1, 4, 3). \n7. Pour 3 back to 8 (Leaves: 4, 4, 0).",
+        "isActive": true
+    },
+    {
+        "title": "The Three Siblings and the Modified Liar Paradox",
+        "description": "You meet three siblings: Alice, Bob, and Charlie. One always tells the truth, one always lies, and one sometimes lies and sometimes tells the truth. \nAlice says: 'Bob always lies.'\nBob says: 'Charlie sometimes lies.'\nCharlie says: 'Alice always tells the truth.'\nWho is who?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Charlie is the Liar. Bob is the Truth-teller. Alice is the Random one. If Charlie tells the truth, Alice tells the truth, but they can't both be the truth-teller. So Charlie's statement is false. If Charlie is the liar, then Alice's statement is false (so Alice is not the Truth-teller). This leaves Bob as the Truth-teller. Bob says 'Charlie sometimes lies', which is true because Charlie is the Liar (who technically 'sometimes' lies, as in all the time).",
+        "isActive": true
+    },
+    {
+        "title": "The Blindfolded Card Sorting by Parity",
+        "description": "You have a deck of 52 cards. Exactly 10 cards are face up, the rest are face down. You are blindfolded and wearing gloves, so you cannot see or feel which cards are face up. How do you divide the deck into two piles so that both piles have the exact same number of face-up cards?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Take exactly 10 cards off the top of the deck to form a second pile. Then, flip every single card in this new pile of 10 over. Both piles will now have the exact same number of face-up cards. (If there were 'x' face-up cards in the 10 you took, there are 10-x face-up cards in the original pile. By flipping the 10 cards, the 'x' face-up become face-down, and the 10-x face-down become face-up, matching the original pile).",
+        "isActive": true
+    },
+    {
+        "title": "The Weighted Dice and the Fair Game Strategy",
+        "description": "You are playing a game with a biased coin that lands on Heads 60% of the time and Tails 40% of the time. You want to use this coin to make a completely fair 50/50 decision. How can you use this biased coin to simulate a perfectly fair coin toss?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Toss the coin twice. If the result is Heads-Heads or Tails-Tails, discard the result and toss twice again. If the result is Heads-Tails, call it 'Choice A'. If the result is Tails-Heads, call it 'Choice B'. Because the probability of HT (0.6 * 0.4 = 0.24) is exactly the same as the probability of TH (0.4 * 0.6 = 0.24), this guarantees a perfectly fair 50/50 outcome.",
+        "isActive": true
+    },
+    {
+        "title": "The Train Tunnel Collision Timing Avoidance",
+        "description": "Two trains are on the same track, 100 miles apart, heading towards each other. Train A is traveling at 50 mph. Train B is traveling at 50 mph. A super-fast bird starts at the front of Train A, flies to Train B at 100 mph, turns around instantly, and flies back to Train A, repeating this until the trains crash. What is the total distance the bird flies?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "100 miles. Don't calculate the infinite back-and-forth series. Calculate the time. The trains are 100 miles apart and closing the gap at a combined speed of 100 mph (50 + 50). Therefore, they will crash in exactly 1 hour. The bird flies at a constant speed of 100 mph. Since it flies for exactly 1 hour, it travels exactly 100 miles.",
+        "isActive": true
+    },
+    {
+        "title": "The 100 Coins with Exactly 10 Heads",
+        "description": "You are in a dark room with a table holding 100 coins. You are told that exactly 10 coins are showing heads, and 90 are showing tails. You cannot see or feel which way the coins are facing. How can you separate the coins into two piles such that both piles have the exact same number of heads?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Create one pile of 10 coins, leaving 90 in the other pile. Then, flip over all 10 coins in the smaller pile. By flipping all coins in the smaller pile, any heads become tails, and any tails become heads, perfectly balancing the number of heads with whatever was left in the larger pile.",
+        "isActive": true
+    },
+    {
+        "title": "The Blue-Eyed Islanders Simultaneous Departure",
+        "description": "100 perfectly logical people with blue eyes live on an island. They cannot communicate or look in a mirror. If a person figures out they have blue eyes, they must leave the island at midnight. One day, a visiting guru announces to everyone: 'I can see at least one person with blue eyes.' What happens?",
+        "difficulty": "Medium",
+        "category": "Analytical Reasoning",
+        "referenceSolution": "Nothing happens for 99 days. On the 100th midnight, all 100 blue-eyed people leave the island simultaneously. Logic: If there was 1 blue-eyed person, they would see 0 blue eyes and leave on Day 1. If 2, they see 1, wait for them to leave on Day 1. When they don't, both realize they have blue eyes and leave on Day 2. By induction, 100 blue-eyed people will figure it out on the 100th day.",
+        "isActive": true
+    }
+]
