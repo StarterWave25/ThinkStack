@@ -1,11 +1,10 @@
 import { useFormik } from "formik";
 import { useResetPasswordMutation } from "../services/authAPI";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function ForgotPassword() {
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
-  const [searchParams] = useSearchParams();
-  const token = searchParams.get("token");
+  const { token } = useParams();
 
   const formik = useFormik({
     initialValues: {
@@ -24,13 +23,11 @@ function ForgotPassword() {
     },
     onSubmit: async (values) => {
       try {
-        await resetPassword({
+        const data = await resetPassword({
           token,
           password: values.password,
         }).unwrap()
-          .then( (data) => {
-            console.log(data)
-          })
+        console.log(data);
         alert("Password updated successfully");
       } catch (err) {
         alert("Failed to reset password", err);

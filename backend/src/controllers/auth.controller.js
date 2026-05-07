@@ -152,6 +152,7 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
     try {
         const { password } = req.body;
+        console.log(req.params.token)
         const user = await User.findOne({
             resetPasswordToken: req.params.token,
             resetPasswordExpires: { $gt: Date.now() },
