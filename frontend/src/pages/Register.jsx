@@ -1,9 +1,26 @@
 import { useFormik } from "formik";
-import { useRegisterMutation } from "../services/authAPI";
+import { useGetMeQuery, useRegisterMutation } from "../services/authAPI";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Register() {
 
   const [registerUser] = useRegisterMutation();
+  const navigate = useNavigate();
+  const {
+    data,
+    isLoading,
+    isFetching,
+  } = useGetMeQuery();
+
+  const isLoggedIn = !!data;
+
+  // console.log(isLoggedIn, data);
+  useEffect(() => {
+    if (!isLoading && !isFetching && isLoggedIn) {
+      navigate('/home');
+    }
+  }, [isLoggedIn, isLoading, isFetching, navigate]);
 
   const formik = useFormik({
     initialValues: {
@@ -42,9 +59,7 @@ function Register() {
       try {
         const data = await registerUser(values).unwrap();
         console.log(data)
-        if(data.OK) {
-          // Harhsa Redirect the user 
-        }
+        navigate("/home");
       } catch (err) {
         console.log(err);
       }

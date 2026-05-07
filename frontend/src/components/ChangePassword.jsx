@@ -1,9 +1,10 @@
 import { useFormik } from "formik";
 import { useChangePasswordMutation } from "../services/authAPI";
+import { useNavigate } from "react-router-dom";
 
 function ChangePassword() {
-  const [changePassword, { isLoading }] =
-    useChangePasswordMutation();
+  const [changePassword, { isLoading }] = useChangePasswordMutation();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -34,7 +35,8 @@ function ChangePassword() {
 
         resetForm();
 
-        // Harsha, do your navigation work here
+        // User should login again, show that to user in popup - @Harsha
+        navigate('/login')
 
       } catch (err) {
         console.log(err);

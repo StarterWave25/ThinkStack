@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authAPI = createApi({
     reducerPath: "authApi",
-
+    tagTypes: ["User"],
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:3000/api/auth",
         credentials: "include",
@@ -14,6 +14,7 @@ export const authAPI = createApi({
                 method: "POST",
                 body: formData,
             }),
+            invalidatesTags: ["User"],
         }),
         login: builder.mutation({
             query: (formData) => ({
@@ -21,6 +22,7 @@ export const authAPI = createApi({
                 method: "POST",
                 body: formData,
             }),
+            invalidatesTags: ["User"],
         }),
         forgotPassword: builder.mutation({
             query: (formData) => ({
@@ -33,7 +35,7 @@ export const authAPI = createApi({
             query: (formData) => ({
                 url: `/reset-password/${formData.token}`,
                 method: "POST",
-                body: {password: formData.password}
+                body: { password: formData.password }
             })
         }),
         changePassword: builder.mutation({
@@ -42,7 +44,24 @@ export const authAPI = createApi({
                 method: "POST",
                 body: formData
             })
+        }),
+        getMe: builder.query({
+            query: () => "/me",
+        }),
+        logout: builder.mutation({
+            query: () => ({
+                url: "/logout",
+                method: "POST"
+            }),
         })
     }),
 });
-export const { useRegisterMutation, useLoginMutation, useForgotPasswordMutation, useResetPasswordMutation, useChangePasswordMutation } = authAPI;
+export const {
+    useRegisterMutation,
+    useLoginMutation,
+    useForgotPasswordMutation,
+    useResetPasswordMutation,
+    useChangePasswordMutation,
+    useGetMeQuery,
+    useLogoutMutation
+} = authAPI;

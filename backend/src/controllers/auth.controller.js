@@ -134,8 +134,8 @@ const forgotPassword = async (req, res) => {
             {},
         );
     } catch (error) {
-        console.log("\n\n😱 Error during login:", error);
-        return respond(res, false, 500, "Login failed", {});
+        console.log("\n\n😱 Error during Forgotting Password:", error);
+        return respond(res, false, 500, "Forgot Password failed", {});
     }
 };
 
@@ -166,8 +166,8 @@ const resetPassword = async (req, res) => {
         await user.save();
         return respond(res, true, 200, "Password updated succesfully!");
     } catch (error) {
-        console.log("\n\n😱 Error during login:", error);
-        return respond(res, false, 500, "Login failed", {});
+        console.log("\n\n😱 Error during Resetting Password:", error);
+        return respond(res, false, 500, "Reset Password failed", {});
     }
 };
 
@@ -196,8 +196,8 @@ const changePassword = async (req, res) => {
             "Password changed successfully! Please login again!",
         );
     } catch (error) {
-        console.log("\n\n😱 Error during login:", error);
-        return respond(res, false, 500, "Login failed", {});
+        console.log("\n\n😱 Error during Changing Password:", error);
+        return respond(res, false, 500, "Change Password failed", {});
     }
 };
 
@@ -218,8 +218,8 @@ const getMe = async (req, res) => {
         const user = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
         return respond(res, true, 200, { email: user.email }, {});
     } catch (error) {
-        console.log("\n\n😱 Error during login:", error);
-        return respond(res, false, 500, "Login failed", {});
+        console.log("\n\n😱 Error during Getting me:", error);
+        return respond(res, false, 500, "Get me failed", {});
     }
 };
 
@@ -240,8 +240,8 @@ const logout = async (req, res) => {
         res.clearCookie("jwtToken");
         return respond(res, true, 200, "Logged out successfully!", {});
     } catch (error) {
-        console.log("\n\n😱 Error during login:", error);
-        return respond(res, false, 500, "Login failed", {});
+        console.log("\n\n😱 Error during logging out:", error);
+        return respond(res, false, 500, "Logout failed", {});
     }
 };
 

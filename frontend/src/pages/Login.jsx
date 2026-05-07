@@ -1,12 +1,30 @@
 
 import { useFormik } from "formik";
-import { useLoginMutation, useForgotPasswordMutation } from "../services/authAPI";
+import { useLoginMutation, useForgotPasswordMutation, useGetMeQuery } from "../services/authAPI";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function Login() {
 
   const [loginUser, { isLoading }] = useLoginMutation();
   const [forgotPassword] = useForgotPasswordMutation();
+
+  const navigate = useNavigate();
+  const {
+    data,
+    isLoading: isAuthLoading,
+    isFetching: isAuthFetching,
+  } = useGetMeQuery();
+
+  const isLoggedIn = !!data;
+
+  // console.log(isLoggedIn, data);
+  useEffect(() => {
+    if (!isAuthLoading && !isAuthFetching && isLoggedIn) {
+      navigate('/home');
+    }
+  }, [isLoggedIn, isAuthLoading, isAuthFetching, navigate]);
 
   const formik = useFormik({
     initialValues: {
@@ -38,7 +56,7 @@ function Login() {
       try {
         const data = await loginUser(values).unwrap();
         console.log("Login Success:", data);
-
+        navigate("/home");
       } catch (err) {
         console.log("Login Failed:", err);
       }
@@ -48,22 +66,22 @@ function Login() {
   function handleForgotPassword() {
     const email = formik.values.email;
 
-    if(!email) {
+    if (!email) {
       alert("Please, Enter your email first!");
       return;
     }
 
-    if(formik.errors.email) {
+    if (formik.errors.email) {
       alert("Enter a valid email");
       return;
     }
 
     forgotPassword({ email })
       .unwrap()
-      .then( () => {
+      .then(() => {
         alert("Reset link sent to your email");
       })
-      .catch( () => {
+      .catch(() => {
         alert("Something went wrong");
       })
   }
