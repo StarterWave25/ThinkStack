@@ -1,8 +1,12 @@
+
 import { useFormik } from "formik";
-import { useLoginMutation } from "../services/authAPI";
+import { useLoginMutation, useForgotPasswordMutation } from "../services/authAPI";
+
 
 function Login() {
+
   const [loginUser, { isLoading }] = useLoginMutation();
+  const [forgotPassword] = useForgotPasswordMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -41,6 +45,29 @@ function Login() {
     },
   });
 
+  function handleForgotPassword() {
+    const email = formik.values.email;
+
+    if(!email) {
+      alert("Please, Enter your email first!");
+      return;
+    }
+
+    if(formik.errors.email) {
+      alert("Enter a valid email");
+      return;
+    }
+
+    forgotPassword({ email })
+      .unwrap()
+      .then( () => {
+        alert("Reset link sent to your email");
+      })
+      .catch( () => {
+        alert("Something went wrong");
+      })
+  }
+
   return (
     <div className="container">
       <form onSubmit={formik.handleSubmit} className="form">
@@ -60,6 +87,7 @@ function Login() {
           placeholder="Password"
           {...formik.getFieldProps("password")}
         />
+        <span onClick={handleForgotPassword}>Password Forgotten ??</span>
         {formik.touched.password && formik.errors.password && (
           <p className="error">{formik.errors.password}</p>
         )}

@@ -156,6 +156,7 @@ const resetPassword = async (req, res) => {
             resetPasswordToken: req.params.token,
             resetPasswordExpires: { $gt: Date.now() },
         });
+        console.log(user)
         if (!user)
             return respond(res, false, 400, "Invalid or expired Token!", {});
         user.password = await hashPassword(password);
