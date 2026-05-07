@@ -156,7 +156,7 @@ const resetPassword = async (req, res) => {
             resetPasswordToken: req.params.token,
             resetPasswordExpires: { $gt: Date.now() },
         });
-        console.log(user)
+        console.log(user);
         if (!user)
             return respond(res, false, 400, "Invalid or expired Token!", {});
         user.password = await hashPassword(password);
@@ -200,10 +200,33 @@ const changePassword = async (req, res) => {
     }
 };
 
+/**
+ *
+ * controller to handle user logout
+ * Logs out the user by clearing the cookie that is stored in the frontend which contains the jwtToken
+ *
+ * Input => { jwtToken } => res.cookie (this cookie is automatically sent by the browser if written header credentials:include in the request )
+ * Output => If no token returns 200 response with no data
+ *  => If token is there, clears the cookie and sends logout successful message with 200 response.
+ */
+const logout = async (req, res) => {
+    try {
+        if (!req.cookies || !req.cookies.jwtToken) {
+            return respond(res, true, 200, "", {});
+        }
+        res.clearCookie("jwtToken");
+        return respond(res, true, 200, "Logged out successfully!", {});
+    } catch (error) {
+        console.log("\n\n😱 Error during login:", error);
+        return respond(res, false, 500, "Login failed", {});
+    }
+};
+
 module.exports = {
     register,
     login,
     forgotPassword,
     resetPassword,
     changePassword,
+    logout,
 };

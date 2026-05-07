@@ -1,4 +1,4 @@
-const respond = (res, OK, code, data, error) => {
+const respond = (res, OK, code, data = {}, error = {}) => {
     res.status(code).json({ OK, data, error });
 };
 
