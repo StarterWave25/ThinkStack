@@ -16,14 +16,18 @@ const Problem = require("../models/problem.model");
 const getAllProblems = async (req, res) => {
     try {
         const difficulty = req.query.difficulty;
-        console.log(difficulty);
         if (difficulty && !["Easy", "Medium", "Hard"].includes(difficulty))
             return respond(res, false, 400, "Invalid difficulty!", {});
+
+        //return only problem title, description, and difficulty
 
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
 
-        const problems = await Problem.find(filter);
+        const problems = await Problem.find(
+            filter,
+            "title description difficulty",
+        );
 
         return respond(res, true, 200, problems, {});
     } catch (error) {
@@ -32,4 +36,25 @@ const getAllProblems = async (req, res) => {
     }
 };
 
-module.exports = { getAllProblems };
+const getProblem = async (req, res) => {
+    try {
+        const problemId = req.params.id;
+        if (!problemId)
+            return respond(res, false, 400, "Problem Id is required!", {});
+        const problem = await Problem.findById(problemId);
+        if (!problem)
+            return respond(
+                res,
+                false,
+                404,
+                "Problem with the requested id doesn't exists!",
+                {},
+            );
+        return respond(res, true, 200, problem, {});
+    } catch (error) {
+        console.log("\n\n😱 Error fetching problems:", error);
+        return respond(res, false, 500, "Error fetching problem", {});
+    }
+};
+
+module.exports = { getAllProblems, getProblem };
