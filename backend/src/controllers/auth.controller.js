@@ -201,6 +201,28 @@ const changePassword = async (req, res) => {
 };
 
 /**
+ * Controller to handle current user details knowing
+ * Gives current user email if logged in else gives a not logged in message
+ *
+ * Input => { jwtToken } => res.cookie (this cookie is automatically sent by the browser if written header credentials:include in the request )
+ * output => If no token returns a 400 response with User not logged in message
+ *  => If token is there, extracts the user from the token, takes the email from the it and sends it as payload to the frontend.
+ *
+ */
+const getMe = async (req, res) => {
+    try {
+        if (!req.cookies || !req.cookies.jwtToken) {
+            return respond(res, false, 400, "User not logged in!", {});
+        }
+        const user = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
+        return respond(res, true, 200, { email: user.email }, {});
+    } catch (error) {
+        console.log("\n\n😱 Error during login:", error);
+        return respond(res, false, 500, "Login failed", {});
+    }
+};
+
+/**
  *
  * controller to handle user logout
  * Logs out the user by clearing the cookie that is stored in the frontend which contains the jwtToken
@@ -228,5 +250,6 @@ module.exports = {
     forgotPassword,
     resetPassword,
     changePassword,
+    getMe,
     logout,
 };
