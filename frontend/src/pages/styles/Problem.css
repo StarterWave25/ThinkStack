@@ -1,0 +1,52 @@
+.problem-section {
+  padding: 2rem;
+}
+
+.problem-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.problem-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.problem-category {
+  font-size: 0.95rem;
+}
+
+.problem-badge {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.problem-heading {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.problem-block {
+  margin-bottom: 2rem;
+}
+
+.problem-subtitle {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.problem-text {
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.problem-loading,
+.problem-error {
+  padding: 2rem;
+  text-align: center;
+}
