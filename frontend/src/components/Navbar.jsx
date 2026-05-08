@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
+
 import { useGetMeQuery, useLogoutMutation } from "../services/authAPI";
+import './styles/Navbar.css'
 
 function Navbar() {
 
@@ -19,7 +21,7 @@ function Navbar() {
       if (data.Ok) {
         navigate('/login');
       }
-    } catch(e) {
+    } catch (e) {
       console.log("Error Logoutting user!", e);
       alert('Error in Logout');
     }
@@ -38,7 +40,17 @@ function Navbar() {
                 <NavLink to="/">Register</NavLink>
               </li>
             </> :
-            <button onClick={handleLogout}>Logout</button>
+            <>
+              <li className="navigate-link">
+                <NavLink to="/problems">Problems</NavLink>
+              </li>
+              <button
+                onClick={handleLogout}
+                className="logout-button"
+              >
+                Logout
+              </button>
+            </>
         }
       </ul>
     </nav>

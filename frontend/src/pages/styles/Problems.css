@@ -1,0 +1,11 @@
+.problems-filter {
+  margin-bottom: 1.5rem;
+}
+
+.difficulty-select {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  outline: none;
+}
