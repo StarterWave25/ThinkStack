@@ -41,8 +41,8 @@ const register = async (req, res) => {
         );
         res.cookie("jwtToken", jwtToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -83,8 +83,8 @@ const login = async (req, res) => {
 
         res.cookie("jwtToken", jwtToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -152,7 +152,7 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
     try {
         const { password } = req.body;
-        console.log(req.params.token)
+        console.log(req.params.token);
         const user = await User.findOne({
             resetPasswordToken: req.params.token,
             resetPasswordExpires: { $gt: Date.now() },
@@ -188,7 +188,12 @@ const changePassword = async (req, res) => {
         const user = await User.findById(req.user.id);
         user.password = await hashPassword(password);
         await user.save();
-        res.clearCookie("jwtToken");
+        res.clearCookie("jwtToken", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
         return respond(
             res,
             true,
