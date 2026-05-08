@@ -20,7 +20,23 @@ function Home() {
   }, [isLoggedIn, isLoading, isFetching, navigate]);
 
   return (
-    <div>Home</div>
+    <section className="home-page">
+
+      <div className="home-content">
+
+        <h1 className="home-title">
+          Welcome Home
+        </h1>
+
+        <p className="home-description">
+          The app exists.
+          The ambition exists.
+          The features are still fighting for their lives.
+        </p>
+
+      </div>
+
+    </section>
   )
 }
 
