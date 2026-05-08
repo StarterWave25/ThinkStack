@@ -36,6 +36,15 @@ const getAllProblems = async (req, res) => {
     }
 };
 
+/**
+ *
+ * Controller to handle getting a single problem request.
+ * Fetches a single problem with given id from db and returns it in response.
+ *
+ * Input => { id } =>req.params (route params), (id refers to the problem id that is to be fetched.)
+ * Output => Returns a problem data with given id fetched from the db.
+ *
+ */
 const getProblem = async (req, res) => {
     try {
         const problemId = req.params.id;
