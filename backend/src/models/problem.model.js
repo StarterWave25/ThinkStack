@@ -8,5 +8,6 @@ const problemSchema = new mongoose.Schema({
     referenceSolution: { type: String, required: true },
     isActive: { type: Boolean, required: true },
 });
+
 const Problem = mongoose.model("Problem", problemSchema);
 module.exports = Problem;

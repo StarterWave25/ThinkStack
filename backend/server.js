@@ -6,6 +6,7 @@ const cors = require("cors");
 const connectDB = require("./src/lib/db");
 const authRouter = require("./src/routes/auth.routes");
 const problemsRouter = require("./src/routes/problem.routes");
+const draftsRouter = require("./src/routes/draft.routes");
 const { authMiddleware } = require("./src/middlewares/user.middleware");
 const morgan = require("morgan");
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth", authRouter);
 app.use("/api/problems", authMiddleware, problemsRouter);
+app.use("/api/drafts", authMiddleware, draftsRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("\n\n--------------------");

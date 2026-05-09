@@ -19,8 +19,6 @@ const getAllProblems = async (req, res) => {
         if (difficulty && !["Easy", "Medium", "Hard"].includes(difficulty))
             return respond(res, false, 400, "Invalid difficulty!", {});
 
-        //return only problem title, description, and difficulty
-
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
 
