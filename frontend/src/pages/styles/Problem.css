@@ -1,52 +1,49 @@
-.problem-section {
-  padding: 2rem;
-}
-
 .problem-container {
-  max-width: 900px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 24px;
 }
 
-.problem-meta {
+.problem-overview,
+.problem-workspace {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.problem-category {
-  font-size: 0.95rem;
+.step-navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.problem-badge {
-  padding: 0.35rem 0.8rem;
-  border: 1px solid #dcdcdc;
-  border-radius: 999px;
-  font-size: 0.8rem;
+.step-navigation button {
+  padding: 8px 16px;
 }
 
-.problem-heading {
-  font-size: 2rem;
-  line-height: 1.4;
-  margin-bottom: 2rem;
+.step-navigation button.active {
+  font-weight: bold;
 }
 
-.problem-block {
-  margin-bottom: 2rem;
+.text-editor {
+  width: 100%;
+  min-height: 400px;
+  padding: 12px;
 }
 
-.problem-subtitle {
-  margin-bottom: 0.8rem;
-  font-size: 1.2rem;
+.hint-dropdown {
+  padding: 12px;
+  border: 1px solid #ddd;
 }
 
-.problem-text {
-  line-height: 1.8;
-  font-size: 1rem;
+.next-btn {
+  padding: 12px 24px;
+  width: fit-content;
 }
 
-.problem-loading,
-.problem-error {
-  padding: 2rem;
-  text-align: center;
+@media (max-width: 768px) {
+  .problem-container {
+    grid-template-columns: 1fr;
+  }
 }
