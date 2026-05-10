@@ -23,7 +23,10 @@ const getAllProblems = async (req, res) => {
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
 
-        const problems = await Problem.find(filter);
+        const problems = await Problem.find(
+            filter,
+            "title description difficulty",
+        );
 
         return respond(res, true, 200, problems, {});
     } catch (error) {
