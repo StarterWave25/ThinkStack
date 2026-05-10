@@ -5,7 +5,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "The pointer-chasing strategy. Prisoner #N goes to box #N. They look at the number inside, say #K. They then go to box #K, and continue this chain. By doing this, they are following random cycles within the permutation of 100 numbers. As long as the longest cycle in the room is not greater than 50 boxes (which happens about 31.1% of the time), every single prisoner will find their number and they will all survive.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): If every prisoner guesses randomly, the survival chance is (0.5)^100, which is basically zero. They need a strategy that links their fates together.",
+            "Hint 2 (Approach): The boxes and the numbers inside them form a mathematical permutation. What happens if a prisoner uses the number they find INSIDE a box to tell them which box to open NEXT?",
+            "Hint 3 (Partial Logic): Have Prisoner #1 open Box #1. If it contains #47, they go to Box #47. If that contains #12, they go to Box #12. This creates closed loops. They only die if a loop is longer than 50 boxes."
+        ]
     },
     {
         "title": "The Sum and Product Mathematicians' Impossible Puzzle",
@@ -13,7 +19,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "X = 4, Y = 13. P doesn't know means the product has more than one set of factors. S knows P doesn't know, meaning S's sum cannot be expressed as the sum of two primes (Goldbach's conjecture). By mapping out all possible sums that fit this criteria, and tracking how P and S eliminate options based on each other's statements, only the pair (4, 13) leaves a unique, solvable path.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): When P says 'I don't know', it means the product can be factored in more than one way (e.g., 12 could be 2x6 or 3x4).",
+            "Hint 2 (Approach): When S says 'I *knew* you didn't know', it means S's sum CANNOT possibly be the sum of two prime numbers. (If the numbers were 3 and 5, the sum is 8, the product is 15. P would instantly know it was 3 and 5).",
+            "Hint 3 (Partial Logic): Look for a sum (S) that is an odd number (since all evens are the sum of two primes) and cannot be constructed by adding 2 + a prime. 11 is the first candidate."
+        ]
     },
     {
         "title": "Cheryl's Birthday Sequential Information Deduction",
@@ -21,7 +33,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "July 16. If Bernard knew immediately, he'd have a unique day (18 or 19). Albert knows Bernard doesn't know, so Albert's month cannot be May or June (which contain 18 and 19). The month must be July or August. Bernard now knows the month is July or August. Since Bernard now knows the exact date, his day cannot be 14 (which appears in both July and August). The remaining dates are July 16, August 15, August 17. Albert now knows the date, which means his month must only have one remaining option. That month is July.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Look at the unique dates. 18 only appears in June. 19 only appears in May. If Bernard had 18 or 19, he would know the birthday instantly.",
+            "Hint 2 (Approach): Albert (who knows the month) says he *knows* Bernard doesn't know. Therefore, Albert's month cannot possibly contain a unique date (18 or 19).",
+            "Hint 3 (Partial Logic): Because Albert is certain Bernard doesn't know, you can completely eliminate the months of May and June. Bernard now figures this out too. What does Bernard's next statement tell you about his day?"
+        ]
     },
     {
         "title": "The Infinite Grid Escape Constraint",
@@ -29,7 +47,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "In a 2D grid, the probability of returning to the origin is exactly 1 (100%). However, in a 3D grid (like a bird flying randomly), the probability of returning to the starting point drops to approximately 0.34 (34%). This is known as P\u00f3lya's Random Walk Theorem.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): In a 2D grid, even though he might wander extremely far away, the number of paths that lead back to the center grows at a rate that mathematically guarantees a return eventually.",
+            "Hint 2 (Approach): Think about the total number of possible paths versus the number of paths that return to zero. How does adding an Up/Down Z-axis in 3D change the 'volume' of possible paths?",
+            "Hint 3 (Partial Logic): In 3D space, the number of directions increases, causing the 'volume' of the escape space to grow much faster than the 2D 'area'. The 2D probability is 100%, but 3D is only a fraction."
+        ]
     },
     {
         "title": "The 13 Coins and the Balance Scale Comprehensive Deduction",
@@ -37,7 +61,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Divide coins into 3 groups: A(4), B(4), C(5). Weigh A vs B. If they balance, the fake is in C (use the 2 remaining weighings to find 1 fake among 5 against known good coins). If A vs B does not balance, take note of which side is heavy. For the second weighing, mix the coins: put 3 from A and 1 from B on the left, and 1 from A and 3 known good coins on the right. Track the scale's tipping direction to isolate the fake based on intersections of possibilities.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): A balance scale has 3 outcomes: Left down, Right down, or Balanced. Three weighings gives you 3x3x3 = 27 possible outcomes. You have 26 possibilities (13 coins x 2 states: heavy or light).",
+            "Hint 2 (Approach): Do not weigh 6 against 6. Start by dividing the coins into groups of 4, 4, and 5. Weigh 4 against 4.",
+            "Hint 3 (Partial Logic): If the first 4v4 tips, you know the 5 unweighed coins are real. For the second weighing, you must mix suspected heavy coins, suspected light coins, and known real coins on the pans."
+        ]
     },
     {
         "title": "The Chameleons' Island Color Conversion Synchronization",
@@ -45,7 +75,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "No, it is mathematically impossible. Look at the differences between the populations modulo 3. (13, 15, 17) -> differences are 2, 2, and 4. When a red and green meet, they become blue (-1 red, -1 green, +2 blue). The difference between any two colors modulo 3 never changes (it is an invariant). Since the differences start at 2 (not 0), you can never reach a state where two populations are exactly 0 (which would have a difference of 0).",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Don't try to simulate individual meetings. Look for a mathematical property of the populations that stays the same (an invariant) no matter who meets who.",
+            "Hint 2 (Approach): When a Red and Green meet, they become Blue. This means Red decreases by 1, Green decreases by 1, and Blue increases by 2. Look at the differences between the population numbers.",
+            "Hint 3 (Partial Logic): Look at the populations modulo 3 (the remainder when divided by 3). The differences between the remainders never change. For all chameleons to be the same color, two populations must reach exactly zero."
+        ]
     },
     {
         "title": "The Coin Matrix Parity Flipping Trick for Two Prisoners",
@@ -53,7 +89,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Use binary XOR parity (Hamming codes). Number the squares 0 to 63 in binary. Calculate the cumulative XOR sum of the positions of all coins showing Heads. Let's call this sum 'S'. Let the target square with the key be 'K'. Prisoner 1 must flip the coin at position 'X' such that S XOR X = K (which means X = S XOR K). When Prisoner 2 walks in, they simply calculate the XOR sum of all Heads, and that exact number will be the location of the key.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Prisoner 1 must encode the 6-bit location (0 to 63) of the key into the overall pattern of the board by changing exactly one bit.",
+            "Hint 2 (Approach): This requires a parity check system like Hamming Codes. Imagine numbering the squares 0 to 63 in binary. Look only at the coins showing Heads.",
+            "Hint 3 (Partial Logic): Calculate the cumulative XOR (exclusive OR) sum of the positions of all the Heads. Let's call that sum 'S'. The key is at 'K'. Prisoner 1 flips the coin that makes the new XOR sum equal to K."
+        ]
     },
     {
         "title": "The Hat Color Guessing with Infinite Alternating Colors",
@@ -61,7 +103,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "This relies on the Axiom of Choice. The prisoners define an equivalence relation where two sequences of hats are 'equivalent' if they differ in only a finite number of places. They agree beforehand on one representative sequence from every possible equivalence class. When in line, a prisoner sees the sequence ahead, identifies its equivalence class, and guesses based on the agreed representative sequence. Because the representative sequence differs from the actual sequence by only a finite number of hats, only a finite number of prisoners will be wrong.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Because the line is infinite and they must guess simultaneously, counting parity (even/odd) from the back is impossible. There is no 'back' of the line.",
+            "Hint 2 (Approach): This is a pure mathematics puzzle requiring Set Theory and the Axiom of Choice. The prisoners can see the entire infinite sequence in front of them, minus their own and the ones behind.",
+            "Hint 3 (Partial Logic): The prisoners group all possible infinite combinations of hats into 'equivalence classes' where sequences only differ by a finite number of hats. They agree to always guess based on a pre-chosen 'master sequence' for whatever class they see."
+        ]
     },
     {
         "title": "The Angel, Devil, and Mortal Circular Questioning",
@@ -69,7 +117,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Similar to the 'Hardest Logic Puzzle Ever'. Question 1 is directed to Being A to find someone who is NOT the Mortal. 'If I asked you if B is the Mortal, would you say yes?' Based on the answer, you can confidently identify either B or C as a non-Random being (either Angel or Devil). Question 2 is asked to that identified non-Random being to determine if they are the Angel or Devil. Question 3 is asked to the same being to identify the remaining two.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): You cannot waste a single question on the Mortal (Random), because their answer gives you zero reliable information. Your first goal is to find someone who is definitively NOT the Mortal.",
+            "Hint 2 (Approach): Use a hypothetical embedded question to force the Angel and Devil to give you the same useful information.",
+            "Hint 3 (Partial Logic): Ask Being A: 'If I asked you if B is the Mortal, would you say yes?' If A says 'Yes', then C is definitely not the Mortal. If A says 'No', then B is definitely not the Mortal."
+        ]
     },
     {
         "title": "The Ants Walking on a Stick Collision Simulation",
@@ -77,7 +131,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "100 seconds. The trick is to realize that when two identical ants collide and reverse, mathematically it is exactly the same as if they had simply passed through each other without interacting. Therefore, the longest time it takes is simply the time it takes for one ant starting at the very edge to walk all the way to the other edge, which is 100 cm at 1 cm/s = 100 seconds.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Don't try to simulate the bounces. It's too complex. Think about the physical characteristics of the ants. They are all identical and walk at the exact same speed.",
+            "Hint 2 (Approach): When Ant A (walking right) hits Ant B (walking left), they bounce and reverse. Now Ant A is walking left and Ant B is walking right.",
+            "Hint 3 (Partial Logic): Since the ants are identical, what is the mathematical difference between them 'bouncing and reversing' versus simply 'phasing right through each other' like ghosts? There is no difference."
+        ]
     },
     {
         "title": "The Omniscient Oracle State Deduction",
@@ -85,7 +145,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "This requires finding a 'Distinguishing Sequence' or 'Homing Sequence' in automata theory. By feeding a specific sequence of inputs, the sequence of outputs will be uniquely different depending on the initial state. The exact sequence depends on the specific state transition diagram, utilizing decision trees to narrow down the possible initial states until only one remains.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): You are trying to find a 'Homing Sequence' (a concept from finite state machines). You need an input sequence that produces a completely unique output pattern for each of the 3 starting states.",
+            "Hint 2 (Approach): Create a tree diagram. Start by feeding a '0'. Write down what the output would be if the machine started in A, B, or C.",
+            "Hint 3 (Partial Logic): Keep adding inputs (0s and 1s) to your sequence until the sequence of outputs for starting state A is distinct from B, and distinct from C."
+        ]
     },
     {
         "title": "The Broken Balance Scale with 100 Weighted Coins",
@@ -93,7 +159,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "148 weighings. First, divide the 100 coins into 50 pairs. Weigh each pair (50 weighings). The 50 winners go into a 'heavy' pile, and the 50 losers go into a 'light' pile. Now, find the heaviest coin by doing a tournament among the 50 heavy coins (49 weighings). Find the lightest coin by doing a tournament among the 50 light coins (49 weighings). Total = 50 + 49 + 49 = 148.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Finding the heaviest coin requires a tournament (99 weighings). Finding the lightest also requires a tournament (99 weighings). Doing them separately takes 198 weighings. You can do better.",
+            "Hint 2 (Approach): Start by organizing the coins into 50 distinct pairs. Weigh each pair.",
+            "Hint 3 (Partial Logic): Those 50 weighings create a 'Winner' bracket of 50 heavy coins, and a 'Loser' bracket of 50 light coins. The absolute heaviest coin MUST be in the winner bracket. The absolute lightest MUST be in the loser bracket."
+        ]
     },
     {
         "title": "The Pirate's Moving Landmark Treasure Geometry",
@@ -101,7 +173,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "The location of the treasure is completely independent of where the gallows was. Using complex numbers or geometry, you can prove that regardless of where the starting point (gallows) is, the midpoint between the two pegs will always form an exact isosceles right triangle with the two trees. He just needs to draw a line between the oak and pine, find the midpoint, turn 90 degrees, and walk half the distance of the tree-line.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Don't try to guess where the gallows was. Try drawing this on paper, and place the gallows in a random spot. Then try another random spot. What do you notice about the treasure's location?",
+            "Hint 2 (Approach): The treasure's location is a mathematical constant relative to the two trees. The position of the gallows cancels out entirely in the geometry.",
+            "Hint 3 (Partial Logic): Draw a line connecting the Oak and the Pine. Find the exact midpoint of that line. The treasure will form an isosceles right triangle with the two trees."
+        ]
     },
     {
         "title": "The Conway Peg Solitaire Restriction Matrix",
@@ -109,7 +187,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Row 4 is the maximum possible. Row 5 is mathematically impossible to reach. John Conway proved this using a resource weighting system where each peg is assigned a value based on the golden ratio. He showed that the total 'value' required to get a piece to the 5th row exceeds the maximum possible total value of an infinite number of pieces placed below the line.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Every time you make a jump, you lose a peg. Reaching higher rows requires an exponentially larger number of pegs acting as 'fuel' below the line.",
+            "Hint 2 (Approach): To prove a limit, mathematician John Conway assigned a mathematical 'value' to every square on the board, where the target square is worth 1.",
+            "Hint 3 (Partial Logic): Every jump is calculated so that the total 'value' of pegs on the board can never increase. The total value of an infinite number of pegs below the line adds up to a specific number. To reach Row 5, you need a starting value higher than what infinity can provide."
+        ]
     },
     {
         "title": "The Multi-State Lightbulb Array Toggle Algorithm",
@@ -117,7 +201,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Not all patterns are possible. The game can be modeled as a system of linear equations over GF(2) (modulo-2 arithmetic). The 5x5 matrix has a null space of dimension 2. This means that out of the 2^25 possible configurations, only 2^23 are reachable. A pattern is solvable if and only if it is orthogonal to the vectors in the left null space of the adjacency matrix.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): This is the classic game 'Lights Out'. The order in which you press the bulbs does not matter. Also, pressing a bulb twice is the same as pressing it zero times.",
+            "Hint 2 (Approach): Because pressing twice cancels out, this is a system of linear equations in modulo-2 arithmetic (where 1+1=0). There are 25 variables (the bulbs to press) and 25 equations (the final state of each bulb).",
+            "Hint 3 (Partial Logic): Not all systems of linear equations have a solution. The 25x25 matrix representing the grid is not 'full rank'. Therefore, out of the 2^25 possible patterns, a small fraction are mathematically impossible to reach."
+        ]
     },
     {
         "title": "The Token Passing Protocol in a Circular Prison",
@@ -125,7 +215,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Prisoners can encode the count into the timing and movement of tokens. For example, a token moving clockwise can represent a '1', and counter-clockwise a '0'. Since the circle size is known (100), they can use a phase-based protocol where a specific token acts as an aggregator, accumulating the sum as it makes a full revolution around the circle, resolving collisions deterministically.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): The tokens are identical. You cannot put a mark on a token to signify 'I've seen 5 black tokens'. You must use the *movement* of the tokens to encode data.",
+            "Hint 2 (Approach): The prisoners know there are 100 people. This means they can use 'rounds' as a synchronized clock. What if a token passing clockwise means one thing, and counter-clockwise means another?",
+            "Hint 3 (Partial Logic): The prisoners can agree to make one specific token an 'accumulator'. As it travels the full 100-person circle, prisoners who started with a black token can manipulate its speed or direction to 'add' their count to the system."
+        ]
     },
     {
         "title": "The Hydra Decapitation Minimal Step Optimization",
@@ -133,7 +229,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Yes. This is Kirby and Paris's Hydra Game. Even though the Hydra grows terrifyingly large, it will always eventually die in a finite number of steps, no matter what strategy Hercules uses. The proof relies on assigning ordinal numbers to the branches. With each chop, the overall ordinal value strictly decreases, and since ordinals are well-ordered, it must eventually hit 0.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Visually, the Hydra grows astronomically larger with every chop. However, Hercules is always chopping off the 'leaf' nodes\u2014the very tips of the branches.",
+            "Hint 2 (Approach): To prove it dies, mathematicians assign a value to the tree using transfinite ordinal numbers (numbers that go beyond infinity, like Omega).",
+            "Hint 3 (Partial Logic): Every time Hercules chops a head, the Hydra multiplies, but the overall mathematical 'ordinal' value of the tree strictly decreases. Because ordinals are well-ordered, you cannot decrease them infinitely. It must eventually hit zero."
+        ]
     },
     {
         "title": "The Three Utilities Graph Bipartite Crossing",
@@ -141,7 +243,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "No, it is topologically impossible on a 2D plane. This problem represents the complete bipartite graph K3,3. According to Kuratowski's Theorem, a graph is planar (can be drawn without crossing lines) only if it does not contain a subgraph homeomorphic to K5 or K3,3. You would need a 3D space or a torus (donut shape) to solve it without intersections.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): Don't spend too long trying to draw it. This is a famous problem in topological graph theory known as the 'Water, Gas, and Electricity' problem.",
+            "Hint 2 (Approach): You are trying to draw the complete bipartite graph K3,3 on a 2D plane. What does Kuratowski's Theorem state about planar graphs?",
+            "Hint 3 (Partial Logic): It is mathematically impossible. No matter how you route the 8th line, the 9th line will always be trapped by the boundary created by the others. You would need a 3D surface, like a donut (torus), to solve it."
+        ]
     },
     {
         "title": "The Sequential Liar Paradox with Four Guards",
@@ -149,7 +257,13 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "Guard 3 is telling the truth. Assume Guard 4 is true; then his statement 'all are lying' is false (paradox). Thus, Guard 4 is lying. Since Guard 4 is lying, Guard 3's statement 'Guard 4 is lying' is true. Since Guard 3 is true, Guard 2's statement 'Guard 3 is lying' is false. Since Guard 2 is false, Guard 1's statement 'Guard 2 is lying' is true. So, Guards 1 and 3 are telling the truth, and 2 and 4 are lying.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): This is a logic chain. Do not start at Guard 1. Start at the end, with the most extreme and absolute statement.",
+            "Hint 2 (Approach): Look at Guard 4: 'We are all lying.' What happens if you assume this statement is TRUE?",
+            "Hint 3 (Partial Logic): If Guard 4 is telling the truth, then his statement 'we are ALL lying' is a paradox (because he would be telling the truth). Therefore, Guard 4 MUST be lying. If Guard 4 is a liar, what does that make Guard 3?"
+        ]
     },
     {
         "title": "The Modified Two Envelopes Infinite Expectation Paradox",
@@ -157,6 +271,12 @@
         "difficulty": "Hard",
         "category": "Analytical Reasoning",
         "referenceSolution": "The flaw is an assumption of a uniform probability distribution over all positive real numbers, which is mathematically impossible (it would integrate to infinity, not 1). Without knowing the prior distribution of the amounts placed in the envelopes, you cannot validly calculate an expected value. If a proper, finite probability distribution is defined, the paradox resolves and the expected value of switching becomes neutral.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Hint 1 (Understanding): The math (0.5 * 50) + (0.5 * 200) = 125 seems flawless. But if switching is always profitable, you could switch back and forth infinitely and generate infinite expected value, which is absurd.",
+            "Hint 2 (Approach): The formula assumes that the probability of the other envelope holding $50 is EXACTLY equal to the probability of it holding $200. Is this assumption valid for all numbers up to infinity?",
+            "Hint 3 (Partial Logic): To have a 50/50 chance for every single possible amount of money, you would need a 'uniform probability distribution' across all positive numbers. Mathematically, this is impossible because the probabilities wouldn't add up to 100%."
+        ]
     }
 ]

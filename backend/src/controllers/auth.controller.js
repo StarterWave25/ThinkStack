@@ -1,4 +1,4 @@
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");

@@ -1,5 +1,6 @@
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const Problem = require("../models/problem.model");
+const getProblemById = require("../utils/getProblemById");
 
 /**
  *
@@ -18,8 +19,6 @@ const getAllProblems = async (req, res) => {
         const difficulty = req.query.difficulty;
         if (difficulty && !["Easy", "Medium", "Hard"].includes(difficulty))
             return respond(res, false, 400, "Invalid difficulty!", {});
-
-        //return only problem title, description, and difficulty
 
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
@@ -50,7 +49,7 @@ const getProblem = async (req, res) => {
         const problemId = req.params.id;
         if (!problemId)
             return respond(res, false, 400, "Problem Id is required!", {});
-        const problem = await Problem.findById(problemId);
+        const problem = await getProblemById(problemId);
         if (!problem)
             return respond(
                 res,
