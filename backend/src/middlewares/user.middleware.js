@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const authMiddleware = (req, res, next) => {
     try {
         const cookies = req.cookies;

@@ -1,4 +1,4 @@
-const transporter = require("../lib/mail");
+const transporter = require("../config/mail");
 const sendEmail = async (email, token) => {
     await transporter.sendMail({
         from: `"ThinkStack" <${process.env.EMAIL_USER}>`,

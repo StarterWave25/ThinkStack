@@ -1,6 +1,5 @@
-dotenv.config();
+require("dotenv").config();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const Problem = require("./src/models/problem.model");
 const easy = require("./src/data/easy.json");
 const medium = require("./src/data/medium.json");

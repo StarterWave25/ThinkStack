@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const connectDB = require("./src/lib/db");
+const connectDB = require("./src/config/db");
 const authRouter = require("./src/routes/auth.routes");
 const problemsRouter = require("./src/routes/problem.routes");
 const draftsRouter = require("./src/routes/draft.routes");

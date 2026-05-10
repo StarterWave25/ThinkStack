@@ -1,5 +1,6 @@
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const Problem = require("../models/problem.model");
+const getProblemById = require("../utils/getProblemById");
 
 /**
  *
@@ -22,10 +23,7 @@ const getAllProblems = async (req, res) => {
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
 
-        const problems = await Problem.find(
-            filter,
-            "title description difficulty",
-        );
+        const problems = await Problem.find(filter);
 
         return respond(res, true, 200, problems, {});
     } catch (error) {
@@ -48,7 +46,7 @@ const getProblem = async (req, res) => {
         const problemId = req.params.id;
         if (!problemId)
             return respond(res, false, 400, "Problem Id is required!", {});
-        const problem = await Problem.findById(problemId);
+        const problem = await getProblemById(problemId);
         if (!problem)
             return respond(
                 res,

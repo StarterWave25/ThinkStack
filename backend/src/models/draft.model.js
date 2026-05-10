@@ -22,6 +22,11 @@ const draftSchema = new mongoose.Schema({
         solution: { type: String, default: "" },
         reflection: { type: String, default: "" },
     },
+    hintsUsed: {
+        type: Number,
+        default: 0,
+        max: 3,
+    },
 });
 
 const Draft = mongoose.model("Draft", draftSchema);
