@@ -50,20 +50,17 @@ const evaluateProblem = async (req, res) => {
             "solution",
             "reflection",
         ];
-        
-        // for (let i = 0; i < 3; i++) {
-        //     // console.log(draft.steps, draft)
-        //     if ((draft.steps[i] === "", {}));
-        //     return respond(
-        //         res,
-        //         false,
-        //         400,
-        //         "5 steps must be completed to submit!",
-        //         {},
-        //     );
-        // }
-        // console.log("came")
-
+        for (let i = 0; i < 3; i++) {
+            console.log(draft.steps[validSteps[i]] === "");
+            if (draft.steps[validSteps[i]] === "")
+                return respond(
+                    res,
+                    false,
+                    400,
+                    "5 steps must be completed to submit!",
+                    {},
+                );
+        }
         const aiResult = await AIReview(draft, problem);
         const penaltyApplied = SCORING_RULES.HINT_PENALTIES[draft.hintsUsed];
         let finalScore = aiResult.aiBaseScore - penaltyApplied;
