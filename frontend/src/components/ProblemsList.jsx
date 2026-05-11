@@ -29,8 +29,9 @@ function ProblemsList({ difficulty }) {
 
       <div className="problems-list">
 
+        {console.log(data)}
         {
-          data?.data?.map((problem) => (
+          data?.data?.problems?.map((problem) => (
             <Link
               to={`/problem/${problem._id}`}
               key={problem._id}

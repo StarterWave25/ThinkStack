@@ -1,13 +1,14 @@
 // Harsha here you need to refactor the components.
 
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetProblemQuery, useSaveProblemMutation } from "../services/draftAPI";
 import "./styles/Problem.css";
 
 const STEPS = ["understanding", "breakdown", "approach", "solution", "reflection"];
 
 function Workspace({ id, activeStep, draft, problem, saveProblem, onNext }) {
+  const navigate = useNavigate();
   const storageKey = `problem-${id}-${activeStep}`;
 
   const [content, setContent] = useState(() => {
@@ -43,7 +44,7 @@ function Workspace({ id, activeStep, draft, problem, saveProblem, onNext }) {
 
       const currentIndex = STEPS.indexOf(activeStep);
       if (currentIndex === STEPS.length - 1) {
-        console.log("submit");
+        navigate(`/solution/${id}`);
       } else {
         onNext(STEPS[currentIndex + 1]);
       }
