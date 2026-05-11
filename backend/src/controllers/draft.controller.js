@@ -15,9 +15,12 @@ const getDraft = async (req, res) => {
     try {
         if (!req.params.problemId)
             return respond(res, false, 400, "Problem Id is required!", {});
+
         if (!mongoose.Types.ObjectId.isValid(req.params.problemId))
             return respond(res, false, 400, "Invalid problemId Type!", {});
+
         const problem = await getProblemById(req.params.problemId);
+
         if (!problem)
             return respond(
                 res,
@@ -26,6 +29,7 @@ const getDraft = async (req, res) => {
                 "Problem with the requested id doesn't exists!",
                 {},
             );
+
         const draft = await Draft.findOne({
             userId: req.user.id,
             problemId: req.params.problemId,
@@ -89,7 +93,7 @@ const saveDraft = async (req, res) => {
         if (!validSteps.includes(req.body.currentStep))
             return respond(res, false, 400, "Invalid current step!", {});
 
-        const hintsOnlySteps = ["understanding", "breakdown", "solution"];
+        const hintsOnlySteps = ["breakdown", "approach", "solution"];
         if (
             req.body.isHintUsed &&
             !hintsOnlySteps.includes(req.body.currentStep)

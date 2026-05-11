@@ -1,6 +1,9 @@
 const respond = require("../utils/responseFormat");
 const Problem = require("../models/problem.model");
+const Draft = require("../models/draft.model");
+const Submission = require("../models/submission.model");
 const getProblemById = require("../utils/getProblemById");
+const addProblemStatus = require("../utils/problemStatus");
 
 /**
  *
@@ -12,6 +15,7 @@ const getProblemById = require("../utils/getProblemById");
  * => case:2 => { difficulty } => req.query (put in query params)
  * Output => case:1 => Returns all the problems that are stored in the database
  * => case:2 => Filters and Returns the problems that match the difficulty level mentioned in the query params. ( Difficulty level should match one of the perdefined types of levels in the controller only! )
+ * Note:- In all cases, a property called 'status' is added, it tells whether the current user solved the problem (or) attempted and need to resume the problem (or) hasn't yet started the problem. Used to tag the problems in the UI.
  *
  */
 const getAllProblems = async (req, res) => {
@@ -28,7 +32,23 @@ const getAllProblems = async (req, res) => {
             "title description difficulty",
         );
 
-        return respond(res, true, 200, problems, {});
+        const drafts = await Draft.find(
+            {
+                userId: req.user.id,
+            },
+            "problemId",
+        );
+
+        const submissions = await Submission.find(
+            {
+                userId: req.user.id,
+            },
+            "problemId",
+        );
+
+        const taggedProblems = addProblemStatus(problems, drafts, submissions);
+
+        return respond(res, true, 200, { problems: taggedProblems }, {});
     } catch (error) {
         console.log("\n\n😱 Error fetching problems:", error);
         return respond(res, false, 500, "Error fetching problems", {});

@@ -189,7 +189,12 @@ const changePassword = async (req, res) => {
         const user = await User.findById(req.user.id);
         user.password = await hashPassword(password);
         await user.save();
-        res.clearCookie("jwtToken");
+        res.clearCookie("jwtToken", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
         return respond(
             res,
             true,

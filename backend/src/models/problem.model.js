@@ -6,7 +6,7 @@ const problemSchema = new mongoose.Schema({
     difficulty: { type: String, required: true },
     category: { type: String, required: true },
     referenceSolution: { type: String, required: true },
-    hints: { type: [], required: true },
+    hints: { type: [String], required: true },
     isActive: { type: Boolean, required: true },
 });
 

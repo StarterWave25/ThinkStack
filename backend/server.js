@@ -7,6 +7,7 @@ const connectDB = require("./src/config/db");
 const authRouter = require("./src/routes/auth.routes");
 const problemsRouter = require("./src/routes/problem.routes");
 const draftsRouter = require("./src/routes/draft.routes");
+const evaluateRouter = require("./src/routes/evaluate.routes");
 const { authMiddleware } = require("./src/middlewares/user.middleware");
 const morgan = require("morgan");
 
@@ -14,7 +15,12 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+    cors({
+        origin: ["http://localhost:5173", "https://thinkstack-tw.netlify.app"],
+        credentials: true,
+    }),
+);
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
@@ -25,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRouter);
 app.use("/api/problems", authMiddleware, problemsRouter);
 app.use("/api/drafts", authMiddleware, draftsRouter);
+app.use("/api/evaluate", authMiddleware, evaluateRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("\n\n--------------------");
