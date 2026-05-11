@@ -43,6 +43,23 @@ const evaluateProblem = async (req, res) => {
                 "No active draft found for the current user and problem to submit!",
                 {},
             );
+        const validSteps = [
+            "understanding",
+            "breakdown",
+            "approach",
+            "solution",
+            "reflection",
+        ];
+        for (let i = 0; i < 3; i++) {
+            if ((draft.steps.validSteps[i] === "", {}));
+            return respond(
+                res,
+                false,
+                400,
+                "5 steps must be completed to submit!",
+                {},
+            );
+        }
         const aiResult = await AIReview(draft, problem);
         const penaltyApplied = SCORING_RULES.HINT_PENALTIES[draft.hintsUsed];
         let finalScore = aiResult.aiBaseScore - penaltyApplied;
