@@ -1,10 +1,11 @@
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const sendEmail = require("../services/email.service");
 
+const isProduction = process.env.NODE_ENV === "production";
 const saltRounds = 10;
 
 async function hashPassword(password) {
@@ -41,8 +42,8 @@ const register = async (req, res) => {
         );
         res.cookie("jwtToken", jwtToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: "none",
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "Lax",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -83,8 +84,8 @@ const login = async (req, res) => {
 
         res.cookie("jwtToken", jwtToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: "none",
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "Lax",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -242,7 +243,12 @@ const logout = async (req, res) => {
         if (!req.cookies || !req.cookies.jwtToken) {
             return respond(res, true, 200, "", {});
         }
-        res.clearCookie("jwtToken");
+        res.clearCookie("jwtToken", {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "Lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
         return respond(res, true, 200, "Logged out successfully!", {});
     } catch (error) {
         console.log("\n\n😱 Error during logging out:", error);

@@ -1,5 +1,6 @@
-const respond = require("../lib/responseFormat");
+const respond = require("../utils/responseFormat");
 const Problem = require("../models/problem.model");
+const getProblemById = require("../utils/getProblemById");
 
 /**
  *
@@ -19,8 +20,6 @@ const getAllProblems = async (req, res) => {
         if (difficulty && !["Easy", "Medium", "Hard"].includes(difficulty))
             return respond(res, false, 400, "Invalid difficulty!", {});
 
-        //return only problem title, description, and difficulty
-
         const filter = {};
         if (difficulty) filter.difficulty = difficulty;
 
@@ -36,12 +35,21 @@ const getAllProblems = async (req, res) => {
     }
 };
 
+/**
+ *
+ * Controller to handle getting a single problem request.
+ * Fetches a single problem with given id from db and returns it in response.
+ *
+ * Input => { id } =>req.params (route params), (id refers to the problem id that is to be fetched.)
+ * Output => Returns a problem data with given id fetched from the db.
+ *
+ */
 const getProblem = async (req, res) => {
     try {
         const problemId = req.params.id;
         if (!problemId)
             return respond(res, false, 400, "Problem Id is required!", {});
-        const problem = await Problem.findById(problemId);
+        const problem = await getProblemById(problemId);
         if (!problem)
             return respond(
                 res,

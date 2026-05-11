@@ -5,7 +5,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "2 weighings. Divide the coins into 3 groups of 3 (A, B, C). Weigh group A against group B. If they balance, the fake is in group C. If they don't, the fake is in the lighter group. Take the 3 coins from the lighter group, pick 2, and weigh them. If they balance, the fake is the 3rd coin. If they don't, the fake is the lighter coin.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Can you weigh more than one coin on each side of the scale at a time?",
+            "Instead of dividing the coins into 2 groups, what happens if you divide them into 3 equal groups?",
+            "If you weigh two groups of 3 against each other and the scale balances perfectly, what does that tell you about the remaining unweighed group?"
+        ]
     },
     {
         "title": "The Three-and-Five Liter Water Jug Calibration",
@@ -13,7 +19,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "1. Fill the 5L jug. 2. Pour water from the 5L jug into the 3L jug until it's full, leaving exactly 2L in the 5L jug. 3. Empty the 3L jug. 4. Pour the 2L from the 5L jug into the 3L jug. 5. Fill the 5L jug again. 6. Pour water from the 5L jug into the 3L jug until it's full (which takes exactly 1L). The 5L jug now contains exactly 4L of water.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "You can't measure 4 liters directly, but you can use the difference between the capacities of the two jugs.",
+            "What happens if you completely fill the 5L jug and use it to fill the 3L jug? How much water is left in the 5L jug?",
+            "Once you have exactly 2 liters isolated, how can you use the empty 3L jug to store it and build towards 4 liters?"
+        ]
     },
     {
         "title": "The Truth, the Lie, and the Broken Signpost",
@@ -21,7 +33,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Ask: 'Which path would a person from the other village say leads to the truth-tellers village?' Both the liar and the truth-teller will point to the path leading to the liars' village. You then take the opposite path.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "If you ask 'Are you a truth-teller?', both will say 'Yes', which doesn't help you choose a path.",
+            "You need to formulate a single question where both the liar and the truth-teller are forced to give you the exact same answer.",
+            "What happens if you ask the person to tell you what the *other* type of person would say?"
+        ]
     },
     {
         "title": "The Mislabeled Crates of Apples and Oranges",
@@ -29,7 +47,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Pick a fruit from the crate labeled 'Both'. Since it's mislabeled, it must contain only Apples or only Oranges. If you pull out an Apple, you know that crate is Apples. The crate labeled 'Oranges' must be the 'Both' crate, and the crate labeled 'Apples' must be the 'Oranges' crate.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "The crucial clue is that *every single crate* is mislabeled. None of them contain what their label says.",
+            "If you pick from the crate labeled 'Apples' and get an apple, it could still be the 'Both' crate. Is there a better crate to test first?",
+            "Start with the crate labeled 'Both'. Since it is mislabeled, what are the only two things that can actually be inside it?"
+        ]
     },
     {
         "title": "The Snail's Journey Up the Slippery Well",
@@ -37,7 +61,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "28 days. It gains 1 foot per day. On the end of the 27th day, it is at 27 feet. On the 28th day, it climbs 3 feet and reaches the 30-foot top and escapes before the night falls.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "The snail's net progress is 1 foot per 24 hours, but don't just divide 30 by 1.",
+            "Think carefully about what happens on the final day. Does the snail slip down if it has already reached the top during the day?",
+            "Calculate how many days it takes for the snail to reach exactly 27 feet."
+        ]
     },
     {
         "title": "The Alternating Full and Empty Glasses Minimum Moves",
@@ -45,7 +75,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Pick up the 2nd glass (which is full) and pour its water into the 5th glass (which is empty). Then put the 2nd glass back in its original position.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "You are only allowed to touch and move a single glass. This means you cannot rearrange their positions on the table.",
+            "Moving the glass itself isn't the only way to move what's inside it.",
+            "What if you pick up the second glass (which is full) and interact with the fifth glass (which is empty)?"
+        ]
     },
     {
         "title": "The Lily Pad Exponential Growth Dilemma",
@@ -53,7 +89,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "47 days. Since the lily pads double in size every day, the pond was half full the day before it was completely full.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Do not divide 48 days by 2. The growth is not linear.",
+            "Think backwards from the final day instead of forwards from day 1.",
+            "If the pond is 100% full on Day 48, and it doubles in size every day, what percentage full was it on the day right before it?"
+        ]
     },
     {
         "title": "The Blindfolded Coin Flipper's Equal Heads Strategy",
@@ -61,7 +103,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Separate 10 coins into a new pile. Then, flip all 10 coins in that new pile. Both piles will now have the exact same number of heads.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "You cannot use your senses to solve this. You must rely purely on mathematical logic and the total count of 10 heads.",
+            "What happens if you randomly separate exactly 10 coins into a new, smaller pile?",
+            "If the new pile of 10 coins happens to have 'X' heads in it, how many heads are left in the big pile of 90 coins? What action can you do to the small pile to match it?"
+        ]
     },
     {
         "title": "The Non-Uniform Ropes Burning for 45 Minutes",
@@ -69,7 +117,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Light Rope A at both ends, and light Rope B at one end. When Rope A burns out completely, exactly 30 minutes have passed. At that exact moment, light the other end of Rope B. Rope B will burn for exactly 15 more minutes. 30 + 15 = 45 minutes.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "You cannot fold or cut the ropes to measure time, because they burn unevenly (e.g., half the rope might burn in 10 minutes, and the other half in 50 minutes).",
+            "If you light one rope at BOTH ends simultaneously, exactly how long will it take for the entire rope to turn to ash?",
+            "Light Rope A at both ends, and light Rope B at only one end. What specific action should you take the moment Rope A completely finishes burning?"
+        ]
     },
     {
         "title": "The Handshake Protocol at the Diplomatic Summit",
@@ -77,7 +131,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "45 handshakes. The formula is n(n-1)/2. For 10 people: (10 * 9) / 2 = 45.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "The first diplomat shakes hands with 9 other people.",
+            "When calculating the second diplomat's handshakes, remember you already counted their handshake with the first diplomat.",
+            "Try adding the sequence: 9 + 8 + 7... alternatively, think of the combination formula for choosing 2 people from a group of 10."
+        ]
     },
     {
         "title": "The Torn Book Page Number Deduction",
@@ -85,7 +145,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Pages 25 and 26. The sum of n pages is n(n+1)/2. If the book had 173 pages, the total sum is 15051. 15051 - 15000 = 51. The torn sheet contains two consecutive pages that sum to 51, which are 25 and 26.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "The formula for the sum of all pages in a book from 1 to N is N(N+1)/2.",
+            "You need to find a total book page count (N) where the mathematical sum is just slightly larger than 15,000.",
+            "If a single sheet of paper is torn out of a book, it will always contain two consecutive numbers, one odd and one even."
+        ]
     },
     {
         "title": "The South Pointing Bear Color Logic",
@@ -93,7 +159,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "White. The only place on Earth where you can walk 1 mile South, 1 mile East, and 1 mile North to arrive at the same starting point is the North Pole. Therefore, it must be a polar bear.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "This puzzle is not about biology; it is about geometry and the shape of the Earth.",
+            "Walking 'East' means you are walking along a line of latitude. Walking 'South' and 'North' means you are walking along lines of longitude.",
+            "Where is the only place on a globe where all lines of longitude intersect at a single point?"
+        ]
     },
     {
         "title": "The Circular Track Runner Overtaking Puzzle",
@@ -101,7 +173,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "12 minutes. In 12 minutes, Runner A will have completed 3 laps, and Runner B will have completed 2 laps. Runner A will be exactly one full lap ahead, overtaking B.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Do not try to calculate their actual running speeds. Focus on the time it takes to complete full laps.",
+            "For Runner A to 'overtake' Runner B, Runner A must have completed exactly one more full lap than Runner B.",
+            "Look for the least common multiple (LCM) of their lap times to find when they sync up."
+        ]
     },
     {
         "title": "The Five Books Overlapping Shelf Constraints",
@@ -109,7 +187,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "English, Art, History, Science, Math. (History is 3rd. Science is 4th. English is 1st or 5th. Math and Art must be separated. If English is 1st, Art is 2nd, and Math is 5th).",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Start with the absolutes. There are 5 spots. Place History in spot #3.",
+            "If History is in spot #3, where exactly does Science go? Place it now.",
+            "English must be at an extreme end (spot #1 or #5). Test both scenarios. In which scenario can you successfully separate Math and Art?"
+        ]
     },
     {
         "title": "The River Crossing of the Fox, Goose, and Grain",
@@ -117,7 +201,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "1. Take Goose across. 2. Return empty. 3. Take Fox across. 4. Bring Goose back. 5. Take Grain across. 6. Return empty. 7. Take Goose across.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Identify the troublemaker. Who is the only item that causes problems with both of the other items?",
+            "You must take the Goose across first. When you go back and bring the Fox across, you can't leave them together on the far side.",
+            "It is completely legal to take an item BACK to the starting side with you."
+        ]
     },
     {
         "title": "The Three Hats and the Blind Wise Man",
@@ -125,7 +215,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Black. If the blind man had a white hat, and the 2nd had a white hat, the 1st would know he has black. Since the 1st didn't know, there's at most 1 white hat between the 2nd and 3rd. Since the 2nd didn't know, the 3rd cannot have a white hat (otherwise the 2nd would know he had black). Thus, the 3rd must have Black.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "There are only 2 white hats total. If the first man looked and saw two white hats on the other men, he would instantly know his hat was black.",
+            "Since the first man stayed silent, the second and third men must be wearing either one white and one black hat, or two black hats.",
+            "Put yourself in the shoes of the second man. He knows the first man's silence means there aren't two white hats. If he looked at the blind man and saw a white hat, what would he deduce?"
+        ]
     },
     {
         "title": "The Missing Dollar Accounting Illusion",
@@ -133,7 +229,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "There is no missing dollar. The math in the question is deliberately flawed. The $27 paid by the guests already includes the $2 kept by the bellboy. ($25 for the room + $2 for the bellboy = $27 paid).",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "Do not trust the arithmetic provided in the puzzle's final sentence. It is designed to mislead you.",
+            "Track the exact location of all the physical cash. Where is the $30 right now?",
+            "The guests paid $27 total out of pocket. Out of that $27, the manager has $25 and the bellboy has $2. Why would you ADD the bellboy's $2 to the $27?"
+        ]
     },
     {
         "title": "The Clock Face Division into Equal Sums",
@@ -141,7 +243,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "The total sum is 78, so each region must equal 26. Line 1: Between 10/11 and 2/3 (Region has 11, 12, 1, 2 = 26). Line 2: Between 8/9 and 4/5 (Region has 9, 10, 3, 4 = 26). The final region has 5, 6, 7, 8 = 26.",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "First, calculate the total sum of all the numbers on the clock face (1 + 2 + 3... + 12).",
+            "If you divide the total sum by 3, you will find the exact mathematical target that each region must equal.",
+            "Each region must equal 26. Look for groups of consecutive numbers on the clock dial that add up to exactly 26."
+        ]
     },
     {
         "title": "The Six Matchsticks Equilateral Triangles",
@@ -149,7 +257,13 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Build a 3D shape instead of a 2D one. Arrange the 6 matchsticks to form a regular tetrahedron (a 3D pyramid with a triangular base).",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "If you try to solve this by laying the matchsticks flat on a table, you will always run out of sticks or create intersecting lines.",
+            "The puzzle does not state that the triangles must remain flat on a 2D plane.",
+            "How can you use the third dimension to build a pyramid-like structure?"
+        ]
     },
     {
         "title": "The Seven-Minute and Eleven-Minute Hourglass Timing",
@@ -157,6 +271,12 @@
         "difficulty": "Easy",
         "category": "Analytical Reasoning",
         "referenceSolution": "Start both hourglasses. When the 7-minute one runs out, start timing (0 minutes). The 11-minute hourglass has 4 minutes left. When the 11-minute one runs out (4 minutes), flip it. When it runs out again (11 minutes), exactly 15 minutes have passed (4 + 11 = 15).",
-        "isActive": true
+        "isActive": true,
+        "baseScore": 100,
+        "hints": [
+            "You don't necessarily have to start measuring your 15 minutes from the exact moment you first flip the hourglasses.",
+            "If you start both hourglasses simultaneously, what happens the exact moment the 7-minute hourglass runs out?",
+            "At the 7-minute mark, the 11-minute hourglass still has some sand left. How much sand is left, and how can you use that as your starting point?"
+        ]
     }
 ]

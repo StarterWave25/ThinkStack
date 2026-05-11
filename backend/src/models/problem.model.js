@@ -6,7 +6,9 @@ const problemSchema = new mongoose.Schema({
     difficulty: { type: String, required: true },
     category: { type: String, required: true },
     referenceSolution: { type: String, required: true },
+    hints: { type: [], required: true },
     isActive: { type: Boolean, required: true },
 });
+
 const Problem = mongoose.model("Problem", problemSchema);
 module.exports = Problem;
