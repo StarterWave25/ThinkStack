@@ -7,6 +7,7 @@ import ChangePassword from "./components/ChangePassword"
 import Home from "./pages/Home"
 import Problems from "./pages/Problems"
 import Problem from "./pages/Problem"
+import Solution from "./pages/Solution"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/problems" element={<Problems />} />
           <Route path="/problem/:id" element={<Problem />} />
+          <Route path="/solution/:id" element={<Solution />} />
         </Routes>
       </BrowserRouter>
     </>
