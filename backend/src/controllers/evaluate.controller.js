@@ -51,14 +51,15 @@ const evaluateProblem = async (req, res) => {
             "reflection",
         ];
         for (let i = 0; i < 3; i++) {
-            if ((draft.steps.validSteps[i] === "", {}));
-            return respond(
-                res,
-                false,
-                400,
-                "5 steps must be completed to submit!",
-                {},
-            );
+            console.log(draft.steps[validSteps[i]] === "");
+            if (draft.steps[validSteps[i]] === "")
+                return respond(
+                    res,
+                    false,
+                    400,
+                    "5 steps must be completed to submit!",
+                    {},
+                );
         }
         const aiResult = await AIReview(draft, problem);
         const penaltyApplied = SCORING_RULES.HINT_PENALTIES[draft.hintsUsed];

@@ -9,7 +9,6 @@ const groq = new Groq({
 const AIReview = async (draft, problem) => {
     try {
         const prompt = getPrompt(draft, problem);
-        console.log(prompt);
         const completion = await groq.chat.completions.create({
             model: "llama-3.3-70b-versatile",
             messages: [
