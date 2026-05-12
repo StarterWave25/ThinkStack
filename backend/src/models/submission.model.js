@@ -46,6 +46,7 @@ const submissionSchema = new mongoose.Schema({
         weaknesses: { type: String, default: "", required: true },
         howToImprove: { type: String, default: "", required: true },
     },
+    createdAt: { type: Date, default: Date.now },
 });
 
 const Submission = mongoose.model("Submission", submissionSchema);

@@ -51,7 +51,6 @@ const evaluateProblem = async (req, res) => {
             "reflection",
         ];
         for (let i = 0; i < 3; i++) {
-            console.log(draft.steps[validSteps[i]] === "");
             if (draft.steps[validSteps[i]] === "")
                 return respond(
                     res,

@@ -8,6 +8,7 @@ const authRouter = require("./src/routes/auth.routes");
 const problemsRouter = require("./src/routes/problem.routes");
 const draftsRouter = require("./src/routes/draft.routes");
 const evaluateRouter = require("./src/routes/evaluate.routes");
+const userRouter = require("./src/routes/user.routes");
 const { authMiddleware } = require("./src/middlewares/user.middleware");
 const morgan = require("morgan");
 
@@ -32,6 +33,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/problems", authMiddleware, problemsRouter);
 app.use("/api/drafts", authMiddleware, draftsRouter);
 app.use("/api/evaluate", authMiddleware, evaluateRouter);
+app.use("/api/user", authMiddleware, userRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("\n\n--------------------");
