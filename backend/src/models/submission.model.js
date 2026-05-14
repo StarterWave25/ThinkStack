@@ -19,6 +19,13 @@ const submissionSchema = new mongoose.Schema({
         solution: { type: String, default: "", required: true },
         reflection: { type: String, default: "", required: true },
     },
+    stepScores: {
+        understanding: { type: Number, max: 20 },
+        breakdown: { type: Number, max: 20 },
+        approach: { type: Number, max: 20 },
+        solution: { type: Number, max: 20 },
+        reflection: { type: Number, max: 20 },
+    },
     hintsUsed: {
         type: Number,
         default: 0,
@@ -41,11 +48,21 @@ const submissionSchema = new mongoose.Schema({
         default: [],
         required: true,
     },
+    thinkingPatterns: {
+        type: [String],
+        default: [],
+        required: true,
+    },
+    expertComparison: {
+        expertUnderstanding: { type: String, required: true },
+        expertReasoningFlow: { type: String, required: true },
+    },
     feedback: {
         strengths: { type: String, default: "", required: true },
         weaknesses: { type: String, default: "", required: true },
         howToImprove: { type: String, default: "", required: true },
     },
+    createdAt: { type: Date, default: Date.now },
 });
 
 const Submission = mongoose.model("Submission", submissionSchema);
