@@ -112,10 +112,11 @@ const saveDraft = async (req, res) => {
                 currentStep: req.body.currentStep,
             },
         };
-        if (req.body.isHintUsed)
+        if (req.body.isHintUsed) {
             updateData.$inc = {
                 hintsUsed: 1,
             };
+        }
         const draft = await Draft.findOneAndUpdate(
             {
                 problemId: req.body.problemId,

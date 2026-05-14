@@ -20,10 +20,7 @@ const AIReview = async (draft, problem) => {
             temperature: 0.3,
         });
         if (!completion) {
-            return res.status(500).json({
-                success: false,
-                message: "AI evaluation failed",
-            });
+            return new Error("Ai evaluation failed!");
         }
         const responseText = completion.choices[0].message.content;
         const cleanJsonString = responseText
