@@ -90,4 +90,4 @@ const getSubmissionById = async (req, res) => {
     }
 };
 
-module.exports = { getUserDashboard, getUserHistory, getSubmissionById };
+module.exports = { getUserDashboard, getSubmissionById };

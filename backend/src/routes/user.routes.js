@@ -1,6 +1,5 @@
 const express = require("express");
 const {
-    getUserHistory,
     getSubmissionById,
     getUserDashboard,
 } = require("../controllers/user.controller");
