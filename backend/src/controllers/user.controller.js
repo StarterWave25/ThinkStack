@@ -4,70 +4,63 @@ const Submission = require("../models/submission.model");
 
 /**
  * 
- * Controller to calculate user stats and serve to frontend.
+ * Controller to calculate user stats and serve to frontend along with the user's submissions history.
  * Calculates the stats based on the submissions done by the user.
  * 
  * Input => No input is required (required userId is extracted from cookies so no need to manually send!)
- * Output => Returns stats:[
+ * Output => Returns dashboardData: {stats:[
  *      {
             "totalSolved"
             "averageScore"
             "totalHintsUsed"
-        }
- * ] Note:- stats are inside data property of the response object inform of array and the stat object is inside the array as first element.
+        },
+        submissions:{ 
+            [**List of user's problem's submissions.**]
+         }
+    }
+ * ] Note:- stats and submissions are inside data property of the response object inform of array and the stat object is inside the array as first element.
  * 
  */
-const getUserStats = async (req, res) => {
+const getUserDashboard = async (req, res) => {
     try {
-        const stats = await Submission.aggregate([
+        const dashboardData = await Submission.aggregate([
             {
                 $match: {
                     userId: new mongoose.Types.ObjectId(req.user.id),
                 },
             },
             {
-                $group: {
-                    _id: null,
-                    totalSolved: {
-                        $sum: 1,
-                    },
-                    averageScore: {
-                        $avg: "$finalScore",
-                    },
-                    totalHintsUsed: {
-                        $sum: "$hintsUsed",
-                    },
+                $facet: {
+                    stats: [
+                        {
+                            $group: {
+                                _id: null,
+                                totalSolved: {
+                                    $sum: 1,
+                                },
+                                averageScore: {
+                                    $avg: "$finalScore",
+                                },
+                                totalHintsUsed: {
+                                    $sum: "$hintsUsed",
+                                },
+                            },
+                        },
+                    ],
+                    submissions: [
+                        {
+                            $sort: {
+                                createdAt: -1,
+                            },
+                        },
+                    ],
                 },
             },
         ]);
-        return respond(res, true, 200, stats, {});
+        return respond(res, true, 200, dashboardData, {});
     } catch (error) {
         console.log("\n\n😱 Error fetching user stats!:", error);
         return respond(res, false, 500, "Error fetching user stats!", {});
-    }
-};
-
-/**
- *
- * Controller that returns user's history of submissions.
- * Returns a list of objects which are essentially the Submission schema objects.
- * Refer submission schema for more details on the properties returned in response.
- */
-const getUserHistory = async (req, res) => {
-    try {
-        const submissions = await Submission.find({ userId: req.user.id });
-        if (!submissions)
-            return respond(
-                res,
-                true,
-                200,
-                "No submissions by current user!",
-                {},
-            );
-        return respond(res, true, 200, submissions, {});
-    } catch (error) {
-        console.log("\n\n😱 Error fetching User History!:", error);
-        return respond(res, false, 500, "Error fetching User History!", {});
     }
 };
 
@@ -97,4 +90,4 @@ const getSubmissionById = async (req, res) => {
     }
 };
 
-module.exports = { getUserStats, getUserHistory, getSubmissionById };
+module.exports = { getUserDashboard, getUserHistory, getSubmissionById };

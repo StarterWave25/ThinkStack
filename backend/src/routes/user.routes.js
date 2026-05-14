@@ -1,14 +1,13 @@
 const express = require("express");
 const {
-    getUserStats,
     getUserHistory,
     getSubmissionById,
+    getUserDashboard,
 } = require("../controllers/user.controller");
 
 const router = express.Router();
 
-router.get("/stats", getUserStats);
-router.get("/history", getUserHistory);
+router.get("/dashboard", getUserDashboard);
 router.get("/submissions/:submissionId", getSubmissionById);
 
 module.exports = router;
