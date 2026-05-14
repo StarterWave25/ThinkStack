@@ -61,6 +61,7 @@ const evaluateProblem = async (req, res) => {
                 );
         }
         const aiResult = await AIReview(draft, problem);
+        if (aiResult instanceof Error) throw aiResult;
         const penaltyApplied = SCORING_RULES.HINT_PENALTIES[draft.hintsUsed];
         let finalScore = aiResult.aiBaseScore - penaltyApplied;
         if (finalScore < 0) finalScore = 0;
@@ -68,17 +69,20 @@ const evaluateProblem = async (req, res) => {
             userId: req.user.id,
             problemId: req.params.problemId,
             steps: draft.steps,
+            stepScores: aiResult.stepScores,
             aiBaseScore: aiResult.aiBaseScore,
             hintsUsed: draft.hintsUsed,
             penaltyApplied,
             finalScore,
             mistakeTags: aiResult.mistakeTags,
+            thinkingPatterns: aiResult.thinkingPatterns,
+            expertComparison: aiResult.expertComparison,
             feedback: aiResult.feedback,
         });
 
         //await Draft.deleteById(draft._id);
 
-        return respond(res, true, 200, { submission }, {});
+        return respond(res, true, 200, submission, {});
     } catch (error) {
         console.log(
             "\n\n😱 Error evaluating and submitting the problem",
