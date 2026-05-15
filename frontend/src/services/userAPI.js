@@ -17,7 +17,22 @@ export const userAPI = createApi({
       query: (id) => `/submissions/${id}`,
       providesTags: (result, error, id) => [{ type: "Submission", id }],
     }),
+     endpoints: (builder) => ({
+        updateProfile: builder.mutation({
+            query: (formData) => ({
+                url: "/update-profile",
+                method: "PUT",
+                body: formData,
+            }),
+        }),
+        uploadPhoto: builder.mutation({
+            query: (formData) => ({
+                url: "/profile-picture",
+                method: "PUT",
+                body: formData,
+            }),
+        }),
   }),
 });
-
-export const { useGetUserDashboardQuery, useGetSubmissionByIdQuery } = userAPI;
+  
+export const { useUpdateProfileMutation, useUploadPhotoMutation, useGetUserDashboardQuery, useGetSubmissionByIdQuery } = userAPI;

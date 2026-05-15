@@ -1,4 +1,3 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -8,14 +7,13 @@ import { draftAPI } from "../services/draftAPI";
 import { evaluateAPI } from "../services/evaluateAPI";
 import { userAPI } from "../services/userAPI";
 
-
 export const store = configureStore({
     reducer: {
         [authAPI.reducerPath]: authAPI.reducer,
         [problemsAPI.reducerPath]: problemsAPI.reducer,
         [draftAPI.reducerPath]: draftAPI.reducer,
         [evaluateAPI.reducerPath]: evaluateAPI.reducer,
-        [userAPI.reducerPath]: userAPI.reducer
+        [userAPI.reducerPath]: userAPI.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
@@ -23,7 +21,7 @@ export const store = configureStore({
             problemsAPI.middleware,
             draftAPI.middleware,
             evaluateAPI.middleware,
-            userAPI.middleware
+            userAPI.middleware,
         ),
 });
 
