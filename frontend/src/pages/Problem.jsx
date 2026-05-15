@@ -23,7 +23,7 @@ function Problem() {
             setIsHintsTimerCompleted(true);
         }, 120000);
         return () => clearTimeout(timer);
-    });
+    }, [id]);
 
     if (isLoading) return <div className="problem-loading">Loading...</div>;
     if (error || (response && !response.OK)) return <div className="problem-error">Something went wrong.</div>;
@@ -46,7 +46,7 @@ function Problem() {
                             key={step}
                             className={activeStep === step ? "active" : ""}
                             onClick={() => setActiveStep(step)}
-                            disabled={draft.steps[step] ? false : true}
+                            disabled={step !== activeStep && step !== STEPS[0] && !draft?.steps?.[step]}
                         >
                             {step}
                         </button>
