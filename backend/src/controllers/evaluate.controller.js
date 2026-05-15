@@ -60,6 +60,18 @@ const evaluateProblem = async (req, res) => {
                     {},
                 );
         }
+        const alreadySubmitted = await Submission.findOne({
+            userId: req.user.id,
+            problemId: req.params.problemId,
+        });
+        if (alreadySubmitted)
+            return respond(
+                res,
+                true,
+                200,
+                { submission: alreadySubmitted },
+                {},
+            );
         const aiResult = await AIReview(draft, problem);
         if (aiResult instanceof Error) throw aiResult;
         const penaltyApplied = SCORING_RULES.HINT_PENALTIES[draft.hintsUsed];
