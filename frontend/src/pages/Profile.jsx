@@ -295,7 +295,7 @@ const Profile = () => {
 
       <br />
 
-      {/* --- SECTION 4: LOGOUT --- */}
+      {/* -- SECTION 4: LOGOUT -- */}
       <button
         onClick={handleLogout}
         style={{ color: "white", backgroundColor: "red" }}
