@@ -29,7 +29,7 @@ const register = async (req, res) => {
         const hashedPassword = await hashPassword(password);
 
         const newUser = new User({
-            name,
+            username: name,
             email,
             password: hashedPassword,
         });
@@ -221,8 +221,12 @@ const getMe = async (req, res) => {
         if (!req.cookies || !req.cookies.jwtToken) {
             return respond(res, false, 400, "User not logged in!", {});
         }
-        const user = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
-        return respond(res, true, 200, { email: user.email }, {});
+        const decoded = jwt.verify(
+            req.cookies.jwtToken,
+            process.env.JWT_SECRET,
+        );
+        const user = await User.findById(decoded.id);
+        return respond(res, true, 200, user, {});
     } catch (error) {
         console.log("\n\n😱 Error during Getting me:", error);
         return respond(res, false, 500, "Get me failed", {});

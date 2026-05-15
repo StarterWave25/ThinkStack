@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
 const connectDB = require("./src/config/db");
 const authRouter = require("./src/routes/auth.routes");
 const problemsRouter = require("./src/routes/problem.routes");
@@ -22,6 +21,7 @@ app.use(
         credentials: true,
     }),
 );
+app.use("/src/uploads", express.static("src/uploads"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
