@@ -5,44 +5,43 @@ import './styles/Problems.css'
 
 function Problems() {
 
-  const [difficulty, setDifficulty] = useState("");
+    const [difficulty, setDifficulty] = useState("");
 
-  return (
+    return (
 
-    <section className="problems-page">
+        <section className="problems-page">
 
-      <div className="problems-filter">
+            <div className="problems-filter">
 
-        <select
-          value={difficulty}
-          onChange={(e) => setDifficulty(e.target.value)}
-          className="difficulty-select"
-        >
+                <select
+                    value={difficulty}
+                    onChange={(e) => setDifficulty(e.target.value)}
+                    className="difficulty-select">
 
-          <option value="">
-            No Difficulty Selected
-          </option>
+                    <option value="">
+                        No Difficulty Selected
+                    </option>
 
-          <option value="Easy">
-            Easy
-          </option>
+                    <option value="Easy">
+                        Easy
+                    </option>
 
-          <option value="Medium">
-            Medium
-          </option>
+                    <option value="Medium">
+                        Moderate
+                    </option>
 
-          <option value="Hard">
-            Hard
-          </option>
+                    <option value="Hard">
+                        Hard
+                    </option>
 
-        </select>
+                </select>
 
-      </div>
+            </div>
 
-      <ProblemsList difficulty={difficulty} />
+            <ProblemsList difficulty={difficulty} />
 
-    </section>
-  );
+        </section>
+    );
 }
 
 export default Problems;

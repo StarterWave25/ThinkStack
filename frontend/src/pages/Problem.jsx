@@ -34,7 +34,7 @@ function Problem() {
             <div className="problem-overview">
                 <h1>{problem?.title}</h1>
                 <div className="problem-meta">
-                    <span>{problem?.difficulty}</span> | <span>{problem?.category}</span>
+                    <span>{problem?.difficulty === 'Medium' ? 'Moderate' : problem.difficulty}</span> | <span>{problem?.category}</span>
                 </div>
                 <p>{problem?.description}</p>
             </div>

@@ -22,9 +22,6 @@ function Login() {
 
     const isLoggedIn = !!data;
 
-    console.log(isLoggedIn);
-
-    // console.log(isLoggedIn, data);
     useEffect(() => {
         if (!isAuthLoading && !isAuthFetching && isLoggedIn) {
             navigate('/home');
@@ -47,16 +44,18 @@ function Login() {
             <h2>Login</h2>
 
             <InputItem
+                label={'Email'}
                 type={'email'}
-                placeholder={'Email'}
+                placeholder={'Enter your Email'}
                 fieldProps={formik.getFieldProps("email")}
                 touched={formik.touched.email}
                 errors={formik.errors.email}
             ></InputItem>
 
             <InputItem
+                label={'Password'}
                 type={'password'}
-                placeholder={'Password'}
+                placeholder={'Enter your Password'}
                 fieldProps={formik.getFieldProps("password")}
                 touched={formik.touched.password}
                 errors={formik.errors.password}

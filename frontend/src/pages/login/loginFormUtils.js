@@ -1,4 +1,4 @@
-export function validateLoginForm(values) {
+export const validateLoginForm = (values) => {
     const errors = {};
 
     if (!values.email) {
@@ -18,7 +18,7 @@ export function validateLoginForm(values) {
     return errors;
 }
 
-export async function loginSubmitHandler(values, loginUser, navigate) {
+export const loginSubmitHandler = async (values, loginUser, navigate) => {
     try {
         const data = await loginUser(values).unwrap();
         console.log("Login Success:", data);
@@ -28,7 +28,7 @@ export async function loginSubmitHandler(values, loginUser, navigate) {
     }
 }
 
-export function handleForgotPassword() {
+export const handleForgotPassword = async () => {
     const email = formik.values.email;
 
     if (!email) {
