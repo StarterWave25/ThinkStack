@@ -74,6 +74,15 @@ const saveDraft = async (req, res) => {
                 false,
                 400,
                 "Value for the Current step is required for saving the draft!",
+                {},
+            );
+        if (req.body.value.length < 80)
+            return respond(
+                res,
+                false,
+                400,
+                "Answer should be atleast 80 characters or more!",
+                {},
             );
         if (!typeof req.body.isHintUsed === "boolean")
             return respond(
