@@ -221,8 +221,14 @@ const getMe = async (req, res) => {
         if (!req.cookies || !req.cookies.jwtToken) {
             return respond(res, false, 400, "User not logged in!", {});
         }
-        const user = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
-        return respond(res, true, 200, { email: user.email }, {});
+        const decoded = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
+        const user = await User.findById(decoded.id).select("-password");
+
+        if (!user) {
+            return respond(res, false, 404, "User not found!", {});
+        }
+
+        return respond(res, true, 200, user, {});
     } catch (error) {
         console.log("\n\n😱 Error during Getting me:", error);
         return respond(res, false, 500, "Get me failed", {});
@@ -256,6 +262,38 @@ const logout = async (req, res) => {
     }
 };
 
+const updateProfile = async (req, res) => {
+    try {
+        const { firstName, lastName, username } = req.body;
+        const userId = req.user.id;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return respond(res, false, 404, "User not found.");
+        }
+
+        // Check if username is being changed and if it's already taken
+        if (username && username !== user.username) {
+            const existingUser = await User.findOne({ username });
+            if (existingUser) {
+                return respond(res, false, 400, "Username is already taken.");
+            }
+            user.username = username;
+        }
+
+        user.firstName = firstName || user.firstName;
+        user.lastName = lastName || user.lastName;
+
+        await user.save();
+
+        return respond(res, true, 200, "Profile updated successfully!");
+
+    } catch (error) {
+        console.log("\n\n😱 Error updating profile:", error);
+        return respond(res, false, 500, "Failed to update profile.");
+    }
+};
+
 module.exports = {
     register,
     login,
@@ -264,4 +302,5 @@ module.exports = {
     changePassword,
     getMe,
     logout,
+    updateProfile,
 };

@@ -44,6 +44,9 @@ function Navbar() {
               <li className="navigate-link">
                 <NavLink to="/problems">Problems</NavLink>
               </li>
+              <li className="navigate-link">
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
               <button
                 onClick={handleLogout}
                 className="logout-button"

@@ -56,13 +56,21 @@ export const authAPI = createApi({
             query: () => "/me",
             providesTags: ["User"]
         }),
+        updateProfile: builder.mutation({
+            query: (formData) => ({
+                url: "/update-profile",
+                method: "POST",
+                body: formData,
+            }),
+            invalidatesTags: ["User"],
+        }),
         logout: builder.mutation({
             query: () => ({
                 url: "/logout",
                 method: "POST"
             }),
             invalidatesTags: ["User"]
-        })
+        }),
     }),
 
 });
@@ -74,5 +82,6 @@ export const {
     useResetPasswordMutation,
     useChangePasswordMutation,
     useGetMeQuery,
+    useUpdateProfileMutation,
     useLogoutMutation
 } = authAPI;
