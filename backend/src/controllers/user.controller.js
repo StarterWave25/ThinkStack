@@ -56,6 +56,26 @@ const getUserDashboard = async (req, res) => {
                                 createdAt: -1,
                             },
                         },
+                        {
+                            $lookup: {
+                                from: "problems",
+                                localField: "problemId",
+                                foreignField: "_id",
+                                as: "problemInfo",
+                            },
+                        },
+                        {
+                            $addFields: {
+                                problemTitle: {
+                                    $arrayElemAt: ["$problemInfo.title", 0],
+                                },
+                            },
+                        },
+                        {
+                            $project: {
+                                problemInfo: 0,
+                            },
+                        },
                     ],
                 },
             },

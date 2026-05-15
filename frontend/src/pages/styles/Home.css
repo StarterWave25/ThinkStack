@@ -1,22 +1,71 @@
 .home-page {
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .home-content {
-  text-align: center;
-  max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
-.home-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.dashboard-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.home-description {
-  font-size: 1.1rem;
-  line-height: 1.8;
+.stat-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.submissions-history {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.submissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submission-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.submission-info {
+    display: flex;
+    gap: 20px;
+}
+
+.view-link {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
