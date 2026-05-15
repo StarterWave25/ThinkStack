@@ -44,6 +44,12 @@ function Navbar() {
             </> :
             <>
               <li className="navigate-link">
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
+              <li className="navigate-link">
+                <NavLink to="/home">Home</NavLink>
+              </li>
+              <li className="navigate-link">
                 <NavLink to="/problems">Problems</NavLink>
               </li>
               <button

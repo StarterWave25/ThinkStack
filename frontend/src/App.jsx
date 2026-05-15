@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Problems from "./pages/Problems";
 import Problem from "./pages/Problem";
 import Solution from "./pages/Solution";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/problems" element={<Problems />} />
           <Route path="/problem/:id" element={<Problem />} />
           <Route path="/solution/:id" element={<Solution />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </>

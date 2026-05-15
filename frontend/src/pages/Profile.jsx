@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout as logoutAction } from "../app/authSlice";
 import {
     useGetMeQuery,
     useChangePasswordMutation,
     useLogoutMutation,
-    // Ivi rendu nuvvu authAPI.js lo kothaga add cheyyali (chudu kinda cheptha)
+    authAPI,
 } from "../services/authAPI";
 import {
     useUpdateProfileMutation,
@@ -18,7 +17,6 @@ const Profile = () => {
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
 
-    // API Hooks
     const { data: profileData, isLoading } = useGetMeQuery();
     const [changePassword, { isLoading: isChangingPwd }] =
         useChangePasswordMutation();
@@ -28,14 +26,13 @@ const Profile = () => {
         useUploadPhotoMutation();
     const [apiLogout] = useLogoutMutation();
 
-    const user = profileData?.user;
+    const user = profileData?.data;
+    console.log(profileData)
 
-    // UI Toggle States
     const [isEditingProfile, setIsEditingProfile] = useState(false);
     const [isChangingPassword, setIsChangingPassword] = useState(false);
     const [message, setMessage] = useState({ type: "", text: "" });
 
-    // Form Data States
     const [profileForm, setProfileForm] = useState({
         firstName: "",
         lastName: "",
@@ -47,7 +44,6 @@ const Profile = () => {
         confirmPassword: "",
     });
 
-    // Populate profile form when user data is loaded
     useEffect(() => {
         if (user) {
             setProfileForm({
@@ -58,13 +54,11 @@ const Profile = () => {
         }
     }, [user]);
 
-    // Input Handlers
     const handleProfileChange = (e) =>
         setProfileForm({ ...profileForm, [e.target.name]: e.target.value });
     const handlePasswordChange = (e) =>
         setPasswordForm({ ...passwordForm, [e.target.name]: e.target.value });
 
-    // 1. Submit Profile Updates
     const handleProfileSubmit = async (e) => {
         e.preventDefault();
         setMessage({ type: "", text: "" });
@@ -74,7 +68,7 @@ const Profile = () => {
                 type: "success",
                 text: "Profile updated successfully!",
             });
-            setIsEditingProfile(false); // Close edit mode on success
+            setIsEditingProfile(false); 
         } catch (err) {
             setMessage({
                 type: "error",
@@ -83,7 +77,6 @@ const Profile = () => {
         }
     };
 
-    // 2. Submit Password Updates
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
         setMessage({ type: "", text: "" });
@@ -108,7 +101,7 @@ const Profile = () => {
                 newPassword: "",
                 confirmPassword: "",
             });
-            setIsChangingPassword(false); // Close password form on success
+            setIsChangingPassword(false); 
         } catch (err) {
             setMessage({
                 type: "error",
@@ -117,7 +110,6 @@ const Profile = () => {
         }
     };
 
-    // 3. Handle Photo Upload
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -133,15 +125,17 @@ const Profile = () => {
         }
     };
 
-    // 4. Logout
     const handleLogout = async () => {
         try {
-            await apiLogout().unwrap();
+            const response = await apiLogout().unwrap();
+            if (response.OK) {
+                dispatch(authAPI.util.resetApiState());
+                navigate("/login");
+            }
         } catch (err) {
-            console.error(err);
+            console.error("Error Logoutting user!", err);
+            alert('Error in Logout');
         }
-        dispatch(logoutAction());
-        navigate("/login");
     };
 
     if (isLoading) return <div>Loading...</div>;
@@ -159,7 +153,6 @@ const Profile = () => {
                 </div>
             )}
 
-            {/* --- SECTION 1: PROFILE HEADER & PHOTO --- */}
             <div>
                 <img
                     src={user?.profilePhotoUrl || "/favicon.png"}
@@ -182,7 +175,6 @@ const Profile = () => {
 
             <hr />
 
-            {/* --- SECTION 2: USER DETAILS (VIEW / EDIT MODE) --- */}
             <div>
                 <h3>Personal Details</h3>
                 {!isEditingProfile ? (
@@ -247,7 +239,6 @@ const Profile = () => {
 
             <hr />
 
-            {/* --- SECTION 3: PASSWORD MANAGEMENT --- */}
             <div>
                 {!isChangingPassword ? (
                     <button onClick={() => setIsChangingPassword(true)}>
@@ -308,7 +299,6 @@ const Profile = () => {
 
             <br />
 
-            {/* -- SECTION 4: LOGOUT -- */}
             <button
                 onClick={handleLogout}
                 style={{ color: "white", backgroundColor: "red" }}
