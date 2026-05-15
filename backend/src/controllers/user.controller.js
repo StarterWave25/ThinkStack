@@ -123,4 +123,24 @@ const updateProfilePic = async (req, res) => {
     }
 };
 
-module.exports = { getUserDashboard, getSubmissionById, updateProfilePic };
+const updateProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return respond(res, false, 404, "User doesn't exist!", {});
+        user.username = req.body.username;
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        await user.save();
+        return respond(res, true, 200, user, {});
+    } catch (error) {
+        console.log("\n\n😱 Error updating profile details!:", error);
+        return respond(res, false, 500, "Error updating profile details!", {});
+    }
+};
+
+module.exports = {
+    getUserDashboard,
+    getSubmissionById,
+    updateProfilePic,
+    updateProfile,
+};
