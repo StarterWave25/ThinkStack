@@ -1,12 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import { useGetMeQuery, useLogoutMutation } from "../services/authAPI";
+import { useGetMeQuery, useLogoutMutation, authAPI } from "../services/authAPI";
 import './styles/Navbar.css'
 
 function Navbar() {
 
   const [logoutUser] = useLogoutMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     data,
@@ -16,9 +18,9 @@ function Navbar() {
 
   async function handleLogout() {
     try {
-      const data = await logoutUser().unwrap();
-      console.log(data);
-      if (data.Ok) {
+      const response = await logoutUser().unwrap();
+      if (response.OK) {
+        dispatch(authAPI.util.resetApiState());
         navigate('/login');
       }
     } catch (e) {

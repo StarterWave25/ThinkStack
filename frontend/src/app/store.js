@@ -6,6 +6,7 @@ import { authAPI } from "../services/authAPI";
 import { problemsAPI } from "../services/problemsAPI";
 import { draftAPI } from "../services/draftAPI";
 import { evaluateAPI } from "../services/evaluateAPI";
+import { userAPI } from "../services/userAPI";
 
 
 export const store = configureStore({
@@ -13,14 +14,16 @@ export const store = configureStore({
         [authAPI.reducerPath]: authAPI.reducer,
         [problemsAPI.reducerPath]: problemsAPI.reducer,
         [draftAPI.reducerPath]: draftAPI.reducer,
-        [evaluateAPI.reducerPath]: evaluateAPI.reducer
+        [evaluateAPI.reducerPath]: evaluateAPI.reducer,
+        [userAPI.reducerPath]: userAPI.reducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
             authAPI.middleware,
             problemsAPI.middleware,
             draftAPI.middleware,
-            evaluateAPI.middleware
+            evaluateAPI.middleware,
+            userAPI.middleware
         ),
 });
 
