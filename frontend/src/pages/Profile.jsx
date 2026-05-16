@@ -6,7 +6,6 @@ import {
   useGetMeQuery,
   useChangePasswordMutation,
   useLogoutMutation,
-  // Ivi rendu nuvvu authAPI.js lo kothaga add cheyyali (chudu kinda cheptha)
   useUpdateProfileMutation,
   useUploadPhotoMutation,
 } from "../services/authAPI";
