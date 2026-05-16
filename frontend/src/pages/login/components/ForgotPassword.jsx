@@ -1,6 +1,9 @@
 import { useFormik } from "formik";
 import { useResetPasswordMutation } from "../../../services/authAPI";
 import { useParams } from "react-router-dom";
+import InputItem from "../../../reusable-components/InputItem";
+import Button from "../../../reusable-components/Button";
+import "../styles/ForgotPassword.css";
 
 function ForgotPassword() {
   const [resetPassword, { isLoading }] = useResetPasswordMutation();

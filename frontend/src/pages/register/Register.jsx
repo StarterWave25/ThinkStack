@@ -8,6 +8,7 @@ import {
 } from "./registerFormUtils";
 import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
+import "./styles/Register.css";
 
 function Register() {
     const [registerUser, { isLoading: isRegistering }] = useRegisterMutation();
