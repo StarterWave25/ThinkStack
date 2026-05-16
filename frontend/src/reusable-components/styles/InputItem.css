@@ -4,18 +4,23 @@
     gap: 0.5rem;
 }
 
-.input-field {
+.input-field,
+select,
+textarea {
     font-size: 1.1rem;
-    padding: 0.75rem 1.25rem;
-    border: 2px solid transparent;
-    outline: 2px solid gray;
-    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid gray;
+    outline: 2px solid transparent;
+    border-radius: 8px;
     transition: all 0.3s ease-in-out;
 }
 
-.input-field:focus {
+.input-field:focus,
+select:focus,
+textarea:focus {
     border: 2px solid white;
-    outline: 2px solid var(--dark-blue);
+    outline: 4px solid var(--low-blue);
+    border: 2px solid var(--dark-blue);
 }
 
 .input-error-span {

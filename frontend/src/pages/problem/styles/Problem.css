@@ -1,0 +1,51 @@
+.problem-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: clamp(1rem, 1vw, 2rem);
+}
+
+.problem-overview,
+.problem-right-pane,
+.problem-workspace {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    gap: clamp(1.25rem, 1.5vw, 1.5rem);
+}
+
+.problem-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.problem-level {
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+    font-weight: 600;
+}
+
+.problem-level::before {
+    content: '◉ ';
+}
+
+.problem-category {
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--low-dark-blue);
+}
+
+.problem-category::before {
+    content: '▶ ';
+}
+
+.problem-description {
+    font-size: clamp(1.1rem, 1.25vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+    .problem-container {
+        grid-template-columns: 1fr;
+    }
+}
