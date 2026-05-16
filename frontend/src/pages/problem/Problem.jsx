@@ -1,10 +1,8 @@
-// Harsha here you need to refactor the components.
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetProblemQuery, useSaveProblemMutation } from "../services/draftAPI";
-import Workspace from "../components/Workspace";
-import "./styles/Problem.css";
+import { useGetProblemQuery, useSaveProblemMutation } from "../../services/draftAPI";
+import Workspace from "./components/Workspace";
+import "./Problem.css";
 
 const STEPS = ["understanding", "breakdown", "approach", "solution", "reflection"];
 
@@ -23,7 +21,7 @@ function Problem() {
             setIsHintsTimerCompleted(true);
         }, 120000);
         return () => clearTimeout(timer);
-    });
+    }, [id]);
 
     if (isLoading) return <div className="problem-loading">Loading...</div>;
     if (error || (response && !response.OK)) return <div className="problem-error">Something went wrong.</div>;
@@ -34,7 +32,7 @@ function Problem() {
             <div className="problem-overview">
                 <h1>{problem?.title}</h1>
                 <div className="problem-meta">
-                    <span>{problem?.difficulty}</span> | <span>{problem?.category}</span>
+                    <span>{problem?.difficulty === 'Medium' ? 'Moderate' : problem.difficulty}</span> | <span>{problem?.category}</span>
                 </div>
                 <p>{problem?.description}</p>
             </div>
@@ -46,7 +44,7 @@ function Problem() {
                             key={step}
                             className={activeStep === step ? "active" : ""}
                             onClick={() => setActiveStep(step)}
-                            disabled={draft.steps[step] ? false : true}
+                            disabled={step !== activeStep && step !== STEPS[0] && !draft?.steps?.[step]}
                         >
                             {step}
                         </button>

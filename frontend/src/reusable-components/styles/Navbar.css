@@ -1,0 +1,15 @@
+.navigation-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+.navigate-link a {
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navigate-link a.active {
+    font-weight: 600;
+}
