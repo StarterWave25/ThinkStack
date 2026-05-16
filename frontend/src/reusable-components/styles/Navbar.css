@@ -1,15 +1,124 @@
+/* ===================================
+   NAVBAR REVAMP - ADVANCED CSS
+   =================================== */
+
+/* 5. Floating Glassmorphic Navbar */
+nav {
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--white) 10%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--white) 15%, transparent);
+  border-radius: 50px; /* Pill shape */
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--dark-blue) 15%, transparent);
+
+  position: sticky;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 90%;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  animation: nav-slide-down 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
 .navigation-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
 }
 
-.navigate-link a {
-    text-decoration: none;
-    font-size: 1rem;
+.navigation-links a {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
 }
 
-.navigate-link a.active {
-    font-weight: 600;
+.navigation-links a:hover {
+  color: var(--white);
+}
+
+.navigation-links a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 30px;
+  background: var(--blue);
+  transform: scale(0.8);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navigation-links a:hover::before,
+.navigation-links a.active::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.navigation-links a.active {
+  color: var(--white);
+}
+
+.logout-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 500;
+  color: color-mix(in srgb, red 80%, var(--dark-blue));
+  background: transparent;
+  border: 1px solid color-mix(in srgb, red 30%, transparent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background: color-mix(in srgb, red 80%, var(--dark-blue));
+  border-color: transparent;
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px color-mix(in srgb, red 40%, transparent);
+}
+
+.logout-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 768px) {
+  nav {
+    gap: 0;
+    justify-content: space-evenly;
+    width: 95%;
+    top: 1rem;
+  }
+  .navigation-links a,
+  .logout-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes nav-slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }

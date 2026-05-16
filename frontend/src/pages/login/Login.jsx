@@ -13,6 +13,7 @@ import {
 } from "./loginFormUtils";
 import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
+import "./styles/Login.css";
 
 function Login() {
     const [loginUser, { isLoading }] = useLoginMutation();
@@ -84,3 +85,4 @@ function Login() {
 }
 
 export default Login;
+
