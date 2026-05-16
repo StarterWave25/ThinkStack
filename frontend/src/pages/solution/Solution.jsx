@@ -33,7 +33,7 @@ function Solution() {
             </div>
         );
 
-    const submission = response.data.submission;
+    const submission = response.data.submission || response.data;
 
     return (
         <div className="solution-container">
