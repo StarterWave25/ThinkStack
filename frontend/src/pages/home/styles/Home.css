@@ -1,0 +1,88 @@
+.home-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.home-content {
+    width: min(90%, 1300px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1rem, 3vw, 3rem);
+    z-index: 1;
+    position: relative;
+}
+
+.home-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--dark-blue);
+    text-align: left;
+    margin-bottom: 0.25rem;
+}
+
+/* Shared Spacing Tokens */
+:root {
+    --card-radius: 20px;
+    --pill-radius: 999px;
+    --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --spark-glow: 0 0 20px rgba(0, 115, 247, 0.35);
+}
+
+/* REFINED BLUE STARDUST - Improved Blue Particles */
+.bg-bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25; /* Consistent visible opacity */
+    filter: blur(6px); /* Balanced sharpness */
+    will-change: transform;
+    box-shadow: 0 0 10px rgba(0, 115, 247, 0.2); /* Added subtle glow */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bubble {
+        animation: particleFloat infinite alternate ease-in-out;
+    }
+}
+
+/* 20 Vibrant Blue Particles */
+.bubble-1 { width: 30px; height: 30px; top: 10%; left: 10%; background: var(--blue); animation-duration: 8s; }
+.bubble-2 { width: 18px; height: 18px; top: 20%; left: 80%; background: var(--low-blue); animation-duration: 12s; animation-delay: -2s; }
+.bubble-3 { width: 45px; height: 45px; top: 70%; left: 15%; background: var(--blue); animation-duration: 10s; animation-delay: -4s; }
+.bubble-4 { width: 22px; height: 22px; top: 85%; left: 85%; background: var(--low-dark-blue); animation-duration: 15s; }
+.bubble-5 { width: 15px; height: 15px; top: 40%; left: 50%; background: var(--blue); animation-duration: 9s; animation-delay: -1s; }
+.bubble-6 { width: 28px; height: 28px; top: 5%; left: 45%; background: var(--low-blue); animation-duration: 11s; }
+.bubble-7 { width: 40px; height: 40px; top: 60%; left: 90%; background: var(--dark-blue); animation-duration: 13s; animation-delay: -6s; }
+.bubble-8 { width: 20px; height: 20px; top: 30%; left: 5%; background: var(--low-dark-blue); animation-duration: 10s; }
+.bubble-9 { width: 50px; height: 50px; top: 90%; left: 40%; background: var(--blue); animation-duration: 14s; animation-delay: -3s; }
+.bubble-10 { width: 12px; height: 12px; top: 50%; left: 75%; background: var(--low-blue); animation-duration: 8s; }
+.bubble-11 { width: 32px; height: 32px; top: 15%; left: 30%; background: var(--dark-blue); animation-duration: 16s; }
+.bubble-12 { width: 36px; height: 32px; top: 75%; left: 60%; background: var(--blue); animation-duration: 12s; }
+.bubble-13 { width: 18px; height: 18px; top: 55%; left: 10%; background: var(--low-dark-blue); animation-duration: 10s; }
+.bubble-14 { width: 25px; height: 25px; top: 45%; left: 95%; background: var(--low-blue); animation-duration: 9s; }
+.bubble-15 { width: 42px; height: 42px; top: 5%; left: 85%; background: var(--dark-blue); animation-duration: 14s; }
+.bubble-16 { width: 14px; height: 14px; top: 95%; left: 5%; background: var(--blue); animation-duration: 11s; }
+.bubble-17 { width: 30px; height: 30px; top: 35%; left: 25%; background: var(--low-blue); animation-duration: 15s; }
+.bubble-18 { width: 48px; height: 48px; top: 65%; left: 35%; background: var(--low-dark-blue); animation-duration: 13s; }
+.bubble-19 { width: 20px; height: 20px; top: 80%; left: 70%; background: var(--dark-blue); animation-duration: 10s; }
+.bubble-20 { width: 38px; height: 38px; top: 25%; left: 60%; background: var(--blue); animation-duration: 12s; }
+
+@keyframes particleFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 40px) scale(0.9); }
+    100% { transform: translate(50px, 20px) scale(1); }
+}
