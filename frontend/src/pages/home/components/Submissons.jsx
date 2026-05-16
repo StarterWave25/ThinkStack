@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Submissions({ submissions }) {
     return <div className="submissions-history">
         <h2>Your Submissions</h2>
