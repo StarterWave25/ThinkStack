@@ -69,11 +69,21 @@ const getUserDashboard = async (req, res) => {
                                 problemTitle: {
                                     $arrayElemAt: ["$problemInfo.title", 0],
                                 },
+                                difficulty: {
+                                    $arrayElemAt: [
+                                        "$problemInfo.difficulty",
+                                        0,
+                                    ],
+                                },
                             },
                         },
                         {
                             $project: {
-                                problemInfo: 0,
+                                createdAt: 1,
+                                finalScore: 1,
+                                problemTitle: 1,
+                                difficulty: 1,
+                                problemId: 1,
                             },
                         },
                     ],
