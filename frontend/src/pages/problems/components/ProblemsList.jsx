@@ -1,8 +1,7 @@
 
-import { useGetAllProblemsQuery, useGetAllProblemsByDifficultyQuery } from "../services/problemsAPI";
+import { useGetAllProblemsQuery, useGetAllProblemsByDifficultyQuery } from "../../../services/problemsAPI";
 import { Link } from "react-router-dom";
-
-import "./styles/ProblemsList.css";
+import "./ProblemsList.css";
 
 function ProblemsList({ difficulty }) {
 

@@ -28,7 +28,8 @@ export const loginSubmitHandler = async (values, loginUser, navigate) => {
     }
 }
 
-export const handleForgotPassword = async () => {
+export const handleForgotPassword = async (formik, forgotPassword) => {
+
     const email = formik.values.email;
 
     if (!email) {

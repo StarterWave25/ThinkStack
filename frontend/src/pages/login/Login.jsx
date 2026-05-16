@@ -8,8 +8,8 @@ import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
 
 function Login() {
-
     const [loginUser, { isLoading }] = useLoginMutation();
+
     const [forgotPassword] = useForgotPasswordMutation();
 
     const navigate = useNavigate();
@@ -62,15 +62,15 @@ function Login() {
             ></InputItem>
 
             <span
-                onClick={handleForgotPassword}
-                style={{ cursor: 'pointer' }}
-            >Password Forgotten??
+                onClick={() => handleForgotPassword(formik, forgotPassword)}
+                style={{ cursor: 'pointer' }}>
+                Password Forgotten??
             </span>
 
             <Button
                 isLoading={isLoading}
-                text={'Logging in...'}
-                loadingText={'Log in'}>
+                text={'Log in'}
+                loadingText={'Logging in...'}>
             </Button>
         </form>
     );

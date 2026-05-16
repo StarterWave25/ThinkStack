@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { registerSubmitHandler, validateRegisterForm } from "./registerFormUtils";
 import InputItem from "../../reusable-components/InputItem";
+import Button from "../../reusable-components/Button";
 
 function Register() {
 
-    const [registerUser] = useRegisterMutation();
+    const [registerUser, { isLoading: isRegistering }] = useRegisterMutation();
     const navigate = useNavigate();
     const {
         data,
@@ -68,7 +69,11 @@ function Register() {
                     errors={formik.errors.password}
                 ></InputItem>
 
-                <button type="submit">Submit</button>
+                <Button
+                    isLoading={isRegistering}
+                    loadingText={'Registering...'}
+                    text={'Register'}>
+                </Button>
             </form>
         </div>
     );

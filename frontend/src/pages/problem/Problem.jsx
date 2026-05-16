@@ -1,10 +1,8 @@
-// Harsha here you need to refactor the components.
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetProblemQuery, useSaveProblemMutation } from "../services/draftAPI";
-import Workspace from "../components/Workspace";
-import "./styles/Problem.css";
+import { useGetProblemQuery, useSaveProblemMutation } from "../../services/draftAPI";
+import Workspace from "./components/Workspace";
+import "./Problem.css";
 
 const STEPS = ["understanding", "breakdown", "approach", "solution", "reflection"];
 

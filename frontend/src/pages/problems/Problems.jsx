@@ -1,18 +1,14 @@
 import { useState } from "react";
-
-import ProblemsList from "../components/ProblemsList";
-import './styles/Problems.css'
+import ProblemsList from "./components/ProblemsList.jsx";
+import "./Problems.css"
 
 function Problems() {
 
     const [difficulty, setDifficulty] = useState("");
 
     return (
-
         <section className="problems-page">
-
             <div className="problems-filter">
-
                 <select
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
@@ -35,11 +31,8 @@ function Problems() {
                     </option>
 
                 </select>
-
             </div>
-
             <ProblemsList difficulty={difficulty} />
-
         </section>
     );
 }
