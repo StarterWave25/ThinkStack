@@ -1,0 +1,72 @@
+.problem-right-pane {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 1.5vw, 2rem);
+}
+
+.step-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.step-button {
+    text-transform: capitalize;
+    padding: 0.75rem 1rem;
+}
+
+.step-button.active {
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.step-button.active::after {
+    display: none;
+}
+
+.step-button:disabled {
+    background: linear-gradient(50deg, rgb(150, 225, 255, 0.5) 0.5%, rgb(0, 115, 247, 0.5));
+    cursor: not-allowed;
+}
+
+.step-button:disabled::after {
+    display: none;
+}
+
+.text-editor {
+    min-height: 400px;
+    padding: 1rem;
+    scrollbar-width: thin;
+}
+
+.hint-dropdown {
+    padding: 1rem;
+    border: 2px solid var(--dark-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+}
+
+.hint-content {
+    color: var(--black);
+}
+
+.next-btn {
+    background: linear-gradient(50deg, lightgreen 0.1%, green);
+    padding: 12px 24px;
+}
+
+.next-btn::after {
+    background: rgb(0, 29, 0);
+}
+
+@media screen and (max-width:768px) {
+    .problem-right-pane {
+        width: 100%;
+    }
+}

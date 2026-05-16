@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetProblemQuery, useSaveProblemMutation } from "../../services/draftAPI";
 import Workspace from "./components/Workspace";
-import "./Problem.css";
+import "./styles/Problem.css";
+import "./styles/Workspace.css";
 
 const STEPS = ["understanding", "breakdown", "approach", "solution", "reflection"];
 
@@ -19,7 +20,7 @@ function Problem() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsHintsTimerCompleted(true);
-        }, 120000);
+        }, 120);
         return () => clearTimeout(timer);
     }, [id]);
 
@@ -32,9 +33,14 @@ function Problem() {
             <div className="problem-overview">
                 <h1>{problem?.title}</h1>
                 <div className="problem-meta">
-                    <span>{problem?.difficulty === 'Medium' ? 'Moderate' : problem.difficulty}</span> | <span>{problem?.category}</span>
+                    <span className="problem-level" style={{
+                        color: (problem?.difficulty === 'Easy') ? 'green' :
+                            (problem?.difficulty === 'Medium') ? 'orange' : 'red'
+                    }}>
+                        {problem?.difficulty === 'Medium' ? 'Moderate' : problem.difficulty}</span>
+                    <span className="problem-category">{problem?.category}</span>
                 </div>
-                <p>{problem?.description}</p>
+                <p className="problem-description">{problem?.description}</p>
             </div>
 
             <div className="problem-right-pane">
@@ -42,10 +48,9 @@ function Problem() {
                     {STEPS.map((step) => (
                         <button
                             key={step}
-                            className={activeStep === step ? "active" : ""}
+                            className={`step-button${activeStep === step ? " active" : ""}`}
                             onClick={() => setActiveStep(step)}
-                            disabled={step !== activeStep && step !== STEPS[0] && !draft?.steps?.[step]}
-                        >
+                            disabled={step !== activeStep && step !== STEPS[0] && !draft?.steps?.[step]}>
                             {step}
                         </button>
                     ))}
