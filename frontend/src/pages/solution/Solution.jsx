@@ -14,12 +14,15 @@ function Solution() {
         }
     }, [id, evaluate]);
 
-    if (isLoading)
+    if (isLoading) {
         return (
-            <div className="solution-container">
-                Evaluating your solution...
+            <div className="solution-page">
+                <div className="loading-container">
+                    <div className="typing-text">Analyzing your performance...</div>
+                </div>
             </div>
         );
+    }
     if (error)
         return (
             <div className="solution-container">
@@ -36,103 +39,103 @@ function Solution() {
     const submission = response.data.submission || response.data;
 
     return (
-        <div className="solution-container">
-            <h1 className="solution-title">Evaluation Result</h1>
+        <div className="solution-page">
+            <div className="solution-container first-container">
+                <div className="unified-card">
+                    <div className="score-main">
+                        <span className="score-value">{submission.finalScore}</span>
+                        <span className="score-total">/ 100</span>
+                    </div>
+                    <p className="score-label">Overall Thinking Performance</p>
+                    
+                    <div className="score-breakdown">
+                        <div className="breakdown-item">
+                            <span className="item-label">AI Base</span>
+                            <span className="item-value">{submission.aiBaseScore}</span>
+                        </div>
+                        <div className="breakdown-divider"></div>
+                        <div className="breakdown-item">
+                            <span className="item-label">Hints Used</span>
+                            <span className="item-value">{submission.hintsUsed}</span>
+                        </div>
+                        <div className="breakdown-divider"></div>
+                        <div className="breakdown-item">
+                            <span className="item-label">Penalty</span>
+                            <span className="item-value">-{submission.penaltyApplied}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <section className="solution-section">
-                <h2>Performance Summary</h2>
-                <div className="summary-stats">
-                    <span>
-                        <strong>AI Base Score:</strong> {submission.aiBaseScore}
-                    </span>
-                    <span>
-                        <strong>Hints Used:</strong> {submission.hintsUsed}
-                    </span>
-                    <span>
-                        <strong>Penalty:</strong> -{submission.penaltyApplied}
-                    </span>
-                </div>
-                <div className="final-score">
-                    <strong>Final Score: {submission.finalScore} / 100</strong>
-                </div>
-            </section>
-
-            <section className="solution-section">
-                <h2>AI Feedback</h2>
-                <div className="feedback-item">
-                    <strong className="feedback-label">Strengths:</strong>
-                    <p className="feedback-text">
-                        {submission.feedback?.strengths}
-                    </p>
-                </div>
-                <div className="feedback-item">
-                    <strong className="feedback-label">
-                        Areas for Improvement:
-                    </strong>
-                    <p className="feedback-text">
-                        {submission.feedback?.weaknesses}
-                    </p>
-                </div>
-                <div className="feedback-item">
-                    <strong className="feedback-label">
-                        Actionable Advice:
-                    </strong>
-                    <p className="feedback-text">
-                        {submission.feedback?.howToImprove}
-                    </p>
-                </div>
-            </section>
-
-            {submission.thinkingPatterns &&
-                submission.thinkingPatterns.length > 0 && (
-                    <section className="solution-section">
-                        <h2>Thinking Patterns Identified</h2>
-                        <div className="tags-container">
-                            {submission.thinkingPatterns.map(
-                                (pattern, index) => (
-                                    <span key={index} className="mistake-tag">
-                                        {pattern}
-                                    </span>
-                                ),
-                            )}
+            <div className="solution-container second-container">
+                <div className="unified-card content-card">
+                    <section className="unified-section">
+                        <h2 className="card-title">AI Feedback</h2>
+                        <div className="feedback-content">
+                            <div className="feedback-group positive">
+                                <h3>Strengths</h3>
+                                <p>{submission.feedback?.strengths}</p>
+                            </div>
+                            <div className="feedback-group negative">
+                                <h3>Areas for Improvement</h3>
+                                <p>{submission.feedback?.weaknesses}</p>
+                            </div>
+                            <div className="feedback-group actionable">
+                                <h3>Actionable Advice</h3>
+                                <p>{submission.feedback?.howToImprove}</p>
+                            </div>
                         </div>
                     </section>
-                )}
 
-            {submission.expertComparison && (
-                <section className="solution-section">
-                    <h2>Expert Comparison</h2>
-                    <div className="feedback-item">
-                        <strong className="feedback-label">
-                            Expert Understanding:
-                        </strong>
-                        <p className="feedback-text">
-                            {submission.expertComparison.expertUnderstanding}
-                        </p>
-                    </div>
-                    <div className="feedback-item">
-                        <strong className="feedback-label">
-                            Expert Reasoning Flow:
-                        </strong>
-                        <p className="feedback-text">
-                            {submission.expertComparison.expertReasoningFlow}
-                        </p>
-                    </div>
-                </section>
-            )}
+                    <div className="section-divider"></div>
 
-            {submission.mistakeTags && submission.mistakeTags.length > 0 && (
-                <section className="solution-section">
-                    <h2>Mistake Tags</h2>
-                    <div className="tags-container">
-                        {submission.mistakeTags.map((tag, index) => (
-                            <span key={index} className="mistake-tag">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                </section>
-            )}
+                    <section className="unified-section">
+                        <h2 className="card-title">Expert Comparison</h2>
+                        <div className="comparison-content">
+                            <div className="comparison-item">
+                                <h3>Understanding</h3>
+                                <p>{submission.expertComparison?.expertUnderstanding}</p>
+                            </div>
+                            <div className="comparison-item">
+                                <h3>Reasoning Flow</h3>
+                                <p>{submission.expertComparison?.expertReasoningFlow}</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {(submission.thinkingPatterns?.length > 0 || submission.mistakeTags?.length > 0) && (
+                        <>
+                            <div className="section-divider"></div>
+                            <section className="unified-section">
+                                {submission.thinkingPatterns?.length > 0 && (
+                                    <div className="tags-group">
+                                        <h2 className="card-title">Thinking Patterns</h2>
+                                        <div className="tags-container">
+                                            {submission.thinkingPatterns.map((pattern, index) => (
+                                                <span key={index} className="tag pattern-tag">
+                                                    {pattern}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                {submission.mistakeTags?.length > 0 && (
+                                    <div className="tags-group" style={{ marginTop: '1.5rem' }}>
+                                        <h2 className="card-title">Mistake Analysis</h2>
+                                        <div className="tags-container">
+                                            {submission.mistakeTags.map((tag, index) => (
+                                                <span key={index} className="tag mistake-tag">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </section>
+                        </>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

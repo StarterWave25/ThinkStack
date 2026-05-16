@@ -30,7 +30,20 @@ function Home() {
         }
     }, [isLoggedIn, isUserLoading, isUserFetching, navigate]);
 
-    if (isUserLoading || isDashboardLoading) return <div className="home-page">Loading dashboard...</div>;
+    if (isUserLoading || isDashboardLoading) {
+        return (
+            <div className="home-page">
+                <div className="bg-bubbles">
+                    {[...Array(20)].map((_, i) => (
+                        <div key={i} className={`bubble bubble-${i + 1}`}></div>
+                    ))}
+                </div>
+                <div className="loading-container">
+                    <div className="typing-text">Loading dashboard...</div>
+                </div>
+            </div>
+        );
+    }
 
     const dashboardData = dashboardResponse?.data?.[0];
     const stats = dashboardData?.stats?.[0] || { totalSolved: 0, averageScore: 0, totalHintsUsed: 0 };
@@ -43,10 +56,18 @@ function Home() {
                     <div key={i} className={`bubble bubble-${i + 1}`}></div>
                 ))}
             </div>
-            <div className="home-content">
-                <h1 className="home-title">Welcome {userData?.data?.firstName || 'User'}!</h1>
-                <DashboardStats stats={stats}></DashboardStats>
-                <Submissions submissions={submissions}></Submissions>
+            <div className="home-container first-container">
+                <div className="home-card welcome-card">
+                    <h1 className="home-title">Welcome {userData?.data?.firstName || 'User'}!</h1>
+                    <h2 className="section-heading">Performance Overview</h2>
+                    <DashboardStats stats={stats}></DashboardStats>
+                </div>
+            </div>
+
+            <div className="home-container second-container">
+                <div className="home-card submissions-card">
+                    <Submissions submissions={submissions}></Submissions>
+                </div>
             </div>
         </section>
     )

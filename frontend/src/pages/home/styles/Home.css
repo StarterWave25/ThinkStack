@@ -1,37 +1,51 @@
 .home-page {
     position: relative;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-.home-content {
-    width: min(90%, 1300px);
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    padding: clamp(1rem, 3vw, 3rem);
-    z-index: 1;
-    position: relative;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(125, 209, 241, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.section-heading {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--low-dark-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.home-container {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--low-blue);
+    border-top: 5px solid var(--blue);
+    border-radius: 20px; /* Reduced to 20px */
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 40, 110, 0.05);
 }
 
 .home-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 800;
     color: var(--dark-blue);
     text-align: left;
-    margin-bottom: 0.25rem;
+    margin-bottom: 2rem;
 }
 
-/* Shared Spacing Tokens */
-:root {
-    --card-radius: 20px;
-    --pill-radius: 999px;
-    --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --spark-glow: 0 0 20px rgba(0, 115, 247, 0.35);
-}
-
-/* REFINED BLUE STARDUST - Improved Blue Particles */
 .bg-bubbles {
     position: fixed;
     top: 0;
@@ -46,10 +60,10 @@
 .bubble {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.25; /* Consistent visible opacity */
-    filter: blur(6px); /* Balanced sharpness */
+    opacity: 0.25;
+    filter: blur(6px);
     will-change: transform;
-    box-shadow: 0 0 10px rgba(0, 115, 247, 0.2); /* Added subtle glow */
+    box-shadow: 0 0 10px rgba(0, 115, 247, 0.2);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -58,7 +72,6 @@
     }
 }
 
-/* 20 Vibrant Blue Particles */
 .bubble-1 { width: 30px; height: 30px; top: 10%; left: 10%; background: var(--blue); animation-duration: 8s; }
 .bubble-2 { width: 18px; height: 18px; top: 20%; left: 80%; background: var(--low-blue); animation-duration: 12s; animation-delay: -2s; }
 .bubble-3 { width: 45px; height: 45px; top: 70%; left: 15%; background: var(--blue); animation-duration: 10s; animation-delay: -4s; }
@@ -79,6 +92,39 @@
 .bubble-18 { width: 48px; height: 48px; top: 65%; left: 35%; background: var(--low-dark-blue); animation-duration: 13s; }
 .bubble-19 { width: 20px; height: 20px; top: 80%; left: 70%; background: var(--dark-blue); animation-duration: 10s; }
 .bubble-20 { width: 38px; height: 38px; top: 25%; left: 60%; background: var(--blue); animation-duration: 12s; }
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+}
+
+.typing-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--dark-blue);
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid var(--blue);
+    width: 0;
+    animation: 
+        typing 3s steps(20) infinite,
+        cursor-blink 0.8s infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    70% { width: 20ch; }
+    90% { width: 20ch; }
+    100% { width: 0; }
+}
+
+@keyframes cursor-blink {
+    50% { border-color: transparent; }
+}
 
 @keyframes particleFloat {
     0% { transform: translate(0, 0) scale(1); }
