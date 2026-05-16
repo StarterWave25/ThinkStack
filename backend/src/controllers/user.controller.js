@@ -57,6 +57,19 @@ const getUserDashboard = async (req, res) => {
                             },
                         },
                         {
+                            $group: {
+                                _id: "$problemId",
+                                createdAt: { $first: "$createdAt" },
+                                finalScore: { $first: "$finalScore" },
+                                problemId: { $first: "$problemId" },
+                            },
+                        },
+                        {
+                            $sort: {
+                                createdAt: -1,
+                            },
+                        },
+                        {
                             $lookup: {
                                 from: "problems",
                                 localField: "problemId",
