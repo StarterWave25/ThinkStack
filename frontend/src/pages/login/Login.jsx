@@ -16,6 +16,7 @@ import Button from "../../reusable-components/Button";
 
 function Login() {
     const [loginUser, { isLoading }] = useLoginMutation();
+
     const [forgotPassword] = useForgotPasswordMutation();
 
     const navigate = useNavigate();
@@ -28,9 +29,6 @@ function Login() {
 
     const isLoggedIn = !!data;
 
-    console.log(isLoggedIn);
-
-    // console.log(isLoggedIn, data);
     useEffect(() => {
         if (!isAuthLoading && !isAuthFetching && isLoggedIn) {
             navigate("/home");
@@ -53,16 +51,18 @@ function Login() {
             <h2>Login</h2>
 
             <InputItem
-                type={"email"}
-                placeholder={"Email"}
+                label={'Email'}
+                type={'email'}
+                placeholder={'Enter your Email'}
                 fieldProps={formik.getFieldProps("email")}
                 touched={formik.touched.email}
                 errors={formik.errors.email}
             ></InputItem>
 
             <InputItem
-                type={"password"}
-                placeholder={"Password"}
+                label={'Password'}
+                type={'password'}
+                placeholder={'Enter your Password'}
                 fieldProps={formik.getFieldProps("password")}
                 touched={formik.touched.password}
                 errors={formik.errors.password}
@@ -70,16 +70,15 @@ function Login() {
 
             <span
                 onClick={() => handleForgotPassword(formik, forgotPassword)}
-                style={{ cursor: "pointer" }}
-            >
+                style={{ cursor: 'pointer' }}>
                 Password Forgotten??
             </span>
 
             <Button
                 isLoading={isLoading}
-                text={"Logging in..."}
-                loadingText={"Log in"}
-            ></Button>
+                text={'Log in'}
+                loadingText={'Logging in...'}>
+            </Button>
         </form>
     );
 }
