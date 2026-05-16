@@ -1,9 +1,16 @@
-
 import { useFormik } from "formik";
-import { useLoginMutation, useForgotPasswordMutation, useGetMeQuery } from "../../services/authAPI";
+import {
+    useLoginMutation,
+    useForgotPasswordMutation,
+    useGetMeQuery,
+} from "../../services/authAPI";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { validateLoginForm, loginSubmitHandler, handleForgotPassword } from "./loginFormUtils";
+import {
+    validateLoginForm,
+    loginSubmitHandler,
+    handleForgotPassword,
+} from "./loginFormUtils";
 import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
 
@@ -24,7 +31,7 @@ function Login() {
 
     useEffect(() => {
         if (!isAuthLoading && !isAuthFetching && isLoggedIn) {
-            navigate('/home');
+            navigate("/home");
         }
     }, [isLoggedIn, isAuthLoading, isAuthFetching, navigate]);
 
