@@ -1,10 +1,14 @@
+import { useDispatch } from "react-redux";
 import { useChangePasswordMutation } from "../../../services/authAPI";
+import { authAPI } from "../../../services/authAPI";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ChangePassword({ user, setMessage }) {
+function ChangePassword({ setMessage }) {
     const [changePassword, { isLoading: isChangingPwd }] =
         useChangePasswordMutation();
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isChangingPassword, setIsChangingPassword] = useState(false);
 
     const [passwordForm, setPasswordForm] = useState({
@@ -28,9 +32,13 @@ function ChangePassword({ user, setMessage }) {
         }
 
         try {
-            await changePassword({
+            const res = await changePassword({
                 password: passwordForm.newPassword,
             }).unwrap();
+            if (res.OK) {
+                dispatch(authAPI.util.resetApiState());
+                navigate("/login");
+            }
             setMessage({
                 type: "success",
                 text: "Password updated successfully!",
@@ -49,63 +57,65 @@ function ChangePassword({ user, setMessage }) {
         }
     };
 
-    return <div>
-        {!isChangingPassword ? (
-            <button onClick={() => setIsChangingPassword(true)}>
-                Change Password
-            </button>
-        ) : (
-            <form onSubmit={handlePasswordSubmit}>
-                <h3>Change Password</h3>
-                <div>
-                    <input
-                        type="password"
-                        name="currentPassword"
-                        placeholder="Current Password"
-                        value={passwordForm.currentPassword}
-                        onChange={handlePasswordChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        name="newPassword"
-                        placeholder="New Password"
-                        value={passwordForm.newPassword}
-                        onChange={handlePasswordChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm New Password"
-                        value={passwordForm.confirmPassword}
-                        onChange={handlePasswordChange}
-                        required
-                    />
-                </div>
-                <button type="submit" disabled={isChangingPwd}>
-                    Update Password
+    return (
+        <div>
+            {!isChangingPassword ? (
+                <button onClick={() => setIsChangingPassword(true)}>
+                    Change Password
                 </button>
-                <button
-                    type="button"
-                    onClick={() => {
-                        setIsChangingPassword(false);
-                        setPasswordForm({
-                            currentPassword: "",
-                            newPassword: "",
-                            confirmPassword: "",
-                        });
-                    }}
-                >
-                    Cancel
-                </button>
-            </form>
-        )}
-    </div>;
+            ) : (
+                <form onSubmit={handlePasswordSubmit}>
+                    <h3>Change Password</h3>
+                    <div>
+                        <input
+                            type="password"
+                            name="currentPassword"
+                            placeholder="Current Password"
+                            value={passwordForm.currentPassword}
+                            onChange={handlePasswordChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            name="newPassword"
+                            placeholder="New Password"
+                            value={passwordForm.newPassword}
+                            onChange={handlePasswordChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Confirm New Password"
+                            value={passwordForm.confirmPassword}
+                            onChange={handlePasswordChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" disabled={isChangingPwd}>
+                        Update Password
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setIsChangingPassword(false);
+                            setPasswordForm({
+                                currentPassword: "",
+                                newPassword: "",
+                                confirmPassword: "",
+                            });
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </form>
+            )}
+        </div>
+    );
 }
 
 export default ChangePassword;

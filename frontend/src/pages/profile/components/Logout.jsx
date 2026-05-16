@@ -1,9 +1,12 @@
 import Button from "../../../reusable-components/Button";
 import { useLogoutMutation } from "../../../services/authAPI";
+import { authAPI } from "../../../services/authAPI";
 import { useDispatch } from "react-redux";
-function Logout({ user, setMessage }) {
-    const [apiLogout] = useLogoutMutation();
+import { useNavigate } from "react-router-dom";
 
+function Logout() {
+    const [apiLogout] = useLogoutMutation();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleLogout = async () => {
@@ -15,11 +18,11 @@ function Logout({ user, setMessage }) {
             }
         } catch (err) {
             console.error("Error Logoutting user!", err);
-            alert('Error in Logout');
+            alert("Error in Logout");
         }
     };
 
-    return <Button text={'Logout'} clickHandler={handleLogout}></Button>;
+    return <Button text={"Logout"} clickHandler={handleLogout}></Button>;
 }
 
 export default Logout;

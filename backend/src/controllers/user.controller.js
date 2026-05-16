@@ -147,7 +147,6 @@ const updateProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         if (!user) return respond(res, false, 404, "User doesn't exist!", {});
-        user.username = req.body.username;
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
         await user.save();

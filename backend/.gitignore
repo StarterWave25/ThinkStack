@@ -5,3 +5,4 @@ seedDatabase.js
 src/data
 *.jpg
 *.png
+*.webp

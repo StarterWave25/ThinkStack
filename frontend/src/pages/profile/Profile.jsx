@@ -1,28 +1,15 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {
-    useGetMeQuery,
-    useChangePasswordMutation,
-    useLogoutMutation,
-    authAPI,
-} from "../../services/authAPI";
-import {
-    useUpdateProfileMutation,
-    useUploadPhotoMutation,
-} from "../../services/userAPI";
+import { useState } from "react";
+import { useGetMeQuery } from "../../services/authAPI";
 import ProfilePhoto from "./components/ProfilePhoto";
 import PersonalDetails from "./components/PersonalDetails";
 import ChangePassword from "./components/ChangePassword";
 import Logout from "./components/Logout";
 
 const Profile = () => {
-    const navigate = useNavigate();
-
-    const { data: profileData, isLoading } = useGetMeQuery();
+    const { data: profileData, isLoading, refetch } = useGetMeQuery();
 
     const user = profileData?.data;
-    console.log(profileData)
+    console.log(profileData);
 
     const [message, setMessage] = useState({ type: "", text: "" });
 
@@ -41,11 +28,23 @@ const Profile = () => {
                 </div>
             )}
 
-            <ProfilePhoto user={user} setMessage={setMessage}></ProfilePhoto>
+            <ProfilePhoto
+                user={user}
+                setMessage={setMessage}
+                refetch={refetch}
+            ></ProfilePhoto>
             <hr />
-            <PersonalDetails user={user} setMessage={setMessage}></PersonalDetails>
+            <PersonalDetails
+                user={user}
+                setMessage={setMessage}
+                refetch={refetch}
+            ></PersonalDetails>
             <hr />
-            <ChangePassword user={user} setMessage={setMessage}></ChangePassword>
+            <ChangePassword
+                user={user}
+                setMessage={setMessage}
+                refetch={refetch}
+            ></ChangePassword>
             <br />
             <Logout></Logout>
         </div>
