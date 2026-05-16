@@ -1,15 +1,19 @@
-body {
-    background: white;
+.problems-page {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+    padding: clamp(1rem, 1.5vw, 2rem);
 }
 
 .problems-filter {
-    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 240px;
 }
 
-.difficulty-select {
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    outline: none;
+.select-difficulty {
+    cursor: pointer;
+    padding: 0.75rem 1rem;
 }

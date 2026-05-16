@@ -9,13 +9,14 @@ function Problems() {
     return (
         <section className="problems-page">
             <div className="problems-filter">
+                <label>Select Difficulty Level:</label>
                 <select
+                    className="select-difficulty"
                     value={difficulty}
-                    onChange={(e) => setDifficulty(e.target.value)}
-                    className="difficulty-select">
+                    onChange={(e) => setDifficulty(e.target.value)}>
 
                     <option value="">
-                        No Difficulty Selected
+                        Select the Difficulty
                     </option>
 
                     <option value="Easy">

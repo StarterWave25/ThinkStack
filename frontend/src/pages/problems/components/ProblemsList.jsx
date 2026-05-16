@@ -21,9 +21,9 @@ function ProblemsList({ difficulty }) {
                 <h1 className="problems-title">
                     {difficulty ? `${difficulty} Problems` : "Problems"}
                 </h1>
-                <p className="problems-count">
-                    Total Problems: {data?.data?.problems?.length}
-                </p>
+                <h5 className="problems-count">
+                    Total: {data?.data?.problems?.length}
+                </h5>
             </div>
 
             <div className="problems-list">
@@ -35,13 +35,13 @@ function ProblemsList({ difficulty }) {
                             className="problem-link"
                         >
 
-                            <article className="problem-card">
+                            <article className={`problem-card ${problem.difficulty.toLowerCase()}`}>
 
-                                <div className="problem-card-top">
+                                <div className="problem-card-header">
 
-                                    <h2 className="problem-title">
+                                    <h4 className="problem-title">
                                         {problem.title}
-                                    </h2>
+                                    </h4>
 
                                     <span
                                         className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}
@@ -51,7 +51,7 @@ function ProblemsList({ difficulty }) {
 
                                 </div>
 
-                                <p className="problem-description">
+                                <p className="problems-description">
                                     {problem.description}
                                 </p>
 
