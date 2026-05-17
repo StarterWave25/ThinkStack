@@ -9,9 +9,12 @@ function ProblemsList({ difficulty }) {
     const filteredProblems = useGetAllProblemsByDifficultyQuery(difficulty, { skip: !difficulty });
 
     const { data, isLoading } = difficulty ? filteredProblems : allProblems;
+    console.log(data);
 
     if (isLoading) {
-        return <h2 className="problems-loading">Loading...</h2>;
+        return <section className="problems-section">
+            <h2 className="problems-loading">Loading...</h2>
+        </section>;
     }
 
     return (
@@ -37,6 +40,10 @@ function ProblemsList({ difficulty }) {
 
                             <article className={`problem-card ${problem.difficulty.toLowerCase()}`}>
 
+                                <span className={`status ${problem.status.toLowerCase()}`}>
+                                    {problem.status === 'IN_PROGRESS' ? 'in progress' : problem.status.toLowerCase()}
+                                </span>
+
                                 <div className="problem-card-header">
 
                                     <h4 className="problem-title">
@@ -54,6 +61,7 @@ function ProblemsList({ difficulty }) {
                                 <p className="problems-description">
                                     {problem.description}
                                 </p>
+
 
                             </article>
 

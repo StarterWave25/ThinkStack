@@ -5,7 +5,7 @@ import "./Problems.css"
 function Problems() {
 
     const [difficulty, setDifficulty] = useState("");
-
+    
     return (
         <section className="problems-page">
             <div className="problems-filter">

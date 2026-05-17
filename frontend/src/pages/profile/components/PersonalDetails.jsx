@@ -35,8 +35,8 @@ function PersonalDetails({ user, setMessage, refetch }) {
                     type: "success",
                     text: "Profile updated successfully!",
                 });
+                setIsEditingProfile(false);
             }
-            setIsEditingProfile(false);
         } catch (err) {
             setMessage({
                 type: "error",
@@ -46,25 +46,31 @@ function PersonalDetails({ user, setMessage, refetch }) {
     };
 
     return (
-        <div>
-            <h3>Personal Details</h3>
+        <div className="unified-card">
+            <div className="section-header">
+                <h3>Personal Details</h3>
+            </div>
+
             {!isEditingProfile ? (
-                <div>
-                    <p>
-                        <strong>First Name:</strong> {user?.firstName}
-                    </p>
-                    <p>
-                        <strong>Last Name:</strong> {user?.lastName}
-                    </p>
+                <div className="details-grid">
+                    <div className="detail-item">
+                        <span className="detail-label">First Name</span>
+                        <span className="detail-value">{user?.firstName}</span>
+                    </div>
+                    <div className="detail-item">
+                        <span className="detail-label">Last Name</span>
+                        <span className="detail-value">{user?.lastName}</span>
+                    </div>
                     <button onClick={() => setIsEditingProfile(true)}>
                         Edit Profile
                     </button>
                 </div>
             ) : (
-                <form onSubmit={handleProfileSubmit}>
-                    <div>
-                        <label>First Name: </label>
+                <form className="profile-form" onSubmit={handleProfileSubmit}>
+                    <div className="input-group">
+                        <label className="detail-label">First Name</label>
                         <input
+                            className="profile-input"
                             type="text"
                             name="firstName"
                             value={profileForm.firstName}
@@ -72,9 +78,10 @@ function PersonalDetails({ user, setMessage, refetch }) {
                             required
                         />
                     </div>
-                    <div>
-                        <label>Last Name: </label>
+                    <div className="input-group">
+                        <label className="detail-label">Last Name</label>
                         <input
+                            className="profile-input"
                             type="text"
                             name="lastName"
                             value={profileForm.lastName}
@@ -82,15 +89,18 @@ function PersonalDetails({ user, setMessage, refetch }) {
                             required
                         />
                     </div>
-                    <button type="submit" disabled={isUpdatingProfile}>
-                        Save Changes
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setIsEditingProfile(false)}
-                    >
-                        Cancel
-                    </button>
+                    <div className="button-group">
+                        <button type="submit" disabled={isUpdatingProfile}>
+                            {isUpdatingProfile ? "Saving..." : "Save Changes"}
+                        </button>
+                        <button
+                            className="cancel-btn"
+                            type="button"
+                            onClick={() => setIsEditingProfile(false)}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             )}
         </div>

@@ -22,7 +22,13 @@ function Logout() {
         }
     };
 
-    return <Button text={"Logout"} clickHandler={handleLogout}></Button>;
+    return (
+        <div className="logout-container">
+            <button className="logout-btn" onClick={handleLogout}>
+                Logout Account
+            </button>
+        </div>
+    );
 }
 
 export default Logout;

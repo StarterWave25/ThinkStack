@@ -18,23 +18,27 @@ function ProfilePhoto({ user, setMessage, refetch }) {
             const res = await uploadPhoto(formData).unwrap();
             if (res.OK) {
                 refetch();
-                setMessage({ type: "success", text: "Photo updated!" });
+                setMessage({ type: "success", text: "Photo updated successfully!" });
             }
         } catch (err) {
-            setMessage({ type: "error", text: "Photo upload failed." });
+            setMessage({ type: "error", text: "Photo upload failed. Please try again." });
         }
     };
 
     return (
-        <div>
-            <img
-                src={user?.profilePic || "/favicon.png"}
-                alt="Profile"
-                width="100"
-                height="100"
-                onClick={() => fileInputRef.current.click()}
-                style={{ cursor: "pointer", borderRadius: "50%" }}
-            />
+        <div className="avatar-container">
+            <div className="avatar-wrapper" onClick={() => fileInputRef.current.click()}>
+                <img
+                    src={user?.profilePic || "/favicon.png"}
+                    alt="Profile"
+                    className="avatar-image"
+                />
+                <div className="avatar-overlay">
+                    <span className="overlay-text">
+                        {isUploadingPhoto ? "Uploading..." : "Change Photo"}
+                    </span>
+                </div>
+            </div>
             <input
                 type="file"
                 ref={fileInputRef}
@@ -42,7 +46,6 @@ function ProfilePhoto({ user, setMessage, refetch }) {
                 accept="image/*"
                 onChange={handleFileChange}
             />
-            {isUploadingPhoto && <p>Uploading photo...</p>}
         </div>
     );
 }

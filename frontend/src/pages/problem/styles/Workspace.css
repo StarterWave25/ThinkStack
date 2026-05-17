@@ -10,30 +10,22 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: clamp(1.5rem, 1.5vw, 2rem);
 }
 
 .step-button {
     text-transform: capitalize;
-    padding: 0.75rem 1rem;
 }
 
 .step-button.active {
     pointer-events: none;
-    font-weight: bold;
-}
-
-.step-button.active::after {
-    display: none;
+    font-size: 1.8rem;
 }
 
 .step-button:disabled {
-    background: linear-gradient(50deg, rgb(150, 225, 255, 0.5) 0.5%, rgb(0, 115, 247, 0.5));
+    opacity: 0.5;
+    background: linear-gradient(50deg, rgba(150, 255, 187, 0.3) 0.5%, rgba(0, 247, 37, 0.5));
     cursor: not-allowed;
-}
-
-.step-button:disabled::after {
-    display: none;
 }
 
 .text-editor {
@@ -44,21 +36,21 @@
 
 .hint-dropdown {
     padding: 1rem;
-    border: 2px solid var(--dark-blue);
+    border: 2px solid var(--blue);
     border-radius: 4px;
     cursor: pointer;
-    color: var(--dark-blue);
+    color: var(--low-blue);
     display: flex;
     flex-direction: column;
 }
 
 .hint-content {
-    color: var(--black);
+    color: var(--white);
 }
 
 .next-btn {
-    background: linear-gradient(50deg, lightgreen 0.1%, green);
-    padding: 12px 24px;
+    background: linear-gradient(50deg, lightgreen 5%, green);
+    padding: 1rem 1.5rem;
 }
 
 .next-btn::after {

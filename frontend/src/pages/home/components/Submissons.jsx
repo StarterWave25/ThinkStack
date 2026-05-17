@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 function Submissions({ submissions }) {
     return (
         <div className="submissions-history">
-            <h2>Your Submissions</h2>
+            <h2 className="section-heading">Your Submissions</h2>
             {submissions.length === 0 ? (
-                <p>No submissions found yet. Start solving problems!</p>
+                <div className="empty-state">
+                    <span className="empty-icon">🚀</span>
+                    <p>No submissions found yet. Start solving problems!</p>
+                </div>
             ) : (
                 <div className="submissions-list">
                     {submissions.map((sub) => (
@@ -35,7 +38,7 @@ function Submissions({ submissions }) {
                             </div>
                         </Link>
                     ))}
-                </div>            )}
+                </div>)}
         </div>
     );
 }

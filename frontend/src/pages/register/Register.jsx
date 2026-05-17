@@ -38,53 +38,51 @@ function Register() {
     });
 
     return (
-        <div className="container">
-            <form onSubmit={formik.handleSubmit} className="form">
-                <h2>Register</h2>
+        <form onSubmit={formik.handleSubmit} className="form">
+            <h2>Register</h2>
 
-                <InputItem
-                    label={"First Name"}
-                    type={"text"}
-                    placeholder={"Enter your Last Name"}
-                    fieldProps={formik.getFieldProps("firstName")}
-                    touched={formik.touched.name}
-                    errors={formik.errors.name}
-                ></InputItem>
+            <InputItem
+                label={"First Name"}
+                type={"text"}
+                placeholder={"Enter your Last Name"}
+                fieldProps={formik.getFieldProps("firstName")}
+                touched={formik.touched.name}
+                errors={formik.errors.name}
+            ></InputItem>
 
-                <InputItem
-                    label={"Last Name"}
-                    type={"text"}
-                    placeholder={"Enter your Last Name"}
-                    fieldProps={formik.getFieldProps("LastName")}
-                    touched={formik.touched.name}
-                    errors={formik.errors.name}
-                ></InputItem>
+            <InputItem
+                label={"Last Name"}
+                type={"text"}
+                placeholder={"Enter your Last Name"}
+                fieldProps={formik.getFieldProps("LastName")}
+                touched={formik.touched.name}
+                errors={formik.errors.name}
+            ></InputItem>
 
-                <InputItem
-                    label={"Email"}
-                    type={"email"}
-                    placeholder={"Enter your Email"}
-                    fieldProps={formik.getFieldProps("email")}
-                    touched={formik.touched.email}
-                    errors={formik.errors.email}
-                ></InputItem>
+            <InputItem
+                label={"Email"}
+                type={"email"}
+                placeholder={"Enter your Email"}
+                fieldProps={formik.getFieldProps("email")}
+                touched={formik.touched.email}
+                errors={formik.errors.email}
+            ></InputItem>
 
-                <InputItem
-                    label={"Password"}
-                    type={"password"}
-                    placeholder={"Enter a Password"}
-                    fieldProps={formik.getFieldProps("password")}
-                    touched={formik.touched.password}
-                    errors={formik.errors.password}
-                ></InputItem>
+            <InputItem
+                label={"Password"}
+                type={"password"}
+                placeholder={"Enter a Password"}
+                fieldProps={formik.getFieldProps("password")}
+                touched={formik.touched.password}
+                errors={formik.errors.password}
+            ></InputItem>
 
-                <Button
-                    isLoading={isRegistering}
-                    loadingText={"Registering..."}
-                    text={"Register"}
-                ></Button>
-            </form>
-        </div>
+            <Button
+                isLoading={isRegistering}
+                loadingText={"Registering..."}
+                text={"Register"}
+            ></Button>
+        </form>
     );
 }
 

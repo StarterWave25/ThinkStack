@@ -10,7 +10,7 @@
 .problem-overview,
 .problem-right-pane,
 .problem-workspace {
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-flow: column wrap;
     gap: clamp(1.25rem, 1.5vw, 1.5rem);
@@ -33,7 +33,7 @@
 .problem-category {
     font-size: clamp(1rem, 1.2vw, 1.5rem);
     font-weight: 600;
-    color: var(--low-dark-blue);
+    color: var(--low-blue);
 }
 
 .problem-category::before {
@@ -41,11 +41,19 @@
 }
 
 .problem-description {
-    font-size: clamp(1.1rem, 1.25vw, 1.5rem);
+    color: var(--white);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.25vw, 1.5rem);
 }
 
 @media (max-width: 768px) {
     .problem-container {
         grid-template-columns: 1fr;
+    }
+
+    .problem-overview,
+    .problem-right-pane,
+    .problem-workspace {
+        width: 100%;
     }
 }

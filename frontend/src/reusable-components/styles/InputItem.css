@@ -7,11 +7,13 @@
 .input-field,
 select,
 textarea {
+    background:#141414;
+    color: var(--white);
     font-size: 1.1rem;
     padding: 0.8rem 1.2rem;
     border: 2px solid gray;
     outline: 2px solid transparent;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -19,11 +21,11 @@ textarea {
 select:focus,
 textarea:focus {
     border: 2px solid white;
-    outline: 4px solid var(--low-blue);
-    border: 2px solid var(--dark-blue);
+    outline: 4px solid var(--dark-blue);
+    border: 2px solid var(--blue);
 }
 
 .input-error-span {
-    color: red;
+    color: rgb(255, 100, 100);
     font-size: 0.8rem;
 }

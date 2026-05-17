@@ -4,49 +4,59 @@ import ProfilePhoto from "./components/ProfilePhoto";
 import PersonalDetails from "./components/PersonalDetails";
 import ChangePassword from "./components/ChangePassword";
 import Logout from "./components/Logout";
+import "./Profile.css";
 
 const Profile = () => {
     const { data: profileData, isLoading, refetch } = useGetMeQuery();
-
     const user = profileData?.data;
-    console.log(profileData);
-
     const [message, setMessage] = useState({ type: "", text: "" });
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) {
+        return (
+            <div className="profile-page">
+                <div className="loading-container">
+                    <div className="typing-text">Loading profile...</div>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div>
+        <div className="profile-page">
             {message.text && (
-                <div
-                    style={{
-                        color: message.type === "error" ? "red" : "green",
-                        margin: "10px 0",
-                    }}
-                >
+                <div className={`message-banner ${message.type}`}>
                     {message.text}
                 </div>
             )}
 
-            <ProfilePhoto
-                user={user}
-                setMessage={setMessage}
-                refetch={refetch}
-            ></ProfilePhoto>
-            <hr />
-            <PersonalDetails
-                user={user}
-                setMessage={setMessage}
-                refetch={refetch}
-            ></PersonalDetails>
-            <hr />
-            <ChangePassword
-                user={user}
-                setMessage={setMessage}
-                refetch={refetch}
-            ></ChangePassword>
-            <br />
-            <Logout></Logout>
+            <div className="profile-header">
+                <ProfilePhoto
+                    user={user}
+                    setMessage={setMessage}
+                    refetch={refetch}
+                />
+                <h2>{user?.firstName} {user?.lastName}</h2>
+            </div>
+
+            <div className="profile-section">
+                <PersonalDetails
+                    user={user}
+                    setMessage={setMessage}
+                    refetch={refetch}
+                />
+            </div>
+
+            <div className="profile-section">
+                <ChangePassword
+                    user={user}
+                    setMessage={setMessage}
+                    refetch={refetch}
+                />
+            </div>
+
+            <div className="logout-section">
+                <Logout />
+            </div>
         </div>
     );
 };
