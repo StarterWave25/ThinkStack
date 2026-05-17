@@ -38,6 +38,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
+    min-height: 48px;
 }
 
 .sub-title {
