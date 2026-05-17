@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SubmissionError from "./SubmissionError";
 
 const STEPS = ["understanding", "breakdown", "approach", "solution", "reflection"];
 
@@ -18,6 +19,7 @@ function Workspace({ id, activeStep, draft, problem, isHintsTimerCompleted, save
     });
 
     const [isHintUsed, setIsHintUsed] = useState(false);
+    const [submissionError, setSubmissionError] = useState(null);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -30,6 +32,7 @@ function Workspace({ id, activeStep, draft, problem, isHintsTimerCompleted, save
     };
 
     const handleSaveAndNext = async () => {
+        setSubmissionError(null);
         try {
             await saveProblem({
                 problemId: id,
@@ -46,6 +49,7 @@ function Workspace({ id, activeStep, draft, problem, isHintsTimerCompleted, save
             }
         } catch (err) {
             console.error("Save error:", err);
+            setSubmissionError(err);
         }
     };
 
@@ -58,6 +62,8 @@ function Workspace({ id, activeStep, draft, problem, isHintsTimerCompleted, save
 
     return (
         <div className="problem-workspace">
+            <SubmissionError error={submissionError} onClose={() => setSubmissionError(null)} />
+
             <textarea
                 value={content}
                 onChange={handleChange}

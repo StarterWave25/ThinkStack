@@ -25,14 +25,18 @@ function Solution() {
     }
     if (error)
         return (
-            <div className="solution-container">
-                Error: {error.message || "Failed to evaluate"}
+            <div className="solution-page">
+                <div className="solution-container error">
+                    Error: {error.message || "Failed to evaluate"}
+                </div>
             </div>
         );
     if (!response || !response.OK)
         return (
-            <div className="solution-container">
-                Failed to get evaluation results.
+            <div className="solution-page">
+                <div className="solution-container empty">
+                    Failed to get evaluation results.
+                </div>
             </div>
         );
 

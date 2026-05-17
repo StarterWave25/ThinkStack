@@ -1,15 +1,118 @@
+.navbar-container {
+    position: sticky;
+    top: 1rem;
+    z-index: 1000;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.navbar-glass {
+    background: rgba(0, 80, 52, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(43, 206, 130, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.navbar-logo {
+    font-family: 'cabinet';
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
 .navigation-links {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navigate-link a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.navigate-link a:hover {
+    background: rgba(43, 206, 130, 0.1);
+    opacity: 1;
 }
 
 .navigate-link a.active {
+    background: rgba(43, 206, 130, 0.15);
+    color: var(--blue);
+    opacity: 1;
     font-weight: 600;
+    box-shadow: inset 0 0 10px rgba(43, 206, 130, 0.1);
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.logout-nav-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-container {
+        top: 0.5rem;
+    }
+    
+    .navbar-glass {
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-text {
+        display: none;
+    }
+
+    .navigate-link a {
+        padding: 0.6rem;
+    }
+
+    .navbar-logo {
+        font-size: 1.25rem;
+    }
 }

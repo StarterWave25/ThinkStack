@@ -58,16 +58,27 @@ function ChangePassword({ setMessage }) {
     };
 
     return (
-        <div>
+        <div className="unified-card">
+            <div className="section-header">
+                <h3>Security</h3>
+            </div>
+            
             {!isChangingPassword ? (
-                <button onClick={() => setIsChangingPassword(true)}>
-                    Change Password
-                </button>
+                <div className="details-grid">
+                    <div className="detail-item">
+                        <span className="detail-label">Password</span>
+                        <span className="detail-value">••••••••••••</span>
+                    </div>
+                    <button onClick={() => setIsChangingPassword(true)}>
+                        Change Password
+                    </button>
+                </div>
             ) : (
-                <form onSubmit={handlePasswordSubmit}>
-                    <h3>Change Password</h3>
-                    <div>
+                <form className="profile-form" onSubmit={handlePasswordSubmit}>
+                    <div className="input-group">
+                        <label className="detail-label">Current Password</label>
                         <input
+                            className="profile-input"
                             type="password"
                             name="currentPassword"
                             placeholder="Current Password"
@@ -76,8 +87,10 @@ function ChangePassword({ setMessage }) {
                             required
                         />
                     </div>
-                    <div>
+                    <div className="input-group">
+                        <label className="detail-label">New Password</label>
                         <input
+                            className="profile-input"
                             type="password"
                             name="newPassword"
                             placeholder="New Password"
@@ -86,8 +99,10 @@ function ChangePassword({ setMessage }) {
                             required
                         />
                     </div>
-                    <div>
+                    <div className="input-group">
+                        <label className="detail-label">Confirm New Password</label>
                         <input
+                            className="profile-input"
                             type="password"
                             name="confirmPassword"
                             placeholder="Confirm New Password"
@@ -96,22 +111,25 @@ function ChangePassword({ setMessage }) {
                             required
                         />
                     </div>
-                    <button type="submit" disabled={isChangingPwd}>
-                        Update Password
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setIsChangingPassword(false);
-                            setPasswordForm({
-                                currentPassword: "",
-                                newPassword: "",
-                                confirmPassword: "",
-                            });
-                        }}
-                    >
-                        Cancel
-                    </button>
+                    <div className="button-group">
+                        <button type="submit" disabled={isChangingPwd}>
+                            {isChangingPwd ? "Updating..." : "Update Password"}
+                        </button>
+                        <button
+                            className="cancel-btn"
+                            type="button"
+                            onClick={() => {
+                                setIsChangingPassword(false);
+                                setPasswordForm({
+                                    currentPassword: "",
+                                    newPassword: "",
+                                    confirmPassword: "",
+                                });
+                            }}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             )}
         </div>

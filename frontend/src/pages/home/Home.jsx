@@ -33,13 +33,8 @@ function Home() {
     if (isUserLoading || isDashboardLoading) {
         return (
             <div className="home-page">
-                <div className="bg-bubbles">
-                    {[...Array(20)].map((_, i) => (
-                        <div key={i} className={`bubble bubble-${i + 1}`}></div>
-                    ))}
-                </div>
                 <div className="loading-container">
-                    <div className="typing-text">Loading dashboard...</div>
+                    <div className="typing-text">Loading...</div>
                 </div>
             </div>
         );
@@ -51,11 +46,6 @@ function Home() {
 
     return (
         <section className="home-page">
-            <div className="bg-bubbles">
-                {[...Array(20)].map((_, i) => (
-                    <div key={i} className={`bubble bubble-${i + 1}`}></div>
-                ))}
-            </div>
             <div className="home-container first-container">
                 <div className="home-card welcome-card">
                     <h1 className="home-title">Welcome {userData?.data?.firstName || 'User'}!</h1>

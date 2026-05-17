@@ -1,17 +1,17 @@
 function DashboardStats({ stats }) {
 
     return <div className="dashboard-stats">
-        <div className="stat-card">
-            <span className="stat-label">Total Solved</span>
-            <span className="stat-value">{stats.totalSolved}</span>
+        <div className="dashboard-stat-card">
+            <h3 className="dashboard-stat-label">Total Solved</h3>
+            <h2 className="dashboard-stat-value">{stats.totalSolved}</h2>
         </div>
-        <div className="stat-card">
-            <span className="stat-label">Average Score</span>
-            <span className="stat-value">{stats.averageScore?.toFixed(1) || 0}</span>
+        <div className="dashboard-stat-card">
+            <h3 className="dashboard-stat-label">Average Score</h3>
+            <h2 className="dashboard-stat-value">{stats.averageScore?.toFixed(1) || 0}</h2>
         </div>
-        <div className="stat-card">
-            <span className="stat-label">Hints Used</span>
-            <span className="stat-value">{stats.totalHintsUsed}</span>
+        <div className="dashboard-stat-card">
+            <h3 className="dashboard-stat-label">Hints Used</h3>
+            <h2 className="dashboard-stat-value">{stats.totalHintsUsed}</h2>
         </div>
     </div>;
 }
