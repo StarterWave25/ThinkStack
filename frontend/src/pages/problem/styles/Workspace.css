@@ -1,0 +1,65 @@
+.problem-right-pane {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 1.5vw, 2rem);
+}
+
+.step-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 1.5vw, 2rem);
+}
+
+.step-button {
+    text-transform: capitalize;
+}
+
+.step-button.active {
+    pointer-events: none;
+    font-size: 1.8rem;
+}
+
+.step-button:disabled {
+    opacity: 0.5;
+    background: linear-gradient(50deg, rgba(150, 255, 187, 0.3) 0.5%, rgba(0, 247, 37, 0.5));
+    cursor: not-allowed;
+}
+
+.text-editor {
+    min-height: 400px;
+    padding: 1rem;
+    scrollbar-width: thin;
+}
+
+.hint-dropdown {
+    padding: 1rem;
+    border: 2px solid var(--blue);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--low-blue);
+    display: flex;
+    flex-direction: column;
+}
+
+.hint-content {
+    color: var(--white);
+}
+
+.next-btn {
+    background: linear-gradient(50deg, lightgreen 5%, green);
+    padding: 1rem 1.5rem;
+}
+
+.next-btn::after {
+    background: rgb(0, 29, 0);
+}
+
+@media screen and (max-width:768px) {
+    .problem-right-pane {
+        width: 100%;
+    }
+}

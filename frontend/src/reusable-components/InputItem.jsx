@@ -1,8 +1,9 @@
 import InputField from "./InputField";
 import './styles/InputItem.css';
 
-function InputItem({ type, placeholder, fieldProps, touched, errors }) {
+function InputItem({ label, type, placeholder, fieldProps, touched, errors }) {
     return <div className="input-item">
+        <label>{`${label}:`}</label>
         <InputField
             type={type}
             placeholder={placeholder}

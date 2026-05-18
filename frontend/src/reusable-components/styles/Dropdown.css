@@ -1,0 +1,116 @@
+.custom-dropdown {
+    position: relative;
+    width: 25%;
+    user-select: none;
+}
+
+@media screen and (max-width: 850px) {
+    .custom-dropdown {
+        width: 100%;
+    }
+}
+
+.dropdown-selected {
+    background: rgba(43, 206, 130, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(43, 206, 130, 0.2);
+    color: var(--white);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.dropdown-selected:hover, 
+.dropdown-selected.open {
+    border-color: var(--blue);
+    background: rgba(43, 206, 130, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(43, 206, 130, 0.1);
+}
+
+.selected-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-selected-icon {
+    color: var(--blue);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-left: 0.75rem;
+}
+
+.dropdown-arrow.up {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: rgba(10, 15, 12, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(43, 206, 130, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    animation: dropdownFadeIn 0.2s ease-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.dropdown-option {
+    padding: 0.75rem 1.25rem;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.dropdown-option:hover {
+    background: rgba(43, 206, 130, 0.15);
+    color: var(--blue);
+    padding-left: 1.5rem;
+}
+
+.dropdown-option.selected {
+    background: rgba(43, 206, 130, 0.25);
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.dropdown-option.selected::before {
+    content: '◉';
+    font-size: 0.8rem;
+    color: var(--blue);
+}
+
+@keyframes dropdownFadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-8px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}

@@ -15,9 +15,21 @@ async function hashPassword(password) {
 
 const register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const requiredDetails = ["firstName", "lastName", "email", "password"];
 
-        if (!name || !email || !password) {
+        requiredDetails.forEach((reqDetail) => {
+            if (!req.body[reqDetail] || req.body[reqDetail] === "")
+                return respond(
+                    res,
+                    false,
+                    400,
+                    `${reqDetail} should not be empty!`,
+                );
+        });
+
+        const { firstName, lastName, email, password } = req.body;
+
+        if (!firstName || !lastName || !email || !password) {
             return respond(res, false, 400, "All fields are required", {});
         }
 
@@ -28,12 +40,12 @@ const register = async (req, res) => {
 
         const hashedPassword = await hashPassword(password);
 
-        const newUser = new User({
-            name,
+        const newUser = await User.create({
+            firstName,
+            lastName,
             email,
             password: hashedPassword,
         });
-        await newUser.save();
 
         const jwtToken = jwt.sign(
             { id: newUser._id, email: newUser.email },
@@ -221,8 +233,18 @@ const getMe = async (req, res) => {
         if (!req.cookies || !req.cookies.jwtToken) {
             return respond(res, false, 400, "User not logged in!", {});
         }
-        const user = jwt.verify(req.cookies.jwtToken, process.env.JWT_SECRET);
-        return respond(res, true, 200, { email: user.email }, {});
+        const decoded = jwt.verify(
+            req.cookies.jwtToken,
+            process.env.JWT_SECRET,
+        );
+        const user = await User.findById(decoded.id, "-password");
+        user.profilePic =
+            req.protocol +
+            "://" +
+            req.get("host") +
+            "/src/uploads/" +
+            user.profilePic;
+        return respond(res, true, 200, user, {});
     } catch (error) {
         console.log("\n\n😱 Error during Getting me:", error);
         return respond(res, false, 500, "Get me failed", {});

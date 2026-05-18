@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const respond = require("../utils/responseFormat");
 const Submission = require("../models/submission.model");
+const User = require("../models/user.model");
+const fs = require("fs");
+const path = require("path");
 
 /**
  * 
@@ -29,21 +32,37 @@ const getUserDashboard = async (req, res) => {
                     userId: new mongoose.Types.ObjectId(req.user.id),
                 },
             },
+
             {
                 $facet: {
+                    // ---------------- STATS ----------------
                     stats: [
                         {
                             $group: {
                                 _id: null,
+
                                 totalSolved: {
                                     $sum: 1,
                                 },
+
                                 averageScore: {
                                     $avg: "$finalScore",
                                 },
+
                                 totalHintsUsed: {
                                     $sum: "$hintsUsed",
                                 },
+                            },
+                        },
+
+                        {
+                            $project: {
+                                _id: 0,
+                                totalSolved: 1,
+                                averageScore: {
+                                    $round: ["$averageScore", 2],
+                                },
+                                totalHintsUsed: 1,
                             },
                         },
                     ],
@@ -53,14 +72,73 @@ const getUserDashboard = async (req, res) => {
                                 createdAt: -1,
                             },
                         },
+
+                        {
+                            $lookup: {
+                                from: "problems",
+                                localField: "problemId",
+                                foreignField: "_id",
+                                as: "problemInfo",
+                            },
+                        },
+
+                        {
+                            $addFields: {
+                                problemTitle: {
+                                    $arrayElemAt: ["$problemInfo.title", 0],
+                                },
+
+                                difficulty: {
+                                    $arrayElemAt: [
+                                        "$problemInfo.difficulty",
+                                        0,
+                                    ],
+                                },
+                            },
+                        },
+
+                        {
+                            $project: {
+                                _id: 1,
+                                createdAt: 1,
+                                finalScore: 1,
+                                problemId: 1,
+                                problemTitle: 1,
+                                difficulty: 1,
+                            },
+                        },
                     ],
                 },
             },
+            {
+                $project: {
+                    stats: {
+                        $arrayElemAt: ["$stats", 0],
+                    },
+
+                    submissions: 1,
+                },
+            },
         ]);
-        return respond(res, true, 200, dashboardData, {});
+
+        return respond(
+            res,
+            true,
+            200,
+            dashboardData[0] || {
+                stats: {
+                    totalSolved: 0,
+                    averageScore: 0,
+                    totalHintsUsed: 0,
+                },
+                submissions: [],
+            },
+            {},
+        );
     } catch (error) {
-        console.log("\n\n😱 Error fetching user stats!:", error);
-        return respond(res, false, 500, "Error fetching user stats!", {});
+        console.log("\n\n😱 Error fetching user dashboard!:", error);
+
+        return respond(res, false, 500, "Error fetching user dashboard!", {});
     }
 };
 
@@ -90,4 +168,53 @@ const getSubmissionById = async (req, res) => {
     }
 };
 
-module.exports = { getUserDashboard, getSubmissionById };
+const updateProfilePic = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return respond(res, false, 404, "User doesn't exist!", {});
+        if (user.profilePic && user.profilePic !== "default_pfp.jpg") {
+            const oldFileName = user.profilePic;
+            const oldImagePath = path.join(
+                __dirname,
+                "../uploads",
+                oldFileName,
+            );
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath);
+            }
+        }
+        user.profilePic = req.file.filename;
+        await user.save();
+        const imageURL =
+            req.protocol +
+            "://" +
+            req.get("host") +
+            "/src/uploads/" +
+            user.profilePic;
+        return respond(res, true, 200, { imageURL, user }, {});
+    } catch (error) {
+        console.log("\n\n😱 Error updating profile Picture!:", error);
+        return respond(res, false, 500, "Error updating profile Picture!", {});
+    }
+};
+
+const updateProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return respond(res, false, 404, "User doesn't exist!", {});
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        await user.save();
+        return respond(res, true, 200, user, {});
+    } catch (error) {
+        console.log("\n\n😱 Error updating profile details!:", error);
+        return respond(res, false, 500, "Error updating profile details!", {});
+    }
+};
+
+module.exports = {
+    getUserDashboard,
+    getSubmissionById,
+    updateProfilePic,
+    updateProfile,
+};

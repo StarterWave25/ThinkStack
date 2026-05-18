@@ -1,0 +1,106 @@
+.problems-section {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+}
+
+
+.problems-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.problems-count {
+    color: var(--white);
+}
+
+.problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+}
+
+.problem-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.problem-card:hover {
+    filter: brightness(1.4);
+}
+
+.problem-card.easy,
+.problem-difficulty.easy {
+    background: linear-gradient(130deg, rgba(0, 0, 0, 0.5) 70%, rgba(0, 128, 0, 0.5));
+    color: var(--blue);
+    border: 2px solid green;
+}
+
+.problem-card.medium,
+.problem-difficulty.medium {
+    background: linear-gradient(130deg, rgba(0, 0, 0, 0.5) 70%, rgb(255, 165, 0, 0.5));
+    color: orange;
+    border: 2px solid orange;
+}
+
+.problem-card.hard,
+.problem-difficulty.hard {
+    background: linear-gradient(130deg, rgba(0, 0, 0, 0.5) 70%, rgb(255, 100, 100, 0.5));
+    color: rgb(255, 100, 100);
+    border: 2px solid rgb(255, 100, 100);
+}
+
+.problem-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.problem-title {
+    color: inherit;
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+}
+
+.problem-difficulty {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #cfcfcf;
+    white-space: nowrap;
+}
+
+
+.problems-description {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--white);
+}
+
+.status {
+    color: var(--dark-blue);
+    background-color: white;
+    width: fit-content;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+}
+
+.problems-loading {
+    padding: 2rem;
+    text-align: center;
+}
+
+.problem-link {
+    text-decoration: none;
+    color: inherit;
+}

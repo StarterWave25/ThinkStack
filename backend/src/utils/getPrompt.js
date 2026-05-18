@@ -183,6 +183,9 @@ IMPORTANT:
 - Never give perfect scores unless reasoning is exceptionally detailed and analytical
 - Do not hallucinate skills the user did not demonstrate
 - Keep feedback constructive and specific
+- expertComparison and feedback statements must be very concise and between 10 to 15 words, max 20 words, don't cross this limit!.
+- Use simple words so that normal average student with low english knowledge can understand easily. 
+- Address user as "You" instead of "user"
 `;
     return prompt;
 };

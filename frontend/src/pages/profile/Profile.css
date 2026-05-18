@@ -1,0 +1,204 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 2.5vw, 3rem);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: clamp(1rem, 2vw, 3rem);
+}
+
+.profile-section {
+    width: 100%;
+}
+
+.unified-card {
+    background: rgba(0, 80, 52, 0.1);
+    border: 1px solid var(--dark-blue);
+    border-radius: 12px;
+    padding: clamp(1.5rem, 2vw, 2.5rem);
+    backdrop-filter: blur(10px);
+    width: 100%;
+}
+
+/* Header / Avatar */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--blue);
+    box-shadow: 0 0 20px rgba(43, 206, 130, 0.2);
+    transition: all 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(43, 206, 130, 0.4);
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.avatar-wrapper:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Forms & Details */
+.section-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-header h3 {
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    margin: 0;
+}
+
+.details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: var(--low-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* Inputs styling */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100% !important; /* Override global form width if necessary */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(43, 206, 130, 0.2);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.profile-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: rgba(43, 206, 130, 0.05);
+    box-shadow: 0 0 10px rgba(43, 206, 130, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: 1px solid var(--low-blue);
+    color: var(--low-blue);
+}
+
+.cancel-btn:hover {
+    background: rgba(170, 235, 255, 0.1);
+    filter: none;
+}
+
+/* Messages */
+.message-banner {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+.message-banner.success {
+    background: rgba(43, 206, 130, 0.15);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.message-banner.error {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Logout */
+.logout-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.logout-btn {
+    background: linear-gradient(50deg, #d32f2f 10%, #ff5252) !important;
+}

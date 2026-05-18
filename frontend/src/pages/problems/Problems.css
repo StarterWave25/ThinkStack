@@ -1,0 +1,14 @@
+.problems-page {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+    padding: clamp(1rem, 1.5vw, 2rem);
+    width: 85%;
+}
+
+.problems-filter {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0.75rem;
+}
