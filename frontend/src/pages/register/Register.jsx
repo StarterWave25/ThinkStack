@@ -8,9 +8,10 @@ import {
 } from "./registerFormUtils";
 import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
+import AuthError from "../../reusable-components/AuthError";
 
 function Register() {
-    const [registerUser, { isLoading: isRegistering }] = useRegisterMutation();
+    const [registerUser, { isLoading: isRegistering, error }] = useRegisterMutation();
     const navigate = useNavigate();
     const { data, isLoading, isFetching } = useGetMeQuery();
 
@@ -41,22 +42,24 @@ function Register() {
         <form onSubmit={formik.handleSubmit} className="form">
             <h2>Register</h2>
 
+            <AuthError error={error} />
+
             <InputItem
                 label={"First Name"}
                 type={"text"}
-                placeholder={"Enter your Last Name"}
+                placeholder={"Enter your First Name"}
                 fieldProps={formik.getFieldProps("firstName")}
-                touched={formik.touched.name}
-                errors={formik.errors.name}
+                touched={formik.touched.firstName}
+                errors={formik.errors.firstName}
             ></InputItem>
 
             <InputItem
                 label={"Last Name"}
                 type={"text"}
                 placeholder={"Enter your Last Name"}
-                fieldProps={formik.getFieldProps("LastName")}
-                touched={formik.touched.name}
-                errors={formik.errors.name}
+                fieldProps={formik.getFieldProps("lastName")}
+                touched={formik.touched.lastName}
+                errors={formik.errors.lastName}
             ></InputItem>
 
             <InputItem

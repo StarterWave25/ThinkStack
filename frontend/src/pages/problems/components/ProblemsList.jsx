@@ -1,4 +1,3 @@
-
 import { useGetAllProblemsQuery, useGetAllProblemsByDifficultyQuery } from "../../../services/problemsAPI";
 import { Link } from "react-router-dom";
 import "./ProblemsList.css";
@@ -40,15 +39,15 @@ function ProblemsList({ difficulty }) {
 
                             <article className={`problem-card ${problem.difficulty.toLowerCase()}`}>
 
-                                <span className={`status ${problem.status.toLowerCase()}`}>
-                                    {problem.status === 'IN_PROGRESS' ? 'in progress' : problem.status.toLowerCase()}
-                                </span>
+                                <h4 className="problem-title">
+                                    {problem.title}
+                                </h4>
 
-                                <div className="problem-card-header">
+                                <p className="problems-description">
+                                    {problem.description}
+                                </p>
 
-                                    <h4 className="problem-title">
-                                        {problem.title}
-                                    </h4>
+                                <div className="problem-card-footer">
 
                                     <span
                                         className={`problem-difficulty ${problem.difficulty.toLowerCase()}`}
@@ -56,12 +55,11 @@ function ProblemsList({ difficulty }) {
                                         {problem.difficulty === 'Medium' ? 'Moderate' : problem.difficulty}
                                     </span>
 
+                                    <span className={`status ${problem.status.toLowerCase()}`}>
+                                        {problem.status === 'IN_PROGRESS' ? 'in progress' : problem.status.toLowerCase()}
+                                    </span>
+
                                 </div>
-
-                                <p className="problems-description">
-                                    {problem.description}
-                                </p>
-
 
                             </article>
 

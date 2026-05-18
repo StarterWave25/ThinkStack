@@ -1,10 +1,16 @@
 export const validateRegisterForm = (values) => {
     const errors = {};
 
-    if (!values.name) {
-        errors.name = "Name is required";
-    } else if (values.name.length < 3) {
-        errors.name = "Min 3 characters";
+    if (!values.firstName) {
+        errors.firstName = "First name is required";
+    } else if (values.firstName.length < 3) {
+        errors.firstName = "Min 3 characters";
+    }
+
+    if (!values.lastName) {
+        errors.lastName = "Last name is required";
+    } else if (values.lastName.length < 3) {
+        errors.lastName = "Min 3 characters";
     }
 
     if (!values.email) {

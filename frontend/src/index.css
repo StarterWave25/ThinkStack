@@ -41,7 +41,10 @@
     font-family: 'satoshi';
 }
 
-
+html{
+    scrollbar-width: thin;
+    scrollbar-color: var(--blue) var(--black);
+}
 body {
     background: linear-gradient(130deg, rgb(7, 10, 7) 80%, var(--dark-blue));
     background-attachment: fixed;
@@ -93,13 +96,13 @@ form {
 }
 
 @media screen and (max-width:850px) {
-    form{
+    form {
         width: 90%;
     }
 }
 
 label {
-    color: var(--blue);
+    color: var(--white);
 }
 
 button {

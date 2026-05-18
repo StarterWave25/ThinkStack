@@ -59,15 +59,16 @@
     border: 2px solid rgb(255, 100, 100);
 }
 
-.problem-card-header {
+.problem-card-footer {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    margin-top: auto;
 }
 
 .problem-title {
     color: inherit;
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
 }
 
 .problem-difficulty {

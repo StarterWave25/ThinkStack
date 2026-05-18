@@ -13,9 +13,10 @@ import {
 } from "./loginFormUtils";
 import InputItem from "../../reusable-components/InputItem";
 import Button from "../../reusable-components/Button";
+import AuthError from "../../reusable-components/AuthError";
 
 function Login() {
-    const [loginUser, { isLoading }] = useLoginMutation();
+    const [loginUser, { isLoading, error }] = useLoginMutation();
 
     const [forgotPassword] = useForgotPasswordMutation();
 
@@ -49,6 +50,8 @@ function Login() {
     return (
         <form onSubmit={formik.handleSubmit}>
             <h2>Login</h2>
+
+            <AuthError error={error} />
 
             <InputItem
                 label={'Email'}
