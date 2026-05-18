@@ -17,16 +17,14 @@ function Home() {
         isFetching: isUserFetching,
     } = useGetMeQuery();
 
-    const {
-        data: dashboardResponse,
-        isLoading: isDashboardLoading,
-    } = useGetUserDashboardQuery(undefined, { skip: !userData });
+    const { data: dashboardResponse, isLoading: isDashboardLoading } =
+        useGetUserDashboardQuery(undefined, { skip: !userData });
 
     const isLoggedIn = !!userData;
 
     useEffect(() => {
         if (!isUserLoading && !isUserFetching && !isLoggedIn) {
-            navigate('/login');
+            navigate("/login");
         }
     }, [isLoggedIn, isUserLoading, isUserFetching, navigate]);
 
@@ -40,15 +38,21 @@ function Home() {
         );
     }
 
-    const dashboardData = dashboardResponse?.data?.[0];
-    const stats = dashboardData?.stats?.[0] || { totalSolved: 0, averageScore: 0, totalHintsUsed: 0 };
+    const dashboardData = dashboardResponse?.data;
+    const stats = dashboardData?.stats || {
+        totalSolved: 0,
+        averageScore: 0,
+        totalHintsUsed: 0,
+    };
     const submissions = dashboardData?.submissions || [];
 
     return (
         <section className="home-page">
             <div className="home-container first-container">
                 <div className="home-card welcome-card">
-                    <h1 className="home-title">Welcome {userData?.data?.firstName || 'User'}!</h1>
+                    <h1 className="home-title">
+                        Welcome {userData?.data?.firstName || "User"}!
+                    </h1>
                     <h2 className="section-heading">Performance Overview</h2>
                     <DashboardStats stats={stats}></DashboardStats>
                 </div>
@@ -60,7 +64,7 @@ function Home() {
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
 export default Home;

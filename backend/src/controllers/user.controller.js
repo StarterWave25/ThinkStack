@@ -32,21 +32,37 @@ const getUserDashboard = async (req, res) => {
                     userId: new mongoose.Types.ObjectId(req.user.id),
                 },
             },
+
             {
                 $facet: {
+                    // ---------------- STATS ----------------
                     stats: [
                         {
                             $group: {
                                 _id: null,
+
                                 totalSolved: {
                                     $sum: 1,
                                 },
+
                                 averageScore: {
                                     $avg: "$finalScore",
                                 },
+
                                 totalHintsUsed: {
                                     $sum: "$hintsUsed",
                                 },
+                            },
+                        },
+
+                        {
+                            $project: {
+                                _id: 0,
+                                totalSolved: 1,
+                                averageScore: {
+                                    $round: ["$averageScore", 2],
+                                },
+                                totalHintsUsed: 1,
                             },
                         },
                     ],
@@ -56,19 +72,7 @@ const getUserDashboard = async (req, res) => {
                                 createdAt: -1,
                             },
                         },
-                        {
-                            $group: {
-                                _id: "$problemId",
-                                createdAt: { $first: "$createdAt" },
-                                finalScore: { $first: "$finalScore" },
-                                problemId: { $first: "$problemId" },
-                            },
-                        },
-                        {
-                            $sort: {
-                                createdAt: -1,
-                            },
-                        },
+
                         {
                             $lookup: {
                                 from: "problems",
@@ -77,11 +81,13 @@ const getUserDashboard = async (req, res) => {
                                 as: "problemInfo",
                             },
                         },
+
                         {
                             $addFields: {
                                 problemTitle: {
                                     $arrayElemAt: ["$problemInfo.title", 0],
                                 },
+
                                 difficulty: {
                                     $arrayElemAt: [
                                         "$problemInfo.difficulty",
@@ -90,23 +96,49 @@ const getUserDashboard = async (req, res) => {
                                 },
                             },
                         },
+
                         {
                             $project: {
+                                _id: 1,
                                 createdAt: 1,
                                 finalScore: 1,
+                                problemId: 1,
                                 problemTitle: 1,
                                 difficulty: 1,
-                                problemId: 1,
                             },
                         },
                     ],
                 },
             },
+            {
+                $project: {
+                    stats: {
+                        $arrayElemAt: ["$stats", 0],
+                    },
+
+                    submissions: 1,
+                },
+            },
         ]);
-        return respond(res, true, 200, dashboardData, {});
+
+        return respond(
+            res,
+            true,
+            200,
+            dashboardData[0] || {
+                stats: {
+                    totalSolved: 0,
+                    averageScore: 0,
+                    totalHintsUsed: 0,
+                },
+                submissions: [],
+            },
+            {},
+        );
     } catch (error) {
-        console.log("\n\n😱 Error fetching user stats!:", error);
-        return respond(res, false, 500, "Error fetching user stats!", {});
+        console.log("\n\n😱 Error fetching user dashboard!:", error);
+
+        return respond(res, false, 500, "Error fetching user dashboard!", {});
     }
 };
 
